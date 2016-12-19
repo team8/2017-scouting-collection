@@ -15,6 +15,7 @@
 		A50FE9FD1E0746180087A052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50FE9FB1E0746180087A052 /* LaunchScreen.storyboard */; };
 		A50FEA081E0746180087A052 /* _017_Scouting_CollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA071E0746180087A052 /* _017_Scouting_CollectionTests.swift */; };
 		A50FEA131E0746180087A052 /* _017_Scouting_CollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA121E0746180087A052 /* _017_Scouting_CollectionUITests.swift */; };
+		A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA201E074AD40087A052 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A50FEA0E1E0746180087A052 /* 2017 Scouting CollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2017 Scouting CollectionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50FEA121E0746180087A052 /* _017_Scouting_CollectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _017_Scouting_CollectionUITests.swift; sourceTree = "<group>"; };
 		A50FEA141E0746180087A052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A50FEA201E074AD40087A052 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				A50FE9FB1E0746180087A052 /* LaunchScreen.storyboard */,
 				A50FE9FE1E0746180087A052 /* Info.plist */,
 				A50FE9F61E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld */,
+				A50FEA221E074ADA0087A052 /* View Controllers */,
 			);
 			path = "2017 Scouting Collection";
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				A50FEA141E0746180087A052 /* Info.plist */,
 			);
 			path = "2017 Scouting CollectionUITests";
+			sourceTree = "<group>";
+		};
+		A50FEA221E074ADA0087A052 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A50FEA201E074AD40087A052 /* HomeViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50FE9F21E0746180087A052 /* ViewController.swift in Sources */,
+				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
 				A50FE9F81E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld in Sources */,
 				A50FE9F01E0746180087A052 /* AppDelegate.swift in Sources */,
 			);
@@ -417,6 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "2017 Scouting Collection/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.-017-Scouting-Collection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -429,6 +442,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "2017 Scouting Collection/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.-017-Scouting-Collection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
