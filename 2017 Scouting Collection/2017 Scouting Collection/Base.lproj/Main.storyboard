@@ -9,6 +9,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Light.ttf">
+            <string>Lato-Light</string>
+        </array>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="8sy-aX-nHt">
@@ -39,26 +47,57 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f30-Dx-MYX">
-                                <rect key="frame" x="12" y="22" width="1000" height="125"/>
-                                <color key="backgroundColor" red="0.93636658031088082" green="0.93636658031088082" blue="0.93636658031088082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="20" y="628" width="984" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="125" id="JYk-PZ-gOV"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <state key="normal" title="Scout New Match"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
+                                <state key="normal" title="+ Scout New Match">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="9RX-dD-odt" kind="show" id="t3x-ud-68W"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJK-bd-O4t">
+                                <rect key="frame" x="415.5" y="30" width="193.5" height="84"/>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="72"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vqz-eo-xea">
+                                <rect key="frame" x="20" y="134" width="984" height="474"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" id="HNg-T1-PFy" customClass="TableViewCell" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="984" height="75"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HNg-T1-PFy" id="21O-8K-0Dv">
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="75"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.041917883375619247" green="0.60476036269430056" blue="0.017816367993379208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="f30-Dx-MYX" firstAttribute="leadingMargin" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="A2y-9A-xIm"/>
-                            <constraint firstItem="f30-Dx-MYX" firstAttribute="topMargin" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="30" id="ge0-Pg-dRR"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="f30-Dx-MYX" secondAttribute="trailingMargin" id="zfX-7w-Eo2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vqz-eo-xea" secondAttribute="trailing" id="0pq-Yx-wpT"/>
+                            <constraint firstItem="f30-Dx-MYX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="A2y-9A-xIm"/>
+                            <constraint firstItem="iJK-bd-O4t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OTU-GT-raL"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="f30-Dx-MYX" secondAttribute="bottom" constant="15" id="Sgx-Nn-3Df"/>
+                            <constraint firstItem="vqz-eo-xea" firstAttribute="top" secondItem="iJK-bd-O4t" secondAttribute="bottom" constant="20" id="dge-58-fG9"/>
+                            <constraint firstItem="iJK-bd-O4t" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="f4U-lj-bp4"/>
+                            <constraint firstItem="f30-Dx-MYX" firstAttribute="top" secondItem="vqz-eo-xea" secondAttribute="bottom" constant="20" id="pBv-rf-1Td"/>
+                            <constraint firstItem="vqz-eo-xea" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yp1-y2-t8M"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="f30-Dx-MYX" secondAttribute="trailing" id="zfX-7w-Eo2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9lc-db-hi8"/>
+                    <connections>
+                        <outlet property="dataTable" destination="vqz-eo-xea" id="JT2-UA-PdQ"/>
+                        <outlet property="newButton" destination="f30-Dx-MYX" id="xk2-xM-cNa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
