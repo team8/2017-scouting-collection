@@ -1,5 +1,5 @@
 
-//  File.swift
+//  HomeViewController.swift
 //  2017 Scouting Collection
 //
 //  Created by Alex Tarng on 12/18/16.
@@ -29,26 +29,11 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        //Gradient
-        let gradient:CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.view.frame
-        let color1 = UIColor(colorLiteralRed: 34/255, green: 139/255, blue: 34/255, alpha: 1).cgColor
-        let color2 = UIColor(colorLiteralRed: 17/255, green: 38/255, blue: 11/255, alpha: 1).cgColor
-        gradient.colors = [color1, color2] //Or any colors
-        self.view.layer.insertSublayer(gradient, at: 0)
-        
+        super.viewWillAppear(animated)
         //Borders
         newButton.layer.borderWidth = 1
         newButton.layer.borderColor = UIColor.white.cgColor
         
-        
-    }
-    
-    
-    //White status bar
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent;
     }
     
     //Fill table view
@@ -56,15 +41,12 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
         let tempList = ["Team 8, Q1", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4"]
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! TableViewCell
         cell.textLabel?.text = tempList[indexPath.row]
-//        cell.layer.borderWidth = 1
-//        cell.layer.borderColor = UIColor.white.cgColor
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.font = UIFont(name:"Lato", size:20)
         cell.textLabel?.textColor = UIColor.white
         cell.textLabel?.layer.borderWidth = 2
         cell.textLabel?.layer.borderColor = UIColor.white.cgColor
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        print("ym")
         return cell
     }
     

@@ -17,6 +17,7 @@
 		A50FEA131E0746180087A052 /* _017_Scouting_CollectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA121E0746180087A052 /* _017_Scouting_CollectionUITests.swift */; };
 		A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA201E074AD40087A052 /* HomeViewController.swift */; };
 		A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AE68B1E0896DC00240523 /* TableViewCell.swift */; };
+		A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544F1731E09E8550037A898 /* PrematchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A50FEA141E0746180087A052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A50FEA201E074AD40087A052 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		A53AE68B1E0896DC00240523 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = UI/TableViewCell.swift; sourceTree = "<group>"; };
+		A544F1731E09E8550037A898 /* PrematchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrematchViewController.swift; path = "View Controllers/PrematchViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,6 @@
 			children = (
 				A53AE68A1E0896A700240523 /* UI */,
 				A50FE9EF1E0746180087A052 /* AppDelegate.swift */,
-				A50FE9F11E0746180087A052 /* ViewController.swift */,
 				A50FE9F31E0746180087A052 /* Main.storyboard */,
 				A50FE9F91E0746180087A052 /* Assets.xcassets */,
 				A50FE9FB1E0746180087A052 /* LaunchScreen.storyboard */,
@@ -137,7 +138,9 @@
 		A50FEA221E074ADA0087A052 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A50FE9F11E0746180087A052 /* ViewController.swift */,
 				A50FEA201E074AD40087A052 /* HomeViewController.swift */,
+				A544F1731E09E8550037A898 /* PrematchViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */,
 				A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */,
 				A50FE9F21E0746180087A052 /* ViewController.swift in Sources */,
 				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
