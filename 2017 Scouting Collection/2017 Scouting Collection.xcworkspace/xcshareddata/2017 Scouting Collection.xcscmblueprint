@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2BBF18548A02066FFB6C9E0F1BCF66E02EB89FC4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "0AA398FA725133E3EEB78F2A998412BFE3A89F00" : 9223372036854775807,
+    "2BBF18548A02066FFB6C9E0F1BCF66E02EB89FC4" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "928E1CEF-D17F-4B68-AACC-0942815C95DC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "0AA398FA725133E3EEB78F2A998412BFE3A89F00" : "2017-scouting-app\/",
+    "2BBF18548A02066FFB6C9E0F1BCF66E02EB89FC4" : "2017-scouting-collection\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "2017 Scouting Collection",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "2017 Scouting Collection\/2017 Scouting Collection.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/team8\/2017-scouting-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0AA398FA725133E3EEB78F2A998412BFE3A89F00"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/team8\/2017-scouting-collection.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2BBF18548A02066FFB6C9E0F1BCF66E02EB89FC4"
+    }
+  ]
+}
