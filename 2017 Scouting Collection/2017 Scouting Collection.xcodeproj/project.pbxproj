@@ -30,6 +30,7 @@
 		A551659E1E150E8000502823 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A55165931E150E8000502823 /* Lato-LightItalic.ttf */; };
 		A551659F1E150E8000502823 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A55165941E150E8000502823 /* Lato-Regular.ttf */; };
 		A55165A01E150E8000502823 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A55165951E150E8000502823 /* OFL.txt */; };
+		A55165A21E15234F00502823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55165A11E15234F00502823 /* Button.swift */; };
 		A55CAD461E15056700EC173A /* SFDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55CAD451E15056700EC173A /* SFDialogViewController.swift */; };
 		A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */; };
 		A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */; };
@@ -86,6 +87,7 @@
 		A55165931E150E8000502823 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		A55165941E150E8000502823 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		A55165951E150E8000502823 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		A55165A11E15234F00502823 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = UI/Button.swift; sourceTree = "<group>"; };
 		A55CAD451E15056700EC173A /* SFDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SFDialogViewController.swift; path = "View Controllers/SFDialogViewController.swift"; sourceTree = "<group>"; };
 		A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoViewController.swift; path = "View Controllers/AutoViewController.swift"; sourceTree = "<group>"; };
 		A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeleopViewController.swift; path = "View Controllers/TeleopViewController.swift"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				A53AE68B1E0896DC00240523 /* TableViewCell.swift */,
+				A55165A11E15234F00502823 /* Button.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */,
 				A5A285A61E0E6A4700FEB8A9 /* SubmissionViewController.swift in Sources */,
 				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
+				A55165A21E15234F00502823 /* Button.swift in Sources */,
 				A5A285AC1E0E6AE100FEB8A9 /* QRViewController.swift in Sources */,
 				A50FE9F81E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld in Sources */,
 				A50FE9F01E0746180087A052 /* AppDelegate.swift in Sources */,

@@ -72,6 +72,13 @@ class AutoViewController: ViewController {
     }
     
     func reloadData() {
+        if (Data.currentMatch?.reach)! {
+            self.reachButton.backgroundColor = UIColor.white
+            self.reachButton.setTitleColor(UIColor(red:0.07, green:0.46, blue:0.07, alpha:1.0), for: .normal)
+        } else {
+            self.reachButton.backgroundColor = UIColor.clear
+            self.reachButton.setTitleColor(UIColor.white, for: .normal)
+        }
         self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoLowGoalSuccess)
         self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoLowGoalFailure)
         self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoHighGoalSuccess)
