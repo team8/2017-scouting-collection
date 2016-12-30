@@ -11,7 +11,11 @@ import UIKit
 
 class AutoViewController: ViewController {
     
-    @IBOutlet weak var reachButton: UIButton!
+    @IBOutlet weak var driveButton: ToggleButton!
+    @IBOutlet weak var noActionButton: ToggleButton!
+    @IBOutlet weak var brokeDownButton: ToggleButton!
+    @IBOutlet weak var collisionButton: ToggleButton!
+    @IBOutlet weak var reachButton: ToggleButton!
     
     @IBOutlet weak var lowGoalSuccess: UILabel!
     @IBOutlet weak var lowGoalFailure: UILabel!
@@ -42,23 +46,23 @@ class AutoViewController: ViewController {
         switch(sender.tag) {
             case 0:
                 //Drive
-                Data.currentMatch?.drive = sender.toggleState
+                Data.currentMatch?.autoDrive = sender.toggleState
                 break
             case 1:
                 //No Action
-                Data.currentMatch?.noAction = sender.toggleState
+                Data.currentMatch?.autoNoAction = sender.toggleState
                 break
             case 2:
                 //Broken Down
-                Data.currentMatch?.brokeDown = sender.toggleState
+                Data.currentMatch?.autoBrokeDown = sender.toggleState
                 break
             case 3:
                 //Collision
-                Data.currentMatch?.collision = sender.toggleState
+                Data.currentMatch?.autoCollision = sender.toggleState
                 break
             case 4:
                 //Reach
-                Data.currentMatch?.reach = sender.toggleState
+                Data.currentMatch?.autoReach = sender.toggleState
                 break
             default:
                 //wat
@@ -69,17 +73,16 @@ class AutoViewController: ViewController {
     @IBAction func SFButtonPressed(_ sender: UIButton) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "SFDialogViewController") as! SFDialogViewController
         vc.parentValue = sender.tag
+        vc.period = "Autonomous"
         self.present(vc, animated: false, completion: nil)
     }
     
     func reloadData() {
-        if (Data.currentMatch?.reach)! {
-            self.reachButton.backgroundColor = UIColor.white
-            self.reachButton.setTitleColor(UIColor(red:0.07, green:0.46, blue:0.07, alpha:1.0), for: .normal)
-        } else {
-            self.reachButton.backgroundColor = UIColor.clear
-            self.reachButton.setTitleColor(UIColor.white, for: .normal)
-        }
+        self.driveButton.toggle(toggleState: Data.currentMatch!.autoDrive)
+        self.noActionButton.toggle(toggleState: Data.currentMatch!.autoNoAction)
+        self.brokeDownButton.toggle(toggleState: Data.currentMatch!.autoBrokeDown)
+        self.collisionButton.toggle(toggleState: Data.currentMatch!.autoCollision)
+        self.reachButton.toggle(toggleState: Data.currentMatch!.autoReach)
         self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoLowGoalSuccess)
         self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoLowGoalFailure)
         self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoHighGoalSuccess)

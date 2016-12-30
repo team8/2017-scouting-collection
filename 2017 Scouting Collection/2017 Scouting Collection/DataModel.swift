@@ -18,12 +18,12 @@ class Data {
     var matchNumber: Int?
     
     //Auto
-    var drive: Bool = false
-    var noAction: Bool = false
-    var brokeDown: Bool = false
-    var collision: Bool = false
+    var autoDrive: Bool = false
+    var autoNoAction: Bool = false
+    var autoBrokeDown: Bool = false
+    var autoCollision: Bool = false
     
-    var reach: Bool = false
+    var autoReach: Bool = false
     
     var autoLowGoalSuccess: Int = 0
     var autoLowGoalFailure: Int = 0
@@ -42,7 +42,27 @@ class Data {
     var autoDef4Failure: Int = 0
     
     //Teleop
+    var teleopDrive: Bool = false
+    var teleopNoAction: Bool = false
+    var teleopBrokeDown: Bool = false
     
+    var teleopShotsBlocked: Int = 0
+    
+    var teleopLowGoalSuccess: Int = 0
+    var teleopLowGoalFailure: Int = 0
+    var teleopHighGoalSuccess: Int = 0
+    var teleopHighGoalFailure: Int = 0
+    
+    var teleopLowBarSuccess: Int = 0
+    var teleopLowBarFailure: Int = 0
+    var teleopDef1Success: Int = 0
+    var teleopDef1Failure: Int = 0
+    var teleopDef2Success: Int = 0
+    var teleopDef2Failure: Int = 0
+    var teleopDef3Success: Int = 0
+    var teleopDef3Failure: Int = 0
+    var teleopDef4Success: Int = 0
+    var teleopDef4Failure: Int = 0
     
     //Endgame
     var notes: String?

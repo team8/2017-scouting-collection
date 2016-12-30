@@ -50,4 +50,15 @@ class ToggleButton: UIButton {
         }
         super.touchesEnded(touches, with: event)
     }
+    
+    func toggle(toggleState: Bool) {
+        self.toggleState = toggleState
+        if (toggleState) {
+            self.backgroundColor = UIColor.white
+            self.setTitleColor(UIColor(red:0.07, green:0.46, blue:0.07, alpha:1.0), for: .normal)
+        } else {
+            self.backgroundColor = UIColor.clear
+            self.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
 }
