@@ -30,9 +30,6 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //Borders
-        newButton.layer.borderWidth = 1
-        newButton.layer.borderColor = UIColor.white.cgColor
         
     }
     

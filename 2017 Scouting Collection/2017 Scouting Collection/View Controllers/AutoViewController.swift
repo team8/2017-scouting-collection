@@ -11,8 +11,6 @@ import UIKit
 
 class AutoViewController: ViewController {
     
-    @IBOutlet var theButtons: [UIButton]!
-    
     @IBOutlet weak var reachButton: UIButton!
     
     @IBOutlet weak var lowGoalSuccess: UILabel!
@@ -37,31 +35,34 @@ class AutoViewController: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //Borders
-        for button in theButtons{
-            //Borders
-            button.layer.borderWidth = 2
-            button.layer.borderColor = UIColor.white.cgColor
-            
-        }
-        
         reloadData()
     }
     
-    @IBAction func reachToggle(_ sender: Any) {
-        if (Data.currentMatch?.reach)! {
-            Data.currentMatch?.reach = false
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                self.reachButton.backgroundColor = UIColor.clear
-                self.reachButton.setTitleColor(UIColor.white, for: .normal)
-            })
-        } else {
-            Data.currentMatch?.reach = true
-            UIView.animate(withDuration: 0.25, animations: { () -> Void in
-                self.reachButton.backgroundColor = UIColor.white
-                self.reachButton.setTitleColor(UIColor(red:0.07, green:0.46, blue:0.07, alpha:1.0), for: .normal)
-            })
+    @IBAction func toggleButtonPressed(_ sender: ToggleButton) {
+        switch(sender.tag) {
+            case 0:
+                //Drive
+                Data.currentMatch?.drive = sender.toggleState
+                break
+            case 1:
+                //No Action
+                Data.currentMatch?.noAction = sender.toggleState
+                break
+            case 2:
+                //Broken Down
+                Data.currentMatch?.brokeDown = sender.toggleState
+                break
+            case 3:
+                //Collision
+                Data.currentMatch?.collision = sender.toggleState
+                break
+            case 4:
+                //Reach
+                Data.currentMatch?.reach = sender.toggleState
+                break
+            default:
+                //wat
+                break
         }
     }
     

@@ -19,6 +19,7 @@
 		A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AE68B1E0896DC00240523 /* TableViewCell.swift */; };
 		A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544F1731E09E8550037A898 /* PrematchViewController.swift */; };
 		A547FA621E0C917000C14CB0 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547FA611E0C917000C14CB0 /* DataModel.swift */; };
+		A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A8F831E15EF6B0017753B /* ToggleButton.swift */; };
 		A55165961E150E8000502823 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A551658B1E150E8000502823 /* Lato-Black.ttf */; };
 		A55165971E150E8000502823 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A551658C1E150E8000502823 /* Lato-BlackItalic.ttf */; };
 		A55165981E150E8000502823 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A551658D1E150E8000502823 /* Lato-Bold.ttf */; };
@@ -76,6 +77,7 @@
 		A53AE68B1E0896DC00240523 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = UI/TableViewCell.swift; sourceTree = "<group>"; };
 		A544F1731E09E8550037A898 /* PrematchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrematchViewController.swift; path = "View Controllers/PrematchViewController.swift"; sourceTree = "<group>"; };
 		A547FA611E0C917000C14CB0 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		A54A8F831E15EF6B0017753B /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleButton.swift; path = UI/ToggleButton.swift; sourceTree = "<group>"; };
 		A551658B1E150E8000502823 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		A551658C1E150E8000502823 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A551658D1E150E8000502823 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				A53AE68B1E0896DC00240523 /* TableViewCell.swift */,
 				A55165A11E15234F00502823 /* Button.swift */,
+				A54A8F831E15EF6B0017753B /* ToggleButton.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				A5A285A61E0E6A4700FEB8A9 /* SubmissionViewController.swift in Sources */,
 				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
 				A55165A21E15234F00502823 /* Button.swift in Sources */,
+				A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */,
 				A5A285AC1E0E6AE100FEB8A9 /* QRViewController.swift in Sources */,
 				A50FE9F81E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld in Sources */,
 				A50FE9F01E0746180087A052 /* AppDelegate.swift in Sources */,

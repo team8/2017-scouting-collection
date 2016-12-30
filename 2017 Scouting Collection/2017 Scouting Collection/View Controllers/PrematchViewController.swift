@@ -13,7 +13,7 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startButton: Button!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var teamNumber: UITextField!
     @IBOutlet weak var matchNumber: UITextField!
@@ -25,20 +25,31 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activeField.delegate = self
-        self.hideKeyboardWhenTappedAround() 
+        self.hideKeyboardWhenTappedAround()
+        startButton.disable()
+        name.addTarget(self, action: #selector(checkFields), for: .editingDidEnd)
+        teamNumber.addTarget(self, action: #selector(checkFields), for: .editingDidEnd)
+        matchNumber.addTarget(self, action: #selector(checkFields), for: .editingDidEnd)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
-        //Borders
-        startButton.layer.borderWidth = 1
-        startButton.layer.borderColor = UIColor.white.cgColor
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         deregisterFromKeyboardNotifications()
+    }
+    
+    //Check if all fields are filled
+    func checkFields(sender: UITextField) {
+//        sender.text = sender.text?.stringByTrimmingCharactersInSet(.whitespaceCharacterSet())
+        if(!(name.text?.isEmpty)! && !(teamNumber.text?.isEmpty)! && !(matchNumber.text?.isEmpty)!) {
+            startButton.enable()
+        } else {
+            startButton.disable()
+        }
     }
     
     //Start button pressed

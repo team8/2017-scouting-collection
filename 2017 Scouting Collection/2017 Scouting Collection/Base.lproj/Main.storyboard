@@ -281,9 +281,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23D-ls-XIX">
-                                <rect key="frame" x="837.5" y="30" width="156.5" height="125"/>
+                                <rect key="frame" x="837.5" y="30" width="156.5" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="uLF-CP-vv2"/>
+                                    <constraint firstAttribute="height" constant="100" id="uLF-CP-vv2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
                                 <state key="normal" title="Continue">
@@ -294,9 +294,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zg-YX-pmt">
-                                <rect key="frame" x="30" y="30" width="157" height="125"/>
+                                <rect key="frame" x="30" y="30" width="157" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="125" id="ddd-eZ-uC5"/>
+                                    <constraint firstAttribute="height" constant="100" id="ddd-eZ-uC5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
                                 <state key="normal" title="Back">
@@ -307,7 +307,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh5-T1-70W" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="166.5" width="150" height="100"/>
+                                <rect key="frame" x="37" y="266.5" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="I2w-fD-kix"/>
                                     <constraint firstAttribute="width" constant="150" id="z1K-bl-lky"/>
@@ -320,8 +320,50 @@
                                     <action selector="SFButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="N3v-sc-ygZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-ab-G0M" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="137" y="141.5" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7xy-PS-ffe"/>
+                                    <constraint firstAttribute="height" constant="100" id="Nz8-Gr-5la"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="Drive">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="RQ4-i3-oVI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LEP-Cc-p7x" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="337" y="141.5" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="cX0-Tm-xcx"/>
+                                    <constraint firstAttribute="width" constant="150" id="jbj-VK-D9k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="No Action">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="hJd-7c-uhv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylJ-Mc-aw9" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="537" y="141.5" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5pv-CF-roV"/>
+                                    <constraint firstAttribute="width" constant="150" id="9gk-Xg-mrA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="Broke Down">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="88y-qT-amh"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjy-TU-uqP" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="237" y="166.5" width="150" height="100"/>
+                                <rect key="frame" x="237" y="266.5" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Kkw-0h-cJL"/>
                                     <constraint firstAttribute="height" constant="100" id="QMf-Z1-4aR"/>
@@ -335,7 +377,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sx-3M-JMb" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="437" y="166.5" width="150" height="100"/>
+                                <rect key="frame" x="437" y="266.5" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="VEL-lm-UOe"/>
                                     <constraint firstAttribute="height" constant="100" id="iCr-35-Z38"/>
@@ -349,7 +391,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVM-sB-ZnP" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="637" y="166.5" width="150" height="100"/>
+                                <rect key="frame" x="637" y="266.5" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="X74-q5-uJ1"/>
                                     <constraint firstAttribute="width" constant="150" id="yns-vE-hzZ"/>
@@ -363,7 +405,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL3-BG-tcy" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="837" y="166.5" width="150" height="100"/>
+                                <rect key="frame" x="837" y="266.5" width="150" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="HEd-vj-bIR"/>
                                     <constraint firstAttribute="height" constant="100" id="VRd-ac-RYD"/>
@@ -376,8 +418,8 @@
                                     <action selector="SFButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="8Vl-d2-P6k"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ens-5n-zIK">
-                                <rect key="frame" x="37" y="316.5" width="950" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ens-5n-zIK" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="37" y="391.5" width="950" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="aqY-k3-l7Y"/>
                                 </constraints>
@@ -386,11 +428,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="reachToggle:" destination="KP8-II-Zc9" eventType="touchUpInside" id="aDD-8O-vFd"/>
+                                    <action selector="toggleButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="L0z-Ep-WOX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-yd-ywR" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="537" y="474.5" width="450" height="243.5"/>
+                                <rect key="frame" x="537" y="516.5" width="450" height="201.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="High Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -400,7 +442,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANN-p3-8a1" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="474.5" width="450" height="243.5"/>
+                                <rect key="frame" x="37" y="516.5" width="450" height="201.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="Low Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -416,31 +458,31 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iix-kN-0MW">
-                                <rect key="frame" x="47" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="47" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLc-sZ-pIZ">
-                                <rect key="frame" x="247" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="247" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZlU-xJ-C71">
-                                <rect key="frame" x="447" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="447" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTB-sM-fT7">
-                                <rect key="frame" x="647" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="647" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtV-Vg-gnu">
-                                <rect key="frame" x="847" y="232" width="31.5" height="24"/>
+                                <rect key="frame" x="847" y="332" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -464,61 +506,80 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73X-wk-0s6">
-                                <rect key="frame" x="145.5" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="145.5" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRs-Pc-nMH">
-                                <rect key="frame" x="345.5" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="345.5" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22r-YE-nI9">
-                                <rect key="frame" x="545.5" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="545.5" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x8-8W-Sis">
-                                <rect key="frame" x="745.5" y="232" width="31.5" height="24"/>
+                                <rect key="frame" x="745.5" y="332" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdb-aL-QPh">
-                                <rect key="frame" x="945.5" y="232.5" width="31.5" height="24"/>
+                                <rect key="frame" x="945.5" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLV-hW-dRV" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="737" y="141.5" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Nb3-Fp-jrn"/>
+                                    <constraint firstAttribute="width" constant="150" id="rxd-1g-oaG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="Collision">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="MPg-Ww-jcU"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.04191788338" green="0.6047603627" blue="0.017816367989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hTB-sM-fT7" firstAttribute="bottom" secondItem="CVM-sB-ZnP" secondAttribute="bottom" constant="-10" id="1UQ-aF-kP4"/>
                             <constraint firstItem="Iix-kN-0MW" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="leading" constant="10" id="1gH-wq-xcQ"/>
-                            <constraint firstItem="ens-5n-zIK" firstAttribute="top" secondItem="9sx-3M-JMb" secondAttribute="bottom" constant="50" id="2bq-fj-hg1"/>
+                            <constraint firstItem="9sx-3M-JMb" firstAttribute="top" secondItem="jmc-ab-G0M" secondAttribute="bottom" constant="25" id="1gf-Ky-FlO"/>
+                            <constraint firstItem="LEP-Cc-p7x" firstAttribute="leading" secondItem="jmc-ab-G0M" secondAttribute="trailing" constant="50" id="2Vj-aJ-Sbs"/>
+                            <constraint firstItem="ens-5n-zIK" firstAttribute="top" secondItem="9sx-3M-JMb" secondAttribute="bottom" constant="25" id="2bq-fj-hg1"/>
                             <constraint firstItem="Iix-kN-0MW" firstAttribute="bottom" secondItem="vh5-T1-70W" secondAttribute="bottom" constant="-10" id="2cE-hA-POp"/>
                             <constraint firstItem="lL3-BG-tcy" firstAttribute="leading" secondItem="CVM-sB-ZnP" secondAttribute="trailing" constant="50" id="2oP-dD-idy"/>
                             <constraint firstItem="73X-wk-0s6" firstAttribute="bottom" secondItem="vh5-T1-70W" secondAttribute="bottom" constant="-10" id="2tu-i1-HUd"/>
                             <constraint firstItem="hTB-sM-fT7" firstAttribute="leading" secondItem="CVM-sB-ZnP" secondAttribute="leading" constant="10" id="3RJ-nJ-NHn"/>
                             <constraint firstItem="zjy-TU-uqP" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="trailing" constant="50" id="56y-7O-XMH"/>
                             <constraint firstItem="lTm-7J-jkj" firstAttribute="trailing" secondItem="9bt-yd-ywR" secondAttribute="trailing" constant="-10" id="5ZN-pe-r7S"/>
-                            <constraint firstItem="9sx-3M-JMb" firstAttribute="top" secondItem="PeK-6c-pCD" secondAttribute="bottom" constant="50" id="5cU-Lm-kQy"/>
                             <constraint firstItem="sPf-Ep-K4r" firstAttribute="bottom" secondItem="ANN-p3-8a1" secondAttribute="bottom" constant="-10" id="6Dt-Uy-O6k"/>
                             <constraint firstItem="ens-5n-zIK" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="leading" id="6mm-oz-0fW"/>
+                            <constraint firstItem="iLV-hW-dRV" firstAttribute="leading" secondItem="ylJ-Mc-aw9" secondAttribute="trailing" constant="50" id="74M-eV-a1e"/>
                             <constraint firstItem="23D-ls-XIX" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="7CC-Ff-Fo2"/>
+                            <constraint firstItem="LEP-Cc-p7x" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="8Gc-Aq-VTr"/>
                             <constraint firstItem="Kdb-aL-QPh" firstAttribute="trailing" secondItem="lL3-BG-tcy" secondAttribute="trailing" constant="-10" id="ANC-7h-qOF"/>
                             <constraint firstItem="WLc-sZ-pIZ" firstAttribute="bottom" secondItem="zjy-TU-uqP" secondAttribute="bottom" constant="-10" id="CLY-8Y-w9e"/>
-                            <constraint firstItem="ANN-p3-8a1" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="58" id="E3K-K1-Mc1"/>
+                            <constraint firstItem="ANN-p3-8a1" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="25" id="E3K-K1-Mc1"/>
                             <constraint firstItem="lTm-7J-jkj" firstAttribute="bottom" secondItem="9bt-yd-ywR" secondAttribute="bottom" constant="-10" id="FZb-eg-ZzR"/>
                             <constraint firstItem="sPf-Ep-K4r" firstAttribute="trailing" secondItem="ANN-p3-8a1" secondAttribute="trailing" constant="-10" id="GNe-4v-GMO"/>
                             <constraint firstItem="ZlU-xJ-C71" firstAttribute="leading" secondItem="9sx-3M-JMb" secondAttribute="leading" constant="10" id="Gwj-A5-AgX"/>
                             <constraint firstItem="vh5-T1-70W" firstAttribute="centerY" secondItem="9sx-3M-JMb" secondAttribute="centerY" id="JgJ-jx-Erb"/>
                             <constraint firstItem="PeK-6c-pCD" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="KDm-gu-zJ6"/>
+                            <constraint firstItem="iLV-hW-dRV" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="LPS-cb-99y"/>
                             <constraint firstItem="BtV-Vg-gnu" firstAttribute="bottom" secondItem="lL3-BG-tcy" secondAttribute="bottom" constant="-10" id="O3U-LR-LEI"/>
-                            <constraint firstItem="9bt-yd-ywR" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="58" id="QW7-DA-JgA"/>
+                            <constraint firstItem="9bt-yd-ywR" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="25" id="QW7-DA-JgA"/>
+                            <constraint firstItem="jmc-ab-G0M" firstAttribute="top" secondItem="PeK-6c-pCD" secondAttribute="bottom" constant="25" id="RjD-T0-DPk"/>
                             <constraint firstItem="ANN-p3-8a1" firstAttribute="leading" secondItem="ens-5n-zIK" secondAttribute="leading" id="Rmk-Zn-HBu"/>
                             <constraint firstItem="7Fk-tI-WBW" firstAttribute="leading" secondItem="ANN-p3-8a1" secondAttribute="leading" constant="10" id="T2E-Vw-3eE"/>
                             <constraint firstItem="SRs-Pc-nMH" firstAttribute="bottom" secondItem="zjy-TU-uqP" secondAttribute="bottom" constant="-10" id="To9-b0-KBb"/>
@@ -536,15 +597,18 @@
                             <constraint firstItem="SRs-Pc-nMH" firstAttribute="trailing" secondItem="zjy-TU-uqP" secondAttribute="trailing" constant="-10" id="fj2-hK-T3U"/>
                             <constraint firstItem="Kdb-aL-QPh" firstAttribute="bottom" secondItem="lL3-BG-tcy" secondAttribute="bottom" constant="-10" id="fo9-sU-LlG"/>
                             <constraint firstItem="7zg-YX-pmt" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="gWl-P5-Yzl"/>
+                            <constraint firstItem="ylJ-Mc-aw9" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="glw-Qg-m61"/>
                             <constraint firstAttribute="bottom" secondItem="ANN-p3-8a1" secondAttribute="bottom" constant="50" id="goW-tg-bEL"/>
                             <constraint firstItem="23D-ls-XIX" firstAttribute="leading" secondItem="PeK-6c-pCD" secondAttribute="trailing" constant="20" id="hDX-PJ-2AX"/>
                             <constraint firstItem="9bt-yd-ywR" firstAttribute="trailing" secondItem="ens-5n-zIK" secondAttribute="trailing" id="iae-xz-L8g"/>
                             <constraint firstItem="CVM-sB-ZnP" firstAttribute="leading" secondItem="9sx-3M-JMb" secondAttribute="trailing" constant="50" id="ixP-st-fvZ"/>
                             <constraint firstItem="ZlU-xJ-C71" firstAttribute="bottom" secondItem="9sx-3M-JMb" secondAttribute="bottom" constant="-10" id="jwG-0f-Pe3"/>
                             <constraint firstItem="oZ6-AJ-ep1" firstAttribute="bottom" secondItem="9bt-yd-ywR" secondAttribute="bottom" constant="-10" id="kwk-3c-iDO"/>
+                            <constraint firstAttribute="centerX" secondItem="LEP-Cc-p7x" secondAttribute="trailing" constant="25" id="nkC-M8-jSP"/>
                             <constraint firstItem="9bt-yd-ywR" firstAttribute="leading" secondItem="nVJ-c0-vrw" secondAttribute="centerX" constant="25" id="o2c-u8-Jb2"/>
                             <constraint firstAttribute="bottom" secondItem="9bt-yd-ywR" secondAttribute="bottom" constant="50" id="ofD-1L-DpW"/>
                             <constraint firstItem="PeK-6c-pCD" firstAttribute="centerX" secondItem="nVJ-c0-vrw" secondAttribute="centerX" id="p9w-9V-pof"/>
+                            <constraint firstItem="ylJ-Mc-aw9" firstAttribute="leading" secondItem="LEP-Cc-p7x" secondAttribute="trailing" constant="50" id="psk-cr-58Y"/>
                             <constraint firstAttribute="centerX" secondItem="ANN-p3-8a1" secondAttribute="trailing" constant="25" id="rEa-0h-BEY"/>
                             <constraint firstItem="7zg-YX-pmt" firstAttribute="leading" secondItem="nVJ-c0-vrw" secondAttribute="leading" constant="30" id="rgV-7I-nqv"/>
                             <constraint firstItem="lL3-BG-tcy" firstAttribute="trailing" secondItem="ens-5n-zIK" secondAttribute="trailing" id="t3L-Yk-J8D"/>
@@ -571,14 +635,6 @@
                         <outlet property="lowGoalFailure" destination="sPf-Ep-K4r" id="hHJ-Rm-PSs"/>
                         <outlet property="lowGoalSuccess" destination="7Fk-tI-WBW" id="sNd-HJ-2fe"/>
                         <outlet property="reachButton" destination="ens-5n-zIK" id="Cxt-cc-Jfy"/>
-                        <outletCollection property="theButtons" destination="vh5-T1-70W" collectionClass="NSMutableArray" id="22R-u4-org"/>
-                        <outletCollection property="theButtons" destination="zjy-TU-uqP" collectionClass="NSMutableArray" id="1C7-K0-XHe"/>
-                        <outletCollection property="theButtons" destination="9sx-3M-JMb" collectionClass="NSMutableArray" id="zqX-sr-L4i"/>
-                        <outletCollection property="theButtons" destination="CVM-sB-ZnP" collectionClass="NSMutableArray" id="rZ8-av-1JJ"/>
-                        <outletCollection property="theButtons" destination="lL3-BG-tcy" collectionClass="NSMutableArray" id="Q9l-ho-NwB"/>
-                        <outletCollection property="theButtons" destination="ens-5n-zIK" collectionClass="NSMutableArray" id="7oc-GK-YcY"/>
-                        <outletCollection property="theButtons" destination="9bt-yd-ywR" collectionClass="NSMutableArray" id="89b-9q-20b"/>
-                        <outletCollection property="theButtons" destination="ANN-p3-8a1" collectionClass="NSMutableArray" id="Zmg-yp-5YB"/>
                         <segue destination="IQn-9a-Krn" kind="presentation" identifier="autoToSFDialog" id="9oV-uK-lf2"/>
                     </connections>
                 </viewController>

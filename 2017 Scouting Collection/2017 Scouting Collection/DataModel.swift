@@ -18,6 +18,11 @@ class Data {
     var matchNumber: Int?
     
     //Auto
+    var drive: Bool = false
+    var noAction: Bool = false
+    var brokeDown: Bool = false
+    var collision: Bool = false
+    
     var reach: Bool = false
     
     var autoLowGoalSuccess: Int = 0
