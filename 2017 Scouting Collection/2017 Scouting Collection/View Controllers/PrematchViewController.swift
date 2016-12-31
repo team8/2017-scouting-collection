@@ -25,6 +25,8 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activeField.delegate = self
+        self.teamNumber.delegate = self
+        self.matchNumber.delegate = self
         self.hideKeyboardWhenTappedAround()
         self.scrollView.isScrollEnabled = false
         startButton.disable()
@@ -59,6 +61,17 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
         Data.currentMatch!.teamNumber = Int(self.teamNumber.text!)!
         Data.currentMatch!.matchNumber = Int(self.matchNumber.text!)!
         performSegue(withIdentifier: "prematchToAuto", sender: nil)
+    }
+    
+    //Restrict text fields to numbers only
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if !(textField == self.name){
+            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            return string == numberFiltered
+//        }
+//        return true
     }
     
     //Text Field scrolling
