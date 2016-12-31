@@ -65,14 +65,9 @@ class Data {
     var teleopDef4Failure: Int = 0
     
     //Endgame
+    var challenge: Bool = false
+    var scale: Bool = true
     var notes: String?
-    
-    init(name: String, teamNumber: Int, matchNumber: Int) {
-        self.name = name
-        self.teamNumber = teamNumber
-        self.matchNumber = matchNumber
-    }
-    
     
     func getJSON() -> NSDictionary {
         //TODO

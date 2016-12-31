@@ -33,6 +33,10 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
         
     }
     
+    @IBAction func newMatchPressed(_ sender: UIButton) {
+        Data.currentMatch = Data()
+    }
+    
     //Fill table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tempList = ["Team 8, Q1", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4"]
@@ -50,12 +54,22 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
     //When table cell selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-        cell.textLabel?.textColor = UIColor.lightText
 //
 //        if let dataToSend = cell.student {
 //            performSegue(withIdentifier: "DestinationView", sender: dataToSend)
 //        }
-        print("waddup")
+//        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+//            cell.textLabel?.backgroundColor = UIColor.clear
+//        })
+        UIView.animateKeyframes(withDuration: 0.35 /*Total*/, delay:0.0, options: UIViewKeyframeAnimationOptions.calculationModeLinear, animations: {
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration:0.10, animations:{
+                cell.textLabel?.backgroundColor = UIColor.white
+            })
+            UIView.addKeyframe(withRelativeStartTime: 0.10, relativeDuration:0.25, animations:{
+                cell.textLabel?.backgroundColor = UIColor.clear
+            })
+        })
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

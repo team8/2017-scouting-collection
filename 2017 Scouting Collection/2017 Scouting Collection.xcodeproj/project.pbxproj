@@ -36,7 +36,6 @@
 		A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */; };
 		A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */; };
 		A5A285A41E0E6A2C00FEB8A9 /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */; };
-		A5A285A61E0E6A4700FEB8A9 /* SubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A51E0E6A4700FEB8A9 /* SubmissionViewController.swift */; };
 		A5A285AA1E0E6AA800FEB8A9 /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */; };
 		A5A285AC1E0E6AE100FEB8A9 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */; };
 /* End PBXBuildFile section */
@@ -94,7 +93,6 @@
 		A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoViewController.swift; path = "View Controllers/AutoViewController.swift"; sourceTree = "<group>"; };
 		A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeleopViewController.swift; path = "View Controllers/TeleopViewController.swift"; sourceTree = "<group>"; };
 		A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndgameViewController.swift; path = "View Controllers/EndgameViewController.swift"; sourceTree = "<group>"; };
-		A5A285A51E0E6A4700FEB8A9 /* SubmissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubmissionViewController.swift; path = "View Controllers/SubmissionViewController.swift"; sourceTree = "<group>"; };
 		A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDataViewController.swift; path = "View Controllers/ViewDataViewController.swift"; sourceTree = "<group>"; };
 		A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRViewController.swift; path = "View Controllers/QRViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,7 +186,6 @@
 				A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */,
 				A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */,
 				A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */,
-				A5A285A51E0E6A4700FEB8A9 /* SubmissionViewController.swift */,
 				A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */,
 				A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */,
 				A55CAD451E15056700EC173A /* SFDialogViewController.swift */,
@@ -379,7 +376,6 @@
 				A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */,
 				A50FE9F21E0746180087A052 /* ViewController.swift in Sources */,
 				A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */,
-				A5A285A61E0E6A4700FEB8A9 /* SubmissionViewController.swift in Sources */,
 				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
 				A55165A21E15234F00502823 /* Button.swift in Sources */,
 				A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */,
