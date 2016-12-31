@@ -26,6 +26,7 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.activeField.delegate = self
         self.hideKeyboardWhenTappedAround()
+        self.scrollView.isScrollEnabled = false
         startButton.disable()
         name.addTarget(self, action: #selector(checkFields), for: .editingDidEnd)
         teamNumber.addTarget(self, action: #selector(checkFields), for: .editingDidEnd)
