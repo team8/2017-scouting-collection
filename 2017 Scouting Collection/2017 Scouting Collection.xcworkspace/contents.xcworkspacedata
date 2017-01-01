@@ -4,4 +4,7 @@
    <FileRef
       location = "container:2017 Scouting Collection.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

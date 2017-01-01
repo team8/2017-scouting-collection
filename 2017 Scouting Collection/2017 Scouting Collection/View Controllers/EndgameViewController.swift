@@ -32,6 +32,10 @@ class EndgameViewController: ViewController, UITextViewDelegate {
         }
     }
     
+    @IBAction func endgameUnwind(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
     @IBAction func finishButtonPressed(_ sender: Any) {
         Data.currentMatch!.notes = activeField.text
         performSegue(withIdentifier: "endgameToViewData", sender: nil)
