@@ -3,3 +3,5 @@
 2017\ Scouting\ Collection/2017\ Scouting\ Collection.xcworkspace/xcshareddata/*
 2017\ Scouting\ Collection/Pods/*
 2017\ Scouting\ Collection/Podfile.lock
+*.DS_Store
+*~
