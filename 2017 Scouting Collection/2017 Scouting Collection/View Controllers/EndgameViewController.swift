@@ -19,12 +19,12 @@ class EndgameViewController: ViewController, UITextViewDelegate {
         case 0:
             //Challenge
             print("Challenge")
-            Data.currentMatch!.challenge = sender.toggleState
+            DataModel.currentMatch!.challenge = sender.toggleState
             break
         case 1:
             //Scale
             print("Scale")
-            Data.currentMatch!.scale = sender.toggleState
+            DataModel.currentMatch!.scale = sender.toggleState
             break
         default:
             //wat
@@ -37,7 +37,8 @@ class EndgameViewController: ViewController, UITextViewDelegate {
     }
     
     @IBAction func finishButtonPressed(_ sender: Any) {
-        Data.currentMatch!.notes = activeField.text
+        DataModel.currentMatch!.notes = activeField.text
+        DataModel.currentMatch!.save()
         performSegue(withIdentifier: "endgameToViewData", sender: nil)
     }
     
@@ -45,14 +46,12 @@ class EndgameViewController: ViewController, UITextViewDelegate {
         super.viewDidLoad()
         self.activeField.delegate = self
         self.hideKeyboardWhenTappedAround()
-        print("hello?")
     }
     
     //Text Field scrolling
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
-        print("wai")
     }
     
     override func viewWillDisappear(_ animated: Bool) {

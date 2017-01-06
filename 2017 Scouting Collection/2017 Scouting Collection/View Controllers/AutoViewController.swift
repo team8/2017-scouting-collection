@@ -46,23 +46,23 @@ class AutoViewController: ViewController {
         switch(sender.tag) {
             case 0:
                 //Drive
-                Data.currentMatch?.autoDrive = sender.toggleState
+                DataModel.currentMatch?.autoDrive = sender.toggleState
                 break
             case 1:
                 //No Action
-                Data.currentMatch?.autoNoAction = sender.toggleState
+                DataModel.currentMatch?.autoNoAction = sender.toggleState
                 break
             case 2:
                 //Broken Down
-                Data.currentMatch?.autoBrokeDown = sender.toggleState
+                DataModel.currentMatch?.autoBrokeDown = sender.toggleState
                 break
             case 3:
                 //Collision
-                Data.currentMatch?.autoCollision = sender.toggleState
+                DataModel.currentMatch?.autoCollision = sender.toggleState
                 break
             case 4:
                 //Reach
-                Data.currentMatch?.autoReach = sender.toggleState
+                DataModel.currentMatch?.autoReach = sender.toggleState
                 break
             default:
                 //wat
@@ -78,24 +78,24 @@ class AutoViewController: ViewController {
     }
     
     func reloadData() {
-        self.driveButton.toggle(toggleState: Data.currentMatch!.autoDrive)
-        self.noActionButton.toggle(toggleState: Data.currentMatch!.autoNoAction)
-        self.brokeDownButton.toggle(toggleState: Data.currentMatch!.autoBrokeDown)
-        self.collisionButton.toggle(toggleState: Data.currentMatch!.autoCollision)
-        self.reachButton.toggle(toggleState: Data.currentMatch!.autoReach)
-        self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoLowGoalSuccess)
-        self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoLowGoalFailure)
-        self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoHighGoalSuccess)
-        self.highGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoHighGoalFailure)
-        self.lowBarSuccess.text = "S: " + String(describing: Data.currentMatch!.autoLowBarSuccess)
-        self.lowBarFailure.text = "F: " + String(describing: Data.currentMatch!.autoLowBarFailure)
-        self.def1Success.text = "S: " + String(describing: Data.currentMatch!.autoDef1Success)
-        self.def1Failure.text = "F: " + String(describing: Data.currentMatch!.autoDef1Failure)
-        self.def2Success.text = "S: " + String(describing: Data.currentMatch!.autoDef2Success)
-        self.def2Failure.text = "F: " + String(describing: Data.currentMatch!.autoDef2Failure)
-        self.def3Success.text = "S: " + String(describing: Data.currentMatch!.autoDef3Success)
-        self.def3Failure.text = "F: " + String(describing: Data.currentMatch!.autoDef3Failure)
-        self.def4Success.text = "S: " + String(describing: Data.currentMatch!.autoDef4Success)
-        self.def4Failure.text = "F: " + String(describing: Data.currentMatch!.autoDef4Failure)
+        self.driveButton.toggle(toggleState: DataModel.currentMatch!.autoDrive)
+        self.noActionButton.toggle(toggleState: DataModel.currentMatch!.autoNoAction)
+        self.brokeDownButton.toggle(toggleState: DataModel.currentMatch!.autoBrokeDown)
+        self.collisionButton.toggle(toggleState: DataModel.currentMatch!.autoCollision)
+        self.reachButton.toggle(toggleState: DataModel.currentMatch!.autoReach)
+        self.lowGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoLowGoalSuccess)
+        self.lowGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoLowGoalFailure)
+        self.highGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoHighGoalSuccess)
+        self.highGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoHighGoalFailure)
+        self.lowBarSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoLowBarSuccess)
+        self.lowBarFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoLowBarFailure)
+        self.def1Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef1Success)
+        self.def1Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef1Failure)
+        self.def2Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef2Success)
+        self.def2Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef2Failure)
+        self.def3Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef3Success)
+        self.def3Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef3Failure)
+        self.def4Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef4Success)
+        self.def4Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef4Failure)
     }
 }

@@ -7,10 +7,16 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
-class Data {
+class DataModel {
     
-    static var currentMatch: Data?
+    static var currentMatch: DataModel?
+    static var matches = [DataModel]()
+    
+    //Core Data Managed Object
+    var managedObject: NSManagedObject?
     
     //Prematch
     var name: String?
@@ -69,8 +75,54 @@ class Data {
     var scale: Bool = true
     var notes: String?
     
+    init(source: NSManagedObject) {
+        self.managedObject = source
+        self.name = source.value(forKey: "name") as! String?
+        self.teamNumber = source.value(forKey: "teamNumber") as! Int?
+        self.matchNumber = source.value(forKey: "matchNumber") as! Int?
+    }
+    
+    init() {
+    }
+    
     func getJSON() -> NSDictionary {
         //TODO
         return NSDictionary()
+    }
+    
+    //Save to Core Data
+    func save() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.getContext()
+        if self.managedObject == nil {
+            let entity =  NSEntityDescription.entity(forEntityName: "Data", in:managedContext)
+            self.managedObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+            DataModel.matches.append(self)
+        }
+        
+        self.managedObject!.setValue(self.name, forKey: "name")
+        self.managedObject!.setValue(self.teamNumber, forKey: "teamNumber")
+        self.managedObject!.setValue(self.matchNumber, forKey: "matchNumber")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    static func reloadCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Data")
+        do {
+            let results = try managedContext.fetch(fetchRequest) as! [NSManagedObject]
+            DataModel.matches = [DataModel]()
+            for data in results {
+                DataModel.matches.append(DataModel(source: data))
+            }
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
 }

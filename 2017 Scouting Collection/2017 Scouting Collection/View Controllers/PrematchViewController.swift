@@ -57,9 +57,9 @@ class PrematchViewController: ViewController, UITextFieldDelegate {
     
     //Start button pressed
     @IBAction func startButtonPressed(_ sender: Any) {
-        Data.currentMatch!.name = self.name.text!
-        Data.currentMatch!.teamNumber = Int(self.teamNumber.text!)!
-        Data.currentMatch!.matchNumber = Int(self.matchNumber.text!)!
+        DataModel.currentMatch!.name = self.name.text!
+        DataModel.currentMatch!.teamNumber = Int(self.teamNumber.text!)!
+        DataModel.currentMatch!.matchNumber = Int(self.matchNumber.text!)!
         performSegue(withIdentifier: "prematchToAuto", sender: nil)
     }
     

@@ -46,15 +46,15 @@ class TeleopViewController: ViewController {
         switch(sender.tag) {
         case 0:
             //Drive
-            Data.currentMatch?.teleopDrive = sender.toggleState
+            DataModel.currentMatch?.teleopDrive = sender.toggleState
             break
         case 1:
             //No Action
-            Data.currentMatch?.teleopNoAction = sender.toggleState
+            DataModel.currentMatch?.teleopNoAction = sender.toggleState
             break
         case 2:
             //Broken Down
-            Data.currentMatch?.teleopBrokeDown = sender.toggleState
+            DataModel.currentMatch?.teleopBrokeDown = sender.toggleState
             break
         default:
             //wat
@@ -73,7 +73,7 @@ class TeleopViewController: ViewController {
         switch(sender.tag) {
         case 0:
             //Shots Blocked
-            Data.currentMatch?.teleopShotsBlocked -= 1
+            DataModel.currentMatch?.teleopShotsBlocked -= 1
             break
         default:
             //wat
@@ -86,7 +86,7 @@ class TeleopViewController: ViewController {
         switch(sender.tag) {
         case 0:
             //Shots Blocked
-            Data.currentMatch?.teleopShotsBlocked += 1
+            DataModel.currentMatch?.teleopShotsBlocked += 1
             break
         default:
             //wat
@@ -96,23 +96,23 @@ class TeleopViewController: ViewController {
     }
     
     func reloadData() {
-        self.driveButton.toggle(toggleState: Data.currentMatch!.teleopDrive)
-        self.noActionButton.toggle(toggleState: Data.currentMatch!.teleopNoAction)
-        self.brokeDownButton.toggle(toggleState: Data.currentMatch!.teleopBrokeDown)
-        self.shotsBlocked.text = String(describing: Data.currentMatch!.teleopShotsBlocked)
-        self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopLowGoalSuccess)
-        self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.teleopLowGoalFailure)
-        self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopHighGoalSuccess)
-        self.highGoalFailure.text = "F: " + String(describing: Data.currentMatch!.teleopHighGoalFailure)
-        self.lowBarSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopLowBarSuccess)
-        self.lowBarFailure.text = "F: " + String(describing: Data.currentMatch!.teleopLowBarFailure)
-        self.def1Success.text = "S: " + String(describing: Data.currentMatch!.teleopDef1Success)
-        self.def1Failure.text = "F: " + String(describing: Data.currentMatch!.teleopDef1Failure)
-        self.def2Success.text = "S: " + String(describing: Data.currentMatch!.teleopDef2Success)
-        self.def2Failure.text = "F: " + String(describing: Data.currentMatch!.teleopDef2Failure)
-        self.def3Success.text = "S: " + String(describing: Data.currentMatch!.teleopDef3Success)
-        self.def3Failure.text = "F: " + String(describing: Data.currentMatch!.teleopDef3Failure)
-        self.def4Success.text = "S: " + String(describing: Data.currentMatch!.teleopDef4Success)
-        self.def4Failure.text = "F: " + String(describing: Data.currentMatch!.teleopDef4Failure)
+        self.driveButton.toggle(toggleState: DataModel.currentMatch!.teleopDrive)
+        self.noActionButton.toggle(toggleState: DataModel.currentMatch!.teleopNoAction)
+        self.brokeDownButton.toggle(toggleState: DataModel.currentMatch!.teleopBrokeDown)
+        self.shotsBlocked.text = String(describing: DataModel.currentMatch!.teleopShotsBlocked)
+        self.lowGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopLowGoalSuccess)
+        self.lowGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopLowGoalFailure)
+        self.highGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopHighGoalSuccess)
+        self.highGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopHighGoalFailure)
+        self.lowBarSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopLowBarSuccess)
+        self.lowBarFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopLowBarFailure)
+        self.def1Success.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef1Success)
+        self.def1Failure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef1Failure)
+        self.def2Success.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef2Success)
+        self.def2Failure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef2Failure)
+        self.def3Success.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef3Success)
+        self.def3Failure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef3Failure)
+        self.def4Success.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef4Success)
+        self.def4Failure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef4Failure)
     }
 }

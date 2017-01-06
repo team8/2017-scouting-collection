@@ -24,19 +24,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoLowGoalSuccess += 1
+                    DataModel.currentMatch?.autoLowGoalSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoLowGoalSuccess -= 1
+                    DataModel.currentMatch?.autoLowGoalSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoLowGoalFailure += 1
+                    DataModel.currentMatch?.autoLowGoalFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoLowGoalFailure -= 1
+                    DataModel.currentMatch?.autoLowGoalFailure -= 1
                     break
                 default:
                     //wat
@@ -48,19 +48,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoHighGoalSuccess += 1
+                    DataModel.currentMatch?.autoHighGoalSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoHighGoalSuccess -= 1
+                    DataModel.currentMatch?.autoHighGoalSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoHighGoalFailure += 1
+                    DataModel.currentMatch?.autoHighGoalFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoHighGoalFailure -= 1
+                    DataModel.currentMatch?.autoHighGoalFailure -= 1
                     break
                 default:
                     //wat
@@ -72,19 +72,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoLowBarSuccess += 1
+                    DataModel.currentMatch?.autoLowBarSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoLowBarSuccess -= 1
+                    DataModel.currentMatch?.autoLowBarSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoLowBarFailure += 1
+                    DataModel.currentMatch?.autoLowBarFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoLowBarFailure -= 1
+                    DataModel.currentMatch?.autoLowBarFailure -= 1
                     break
                 default:
                     //wat
@@ -96,19 +96,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoDef1Success += 1
+                    DataModel.currentMatch?.autoDef1Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoDef1Success -= 1
+                    DataModel.currentMatch?.autoDef1Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoDef1Failure += 1
+                    DataModel.currentMatch?.autoDef1Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoDef1Failure -= 1
+                    DataModel.currentMatch?.autoDef1Failure -= 1
                     break
                 default:
                     //wat
@@ -120,19 +120,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoDef2Success += 1
+                    DataModel.currentMatch?.autoDef2Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoDef2Success -= 1
+                    DataModel.currentMatch?.autoDef2Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoDef2Failure += 1
+                    DataModel.currentMatch?.autoDef2Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoDef2Failure -= 1
+                    DataModel.currentMatch?.autoDef2Failure -= 1
                     break
                 default:
                     //wat
@@ -144,19 +144,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoDef3Success += 1
+                    DataModel.currentMatch?.autoDef3Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoDef3Success -= 1
+                    DataModel.currentMatch?.autoDef3Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoDef3Failure += 1
+                    DataModel.currentMatch?.autoDef3Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoDef3Failure -= 1
+                    DataModel.currentMatch?.autoDef3Failure -= 1
                     break
                 default:
                     //wat
@@ -169,19 +169,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.autoDef4Success += 1
+                    DataModel.currentMatch?.autoDef4Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.autoDef4Success -= 1
+                    DataModel.currentMatch?.autoDef4Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.autoDef4Failure += 1
+                    DataModel.currentMatch?.autoDef4Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.autoDef4Failure -= 1
+                    DataModel.currentMatch?.autoDef4Failure -= 1
                     break
                 default:
                     //wat
@@ -201,19 +201,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopLowGoalSuccess += 1
+                    DataModel.currentMatch?.teleopLowGoalSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopLowGoalSuccess -= 1
+                    DataModel.currentMatch?.teleopLowGoalSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopLowGoalFailure += 1
+                    DataModel.currentMatch?.teleopLowGoalFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopLowGoalFailure -= 1
+                    DataModel.currentMatch?.teleopLowGoalFailure -= 1
                     break
                 default:
                     //wat
@@ -225,19 +225,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopHighGoalSuccess += 1
+                    DataModel.currentMatch?.teleopHighGoalSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopHighGoalSuccess -= 1
+                    DataModel.currentMatch?.teleopHighGoalSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopHighGoalFailure += 1
+                    DataModel.currentMatch?.teleopHighGoalFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopHighGoalFailure -= 1
+                    DataModel.currentMatch?.teleopHighGoalFailure -= 1
                     break
                 default:
                     //wat
@@ -249,19 +249,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopLowBarSuccess += 1
+                    DataModel.currentMatch?.teleopLowBarSuccess += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopLowBarSuccess -= 1
+                    DataModel.currentMatch?.teleopLowBarSuccess -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopLowBarFailure += 1
+                    DataModel.currentMatch?.teleopLowBarFailure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopLowBarFailure -= 1
+                    DataModel.currentMatch?.teleopLowBarFailure -= 1
                     break
                 default:
                     //wat
@@ -273,19 +273,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopDef1Success += 1
+                    DataModel.currentMatch?.teleopDef1Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopDef1Success -= 1
+                    DataModel.currentMatch?.teleopDef1Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopDef1Failure += 1
+                    DataModel.currentMatch?.teleopDef1Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopDef1Failure -= 1
+                    DataModel.currentMatch?.teleopDef1Failure -= 1
                     break
                 default:
                     //wat
@@ -297,19 +297,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopDef2Success += 1
+                    DataModel.currentMatch?.teleopDef2Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopDef2Success -= 1
+                    DataModel.currentMatch?.teleopDef2Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopDef2Failure += 1
+                    DataModel.currentMatch?.teleopDef2Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopDef2Failure -= 1
+                    DataModel.currentMatch?.teleopDef2Failure -= 1
                     break
                 default:
                     //wat
@@ -321,19 +321,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopDef3Success += 1
+                    DataModel.currentMatch?.teleopDef3Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopDef3Success -= 1
+                    DataModel.currentMatch?.teleopDef3Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopDef3Failure += 1
+                    DataModel.currentMatch?.teleopDef3Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopDef3Failure -= 1
+                    DataModel.currentMatch?.teleopDef3Failure -= 1
                     break
                 default:
                     //wat
@@ -346,19 +346,19 @@ class SFDialogViewController: ViewController {
                 switch(sender.tag){
                 case 0:
                     //+ Success
-                    Data.currentMatch?.teleopDef4Success += 1
+                    DataModel.currentMatch?.teleopDef4Success += 1
                     break
                 case 1:
                     //- Success
-                    Data.currentMatch?.teleopDef4Success -= 1
+                    DataModel.currentMatch?.teleopDef4Success -= 1
                     break
                 case 2:
                     //+ Failure
-                    Data.currentMatch?.teleopDef4Failure += 1
+                    DataModel.currentMatch?.teleopDef4Failure += 1
                     break
                 case 3:
                     //- Failure
-                    Data.currentMatch?.teleopDef4Failure -= 1
+                    DataModel.currentMatch?.teleopDef4Failure -= 1
                     break
                 default:
                     //wat

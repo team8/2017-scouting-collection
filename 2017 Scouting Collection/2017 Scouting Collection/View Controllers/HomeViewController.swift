@@ -8,12 +8,9 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class HomeViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
-    //    @IBOutlet weak var myButton : UIButton!
-    //    @IBOutlet weak var myTextField : UITextField!
-    //
-    //    @IBAction func myButtonAction(sender: id)
     
     @IBOutlet weak var newButton: UIButton!
     @IBOutlet weak var dataTable: UITableView!
@@ -28,20 +25,22 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
         dataTable.register(TableViewCell.classForCoder(), forCellReuseIdentifier: "DataCell")
     }
     
+    var testList: [NSManagedObject]?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        DataModel.reloadCoreData()
     }
     
     @IBAction func newMatchPressed(_ sender: UIButton) {
-        Data.currentMatch = Data()
+        DataModel.currentMatch = DataModel()
     }
     
     //Fill table view
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tempList = ["Team 8, Q1", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4"]
+//        let tempList = ["Team 8, Q1", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4"]
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! TableViewCell
-        cell.textLabel?.text = tempList[indexPath.row]
+        cell.textLabel?.text = DataModel.matches[indexPath.row].name
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.font = UIFont(name:"Lato", size:20)
         cell.textLabel?.textColor = UIColor.white
@@ -73,6 +72,6 @@ class HomeViewController: ViewController, UITableViewDataSource, UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return DataModel.matches.count
     }
 }
