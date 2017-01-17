@@ -412,20 +412,6 @@
                                     <segue destination="fQN-hr-nRT" kind="unwind" unwindAction="prematchUnwindWithUnwindSegue:" id="DNc-db-5Dd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vh5-T1-70W" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="266.5" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="I2w-fD-kix"/>
-                                    <constraint firstAttribute="width" constant="150" id="z1K-bl-lky"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Low Bar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SFButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="N3v-sc-ygZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmc-ab-G0M" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
                                 <rect key="frame" x="137" y="141.5" width="150" height="100"/>
                                 <constraints>
@@ -475,7 +461,7 @@
                                     <constraint firstAttribute="height" constant="100" id="QMf-Z1-4aR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 1">
+                                <state key="normal" title="Left Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -489,7 +475,7 @@
                                     <constraint firstAttribute="height" constant="100" id="iCr-35-Z38"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 2">
+                                <state key="normal" title="Center Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -503,34 +489,20 @@
                                     <constraint firstAttribute="width" constant="150" id="yns-vE-hzZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 3">
+                                <state key="normal" title="Right Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="SFButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="rGK-Jx-ThN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL3-BG-tcy" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="837" y="266.5" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="HEd-vj-bIR"/>
-                                    <constraint firstAttribute="height" constant="100" id="VRd-ac-RYD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 4">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SFButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="8Vl-d2-P6k"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ens-5n-zIK" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="391.5" width="950" height="100"/>
+                                <rect key="frame" x="187" y="391.5" width="650" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="aqY-k3-l7Y"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
-                                <state key="normal" title="Defense Reached">
+                                <state key="normal" title="Auto Line Reached">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -538,7 +510,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bt-yd-ywR" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="537" y="516.5" width="450" height="201.5"/>
+                                <rect key="frame" x="537" y="516.5" width="300" height="201.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="dYF-aF-tQ8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="High Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -548,7 +523,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANN-p3-8a1" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="516.5" width="450" height="201.5"/>
+                                <rect key="frame" x="187" y="516.5" width="300" height="201.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="NkG-wk-CcG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="Low Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -558,14 +536,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fk-tI-WBW">
-                                <rect key="frame" x="47" y="660" width="62.5" height="48"/>
+                                <rect key="frame" x="197" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iix-kN-0MW">
-                                <rect key="frame" x="47" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -587,12 +559,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtV-Vg-gnu">
-                                <rect key="frame" x="847" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZ6-AJ-ep1">
                                 <rect key="frame" x="547" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
@@ -600,7 +566,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTm-7J-jkj">
-                                <rect key="frame" x="914.5" y="660" width="62.5" height="48"/>
+                                <rect key="frame" x="764.5" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -608,12 +574,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPf-Ep-K4r">
                                 <rect key="frame" x="414.5" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73X-wk-0s6">
-                                <rect key="frame" x="145.5" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -631,12 +591,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9x8-8W-Sis">
                                 <rect key="frame" x="745.5" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdb-aL-QPh">
-                                <rect key="frame" x="945.5" y="332.5" width="31.5" height="24"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -659,39 +613,29 @@
                         <color key="backgroundColor" red="0.04191788338" green="0.6047603627" blue="0.017816367989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hTB-sM-fT7" firstAttribute="bottom" secondItem="CVM-sB-ZnP" secondAttribute="bottom" constant="-10" id="1UQ-aF-kP4"/>
-                            <constraint firstItem="Iix-kN-0MW" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="leading" constant="10" id="1gH-wq-xcQ"/>
                             <constraint firstItem="9sx-3M-JMb" firstAttribute="top" secondItem="jmc-ab-G0M" secondAttribute="bottom" constant="25" id="1gf-Ky-FlO"/>
                             <constraint firstItem="LEP-Cc-p7x" firstAttribute="leading" secondItem="jmc-ab-G0M" secondAttribute="trailing" constant="50" id="2Vj-aJ-Sbs"/>
                             <constraint firstItem="ens-5n-zIK" firstAttribute="top" secondItem="9sx-3M-JMb" secondAttribute="bottom" constant="25" id="2bq-fj-hg1"/>
-                            <constraint firstItem="Iix-kN-0MW" firstAttribute="bottom" secondItem="vh5-T1-70W" secondAttribute="bottom" constant="-10" id="2cE-hA-POp"/>
-                            <constraint firstItem="lL3-BG-tcy" firstAttribute="leading" secondItem="CVM-sB-ZnP" secondAttribute="trailing" constant="50" id="2oP-dD-idy"/>
-                            <constraint firstItem="73X-wk-0s6" firstAttribute="bottom" secondItem="vh5-T1-70W" secondAttribute="bottom" constant="-10" id="2tu-i1-HUd"/>
                             <constraint firstItem="hTB-sM-fT7" firstAttribute="leading" secondItem="CVM-sB-ZnP" secondAttribute="leading" constant="10" id="3RJ-nJ-NHn"/>
-                            <constraint firstItem="zjy-TU-uqP" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="trailing" constant="50" id="56y-7O-XMH"/>
                             <constraint firstItem="lTm-7J-jkj" firstAttribute="trailing" secondItem="9bt-yd-ywR" secondAttribute="trailing" constant="-10" id="5ZN-pe-r7S"/>
                             <constraint firstItem="sPf-Ep-K4r" firstAttribute="bottom" secondItem="ANN-p3-8a1" secondAttribute="bottom" constant="-10" id="6Dt-Uy-O6k"/>
-                            <constraint firstItem="ens-5n-zIK" firstAttribute="leading" secondItem="vh5-T1-70W" secondAttribute="leading" id="6mm-oz-0fW"/>
                             <constraint firstItem="iLV-hW-dRV" firstAttribute="leading" secondItem="ylJ-Mc-aw9" secondAttribute="trailing" constant="50" id="74M-eV-a1e"/>
                             <constraint firstItem="23D-ls-XIX" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="7CC-Ff-Fo2"/>
                             <constraint firstItem="LEP-Cc-p7x" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="8Gc-Aq-VTr"/>
-                            <constraint firstItem="Kdb-aL-QPh" firstAttribute="trailing" secondItem="lL3-BG-tcy" secondAttribute="trailing" constant="-10" id="ANC-7h-qOF"/>
+                            <constraint firstItem="9bt-yd-ywR" firstAttribute="leading" secondItem="ANN-p3-8a1" secondAttribute="trailing" constant="50" id="AMF-uE-hRX"/>
                             <constraint firstItem="WLc-sZ-pIZ" firstAttribute="bottom" secondItem="zjy-TU-uqP" secondAttribute="bottom" constant="-10" id="CLY-8Y-w9e"/>
                             <constraint firstItem="ANN-p3-8a1" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="25" id="E3K-K1-Mc1"/>
                             <constraint firstItem="lTm-7J-jkj" firstAttribute="bottom" secondItem="9bt-yd-ywR" secondAttribute="bottom" constant="-10" id="FZb-eg-ZzR"/>
                             <constraint firstItem="sPf-Ep-K4r" firstAttribute="trailing" secondItem="ANN-p3-8a1" secondAttribute="trailing" constant="-10" id="GNe-4v-GMO"/>
                             <constraint firstItem="ZlU-xJ-C71" firstAttribute="leading" secondItem="9sx-3M-JMb" secondAttribute="leading" constant="10" id="Gwj-A5-AgX"/>
-                            <constraint firstItem="vh5-T1-70W" firstAttribute="centerY" secondItem="9sx-3M-JMb" secondAttribute="centerY" id="JgJ-jx-Erb"/>
                             <constraint firstItem="PeK-6c-pCD" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="KDm-gu-zJ6"/>
                             <constraint firstItem="iLV-hW-dRV" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="LPS-cb-99y"/>
-                            <constraint firstItem="BtV-Vg-gnu" firstAttribute="bottom" secondItem="lL3-BG-tcy" secondAttribute="bottom" constant="-10" id="O3U-LR-LEI"/>
                             <constraint firstItem="9bt-yd-ywR" firstAttribute="top" secondItem="ens-5n-zIK" secondAttribute="bottom" constant="25" id="QW7-DA-JgA"/>
                             <constraint firstItem="jmc-ab-G0M" firstAttribute="top" secondItem="PeK-6c-pCD" secondAttribute="bottom" constant="25" id="RjD-T0-DPk"/>
                             <constraint firstItem="ANN-p3-8a1" firstAttribute="leading" secondItem="ens-5n-zIK" secondAttribute="leading" id="Rmk-Zn-HBu"/>
                             <constraint firstItem="7Fk-tI-WBW" firstAttribute="leading" secondItem="ANN-p3-8a1" secondAttribute="leading" constant="10" id="T2E-Vw-3eE"/>
                             <constraint firstItem="SRs-Pc-nMH" firstAttribute="bottom" secondItem="zjy-TU-uqP" secondAttribute="bottom" constant="-10" id="To9-b0-KBb"/>
                             <constraint firstItem="9x8-8W-Sis" firstAttribute="trailing" secondItem="CVM-sB-ZnP" secondAttribute="trailing" constant="-10" id="UPK-ph-Nyv"/>
-                            <constraint firstItem="73X-wk-0s6" firstAttribute="trailing" secondItem="vh5-T1-70W" secondAttribute="trailing" constant="-10" id="W5X-DO-52l"/>
-                            <constraint firstItem="BtV-Vg-gnu" firstAttribute="leading" secondItem="lL3-BG-tcy" secondAttribute="leading" constant="10" id="Z4d-i6-uIE"/>
                             <constraint firstItem="zjy-TU-uqP" firstAttribute="centerY" secondItem="9sx-3M-JMb" secondAttribute="centerY" id="b2a-iZ-E9r"/>
                             <constraint firstItem="9sx-3M-JMb" firstAttribute="leading" secondItem="zjy-TU-uqP" secondAttribute="trailing" constant="50" id="bJH-RM-eiq"/>
                             <constraint firstItem="9sx-3M-JMb" firstAttribute="centerX" secondItem="nVJ-c0-vrw" secondAttribute="centerX" id="cZ1-2b-wC6"/>
@@ -701,7 +645,6 @@
                             <constraint firstItem="9x8-8W-Sis" firstAttribute="bottom" secondItem="CVM-sB-ZnP" secondAttribute="bottom" constant="-10" id="ecR-EG-1F3"/>
                             <constraint firstItem="WLc-sZ-pIZ" firstAttribute="leading" secondItem="zjy-TU-uqP" secondAttribute="leading" constant="10" id="fhs-AY-ixd"/>
                             <constraint firstItem="SRs-Pc-nMH" firstAttribute="trailing" secondItem="zjy-TU-uqP" secondAttribute="trailing" constant="-10" id="fj2-hK-T3U"/>
-                            <constraint firstItem="Kdb-aL-QPh" firstAttribute="bottom" secondItem="lL3-BG-tcy" secondAttribute="bottom" constant="-10" id="fo9-sU-LlG"/>
                             <constraint firstItem="7zg-YX-pmt" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="gWl-P5-Yzl"/>
                             <constraint firstItem="ylJ-Mc-aw9" firstAttribute="centerY" secondItem="jmc-ab-G0M" secondAttribute="centerY" id="glw-Qg-m61"/>
                             <constraint firstAttribute="bottom" secondItem="ANN-p3-8a1" secondAttribute="bottom" constant="50" id="goW-tg-bEL"/>
@@ -716,33 +659,27 @@
                             <constraint firstItem="ylJ-Mc-aw9" firstAttribute="leading" secondItem="LEP-Cc-p7x" secondAttribute="trailing" constant="50" id="psk-cr-58Y"/>
                             <constraint firstAttribute="centerX" secondItem="ANN-p3-8a1" secondAttribute="trailing" constant="25" id="rEa-0h-BEY"/>
                             <constraint firstItem="7zg-YX-pmt" firstAttribute="leading" secondItem="nVJ-c0-vrw" secondAttribute="leading" constant="30" id="rgV-7I-nqv"/>
-                            <constraint firstItem="lL3-BG-tcy" firstAttribute="trailing" secondItem="ens-5n-zIK" secondAttribute="trailing" id="t3L-Yk-J8D"/>
                             <constraint firstItem="oZ6-AJ-ep1" firstAttribute="leading" secondItem="9bt-yd-ywR" secondAttribute="leading" constant="10" id="tdn-Ii-dEP"/>
-                            <constraint firstItem="lL3-BG-tcy" firstAttribute="centerY" secondItem="9sx-3M-JMb" secondAttribute="centerY" id="u8M-An-23N"/>
                             <constraint firstItem="CVM-sB-ZnP" firstAttribute="centerY" secondItem="9sx-3M-JMb" secondAttribute="centerY" id="y9Y-nY-OdY"/>
                             <constraint firstItem="22r-YE-nI9" firstAttribute="bottom" secondItem="9sx-3M-JMb" secondAttribute="bottom" constant="-10" id="z2Q-eK-n4B"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="brokeDownButton" destination="ylJ-Mc-aw9" id="P1L-b8-7eE"/>
+                        <outlet property="centerPegFailure" destination="22r-YE-nI9" id="fmM-Nr-77K"/>
+                        <outlet property="centerPegSuccess" destination="ZlU-xJ-C71" id="gSW-HC-nzB"/>
                         <outlet property="collisionButton" destination="iLV-hW-dRV" id="A78-td-h4g"/>
-                        <outlet property="def1Failure" destination="SRs-Pc-nMH" id="G98-8V-KEE"/>
-                        <outlet property="def1Success" destination="WLc-sZ-pIZ" id="x1l-ks-dUf"/>
-                        <outlet property="def2Failure" destination="22r-YE-nI9" id="rNu-l0-c8p"/>
-                        <outlet property="def2Success" destination="ZlU-xJ-C71" id="mOg-us-1gw"/>
-                        <outlet property="def3Failure" destination="9x8-8W-Sis" id="l8g-Mg-vJg"/>
-                        <outlet property="def3Success" destination="hTB-sM-fT7" id="Twc-wh-p7u"/>
-                        <outlet property="def4Failure" destination="Kdb-aL-QPh" id="qcY-AV-p6J"/>
-                        <outlet property="def4Success" destination="BtV-Vg-gnu" id="ac3-UA-Abj"/>
                         <outlet property="driveButton" destination="jmc-ab-G0M" id="a0d-7g-hCJ"/>
                         <outlet property="highGoalFailure" destination="lTm-7J-jkj" id="PSm-4A-oNs"/>
                         <outlet property="highGoalSuccess" destination="oZ6-AJ-ep1" id="Nov-IP-tia"/>
-                        <outlet property="lowBarFailure" destination="73X-wk-0s6" id="wg2-zX-Bbe"/>
-                        <outlet property="lowBarSuccess" destination="Iix-kN-0MW" id="gY7-0K-lIV"/>
+                        <outlet property="leftPegFailure" destination="SRs-Pc-nMH" id="M8l-Wr-GDP"/>
+                        <outlet property="leftPegSuccess" destination="WLc-sZ-pIZ" id="cuX-Cj-k6S"/>
                         <outlet property="lowGoalFailure" destination="sPf-Ep-K4r" id="hHJ-Rm-PSs"/>
                         <outlet property="lowGoalSuccess" destination="7Fk-tI-WBW" id="sNd-HJ-2fe"/>
                         <outlet property="noActionButton" destination="LEP-Cc-p7x" id="jdF-Gg-uB2"/>
                         <outlet property="reachButton" destination="ens-5n-zIK" id="Cxt-cc-Jfy"/>
+                        <outlet property="rightPegFailure" destination="9x8-8W-Sis" id="biS-6W-hfI"/>
+                        <outlet property="rightPegSuccess" destination="hTB-sM-fT7" id="U8S-0e-e4Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDX-Px-e7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -915,7 +852,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="2H9-kt-EZp"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
-                                                <state key="normal" title="Challenge">
+                                                <state key="normal" title="No Action">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -1051,20 +988,6 @@
                                     <segue destination="81D-8e-hJE" kind="unwind" unwindAction="autoUnwindWithUnwindSegue:" id="vHI-vT-tff"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23i-vZ-zGh" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="266.5" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="JPx-UX-cDT"/>
-                                    <constraint firstAttribute="height" constant="100" id="oOO-K8-x2v"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Low Bar">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SFButtonPressed:" destination="UGQ-IT-pbV" eventType="touchUpInside" id="XLF-pc-yth"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Aq-sO-LYB" customClass="ToggleButton" customModule="_017_Scouting_Collection" customModuleProvider="target">
                                 <rect key="frame" x="237" y="141.5" width="150" height="100"/>
                                 <constraints>
@@ -1114,7 +1037,7 @@
                                     <constraint firstAttribute="width" constant="150" id="Ooa-bD-mff"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 1">
+                                <state key="normal" title="Left Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1128,7 +1051,7 @@
                                     <constraint firstAttribute="height" constant="100" id="gDv-d8-Zwf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 2">
+                                <state key="normal" title="Center Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1142,29 +1065,15 @@
                                     <constraint firstAttribute="height" constant="100" id="V5g-pD-HPI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 3">
+                                <state key="normal" title="Right Peg">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="SFButtonPressed:" destination="UGQ-IT-pbV" eventType="touchUpInside" id="XlS-KJ-6DD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUD-mo-j5Z" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="837" y="266.5" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="D1P-1F-bMq"/>
-                                    <constraint firstAttribute="height" constant="100" id="Zng-iu-6UR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <state key="normal" title="Defense 4">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="SFButtonPressed:" destination="UGQ-IT-pbV" eventType="touchUpInside" id="Nfs-Sp-9cd"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSS-8V-nVb" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="391.5" width="358.5" height="100"/>
+                                <rect key="frame" x="283" y="392" width="112" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="waG-Pg-brJ"/>
                                 </constraints>
@@ -1177,7 +1086,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VeI-3o-H1v" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="537" y="516.5" width="450" height="201.5"/>
+                                <rect key="frame" x="537" y="517" width="217" height="201"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="High Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1187,7 +1096,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIH-QN-0eJ" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="37" y="516.5" width="450" height="201.5"/>
+                                <rect key="frame" x="283" y="517" width="204" height="201"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="50"/>
                                 <state key="normal" title="Low Goal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1197,14 +1106,8 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npJ-Ef-0Mt">
-                                <rect key="frame" x="47" y="660" width="62.5" height="48"/>
+                                <rect key="frame" x="293" y="660" width="63" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjn-p2-6jq">
-                                <rect key="frame" x="47" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1226,12 +1129,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJ2-3s-zPC">
-                                <rect key="frame" x="847" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="S: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXw-0z-d2d">
                                 <rect key="frame" x="547" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
@@ -1239,7 +1136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYM-9X-Ods">
-                                <rect key="frame" x="914.5" y="660" width="62.5" height="48"/>
+                                <rect key="frame" x="681" y="660" width="63" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1247,12 +1144,6 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CXu-fI-TBF">
                                 <rect key="frame" x="414.5" y="660" width="62.5" height="48"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Om5-u2-JrP">
-                                <rect key="frame" x="145.5" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1274,12 +1165,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="F: 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz0-nL-Ihc">
-                                <rect key="frame" x="945.5" y="332.5" width="31.5" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVk-j9-BLI">
                                 <rect key="frame" x="503.5" y="437.5" width="17" height="36"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
@@ -1292,8 +1177,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1V-BO-KDB" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
-                                <rect key="frame" x="630" y="391.5" width="357" height="100"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1V-BO-KDB" customClass="Button" customModule="_017_Scouting_Collection" customModuleProvider="target">
+                                <rect key="frame" x="630" y="392" width="357" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Waf-47-jY1"/>
                                 </constraints>
@@ -1310,7 +1195,6 @@
                         <constraints>
                             <constraint firstItem="VeI-3o-H1v" firstAttribute="leading" secondItem="CRY-vB-D4g" secondAttribute="centerX" constant="25" id="0Tz-Uq-lUr"/>
                             <constraint firstItem="CXu-fI-TBF" firstAttribute="bottom" secondItem="aIH-QN-0eJ" secondAttribute="bottom" constant="-10" id="0Ya-Lj-bqF"/>
-                            <constraint firstItem="HH0-RP-eBH" firstAttribute="leading" secondItem="23i-vZ-zGh" secondAttribute="trailing" constant="50" id="2xB-Tn-q4m"/>
                             <constraint firstItem="hVk-j9-BLI" firstAttribute="centerX" secondItem="CRY-vB-D4g" secondAttribute="centerX" id="3x3-Rx-P50"/>
                             <constraint firstItem="FYM-9X-Ods" firstAttribute="bottom" secondItem="VeI-3o-H1v" secondAttribute="bottom" constant="-10" id="4in-W4-0fT"/>
                             <constraint firstItem="z0o-qR-qMu" firstAttribute="centerX" secondItem="CRY-vB-D4g" secondAttribute="centerX" id="4tp-vb-NWY"/>
@@ -1328,29 +1212,18 @@
                             <constraint firstItem="lSa-ds-LcT" firstAttribute="leading" secondItem="npQ-Ee-056" secondAttribute="leading" constant="10" id="EkU-Z7-Bm2"/>
                             <constraint firstItem="4vf-gz-VLD" firstAttribute="top" secondItem="eFG-0E-c3k" secondAttribute="bottom" constant="25" id="Gbe-5R-Wvi"/>
                             <constraint firstItem="KgU-av-Rrf" firstAttribute="leading" secondItem="eFG-0E-c3k" secondAttribute="leading" constant="10" id="GnC-H6-5v8"/>
-                            <constraint firstItem="fjn-p2-6jq" firstAttribute="leading" secondItem="23i-vZ-zGh" secondAttribute="leading" constant="10" id="H9v-yl-gMp"/>
                             <constraint firstItem="wcZ-Ew-chu" firstAttribute="bottom" secondItem="npQ-Ee-056" secondAttribute="bottom" constant="-10" id="Hec-8w-VmZ"/>
                             <constraint firstItem="npQ-Ee-056" firstAttribute="leading" secondItem="eFG-0E-c3k" secondAttribute="trailing" constant="50" id="IPo-gS-Uk5"/>
                             <constraint firstItem="UTr-GT-IIw" firstAttribute="bottom" secondItem="eFG-0E-c3k" secondAttribute="bottom" constant="-10" id="K5j-7u-FRN"/>
                             <constraint firstAttribute="trailing" secondItem="jdy-1U-OwB" secondAttribute="trailing" constant="30" id="K9t-7C-dzg"/>
-                            <constraint firstItem="UUD-mo-j5Z" firstAttribute="leading" secondItem="npQ-Ee-056" secondAttribute="trailing" constant="50" id="KIe-Pu-R4W"/>
-                            <constraint firstItem="Om5-u2-JrP" firstAttribute="trailing" secondItem="23i-vZ-zGh" secondAttribute="trailing" constant="-10" id="KJo-8j-fd8"/>
                             <constraint firstItem="G35-ZY-Nkk" firstAttribute="bottom" secondItem="HH0-RP-eBH" secondAttribute="bottom" constant="-10" id="MPg-cg-tcN"/>
-                            <constraint firstItem="UUD-mo-j5Z" firstAttribute="centerY" secondItem="eFG-0E-c3k" secondAttribute="centerY" id="MrY-GX-NjB"/>
                             <constraint firstItem="kN2-Z1-cpg" firstAttribute="trailing" secondItem="HH0-RP-eBH" secondAttribute="trailing" constant="-10" id="NUa-Yv-fAR"/>
                             <constraint firstItem="HH0-RP-eBH" firstAttribute="centerY" secondItem="eFG-0E-c3k" secondAttribute="centerY" id="Qlr-vj-380"/>
-                            <constraint firstItem="qSS-8V-nVb" firstAttribute="leading" secondItem="23i-vZ-zGh" secondAttribute="leading" id="QzB-ae-sHj"/>
-                            <constraint firstItem="fjn-p2-6jq" firstAttribute="bottom" secondItem="23i-vZ-zGh" secondAttribute="bottom" constant="-10" id="RD0-qx-h7t"/>
-                            <constraint firstItem="23i-vZ-zGh" firstAttribute="centerY" secondItem="eFG-0E-c3k" secondAttribute="centerY" id="Rnp-yS-gpp"/>
                             <constraint firstItem="lSa-ds-LcT" firstAttribute="bottom" secondItem="npQ-Ee-056" secondAttribute="bottom" constant="-10" id="ShO-IG-tAk"/>
                             <constraint firstItem="aIH-QN-0eJ" firstAttribute="top" secondItem="qSS-8V-nVb" secondAttribute="bottom" constant="25" id="TzG-bj-eDD"/>
                             <constraint firstItem="hVk-j9-BLI" firstAttribute="top" secondItem="4vf-gz-VLD" secondAttribute="bottom" constant="10" id="U9N-ii-yF2"/>
-                            <constraint firstItem="UUD-mo-j5Z" firstAttribute="trailing" secondItem="VeI-3o-H1v" secondAttribute="trailing" id="Uy0-Ps-8iU"/>
-                            <constraint firstItem="c1V-BO-KDB" firstAttribute="top" secondItem="UUD-mo-j5Z" secondAttribute="bottom" constant="25" id="UyI-T4-nDF"/>
                             <constraint firstItem="3UG-2a-8Zu" firstAttribute="leading" secondItem="z0o-qR-qMu" secondAttribute="trailing" constant="50" id="ViT-kb-aeW"/>
                             <constraint firstItem="CXu-fI-TBF" firstAttribute="trailing" secondItem="aIH-QN-0eJ" secondAttribute="trailing" constant="-10" id="WRi-ea-ozO"/>
-                            <constraint firstItem="QJ2-3s-zPC" firstAttribute="bottom" secondItem="UUD-mo-j5Z" secondAttribute="bottom" constant="-10" id="b6b-DD-ydX"/>
-                            <constraint firstItem="Om5-u2-JrP" firstAttribute="bottom" secondItem="23i-vZ-zGh" secondAttribute="bottom" constant="-10" id="bXd-KV-kla"/>
                             <constraint firstItem="UTr-GT-IIw" firstAttribute="trailing" secondItem="eFG-0E-c3k" secondAttribute="trailing" constant="-10" id="dNY-zC-j2t"/>
                             <constraint firstItem="npQ-Ee-056" firstAttribute="centerY" secondItem="eFG-0E-c3k" secondAttribute="centerY" id="ddt-1V-Q9J"/>
                             <constraint firstItem="FYM-9X-Ods" firstAttribute="trailing" secondItem="VeI-3o-H1v" secondAttribute="trailing" constant="-10" id="e32-9p-ieh"/>
@@ -1358,44 +1231,36 @@
                             <constraint firstItem="hXw-0z-d2d" firstAttribute="leading" secondItem="VeI-3o-H1v" secondAttribute="leading" constant="10" id="fvL-0A-ir2"/>
                             <constraint firstItem="G35-ZY-Nkk" firstAttribute="leading" secondItem="HH0-RP-eBH" secondAttribute="leading" constant="10" id="gVh-9K-sWD"/>
                             <constraint firstItem="eFG-0E-c3k" firstAttribute="top" secondItem="2Aq-sO-LYB" secondAttribute="bottom" constant="25" id="gdO-IC-nmF"/>
-                            <constraint firstItem="UUD-mo-j5Z" firstAttribute="trailing" secondItem="c1V-BO-KDB" secondAttribute="trailing" id="gie-5R-GGL"/>
                             <constraint firstItem="wcZ-Ew-chu" firstAttribute="trailing" secondItem="npQ-Ee-056" secondAttribute="trailing" constant="-10" id="k3t-D8-VSO"/>
                             <constraint firstItem="4vf-gz-VLD" firstAttribute="leading" secondItem="qSS-8V-nVb" secondAttribute="trailing" constant="25" id="k9m-wz-cn0"/>
                             <constraint firstItem="3UG-2a-8Zu" firstAttribute="centerY" secondItem="2Aq-sO-LYB" secondAttribute="centerY" id="kaB-fl-cJn"/>
                             <constraint firstItem="jdy-1U-OwB" firstAttribute="top" secondItem="CRY-vB-D4g" secondAttribute="top" constant="30" id="mgG-I7-NOB"/>
                             <constraint firstItem="z0o-qR-qMu" firstAttribute="centerY" secondItem="2Aq-sO-LYB" secondAttribute="centerY" id="pla-Va-oCt"/>
-                            <constraint firstItem="Tz0-nL-Ihc" firstAttribute="trailing" secondItem="UUD-mo-j5Z" secondAttribute="trailing" constant="-10" id="qfY-I8-1yA"/>
                             <constraint firstItem="aIH-QN-0eJ" firstAttribute="leading" secondItem="qSS-8V-nVb" secondAttribute="leading" id="qrZ-uM-zr7"/>
                             <constraint firstItem="eFG-0E-c3k" firstAttribute="leading" secondItem="HH0-RP-eBH" secondAttribute="trailing" constant="50" id="t8x-ni-fch"/>
                             <constraint firstItem="npJ-Ef-0Mt" firstAttribute="bottom" secondItem="aIH-QN-0eJ" secondAttribute="bottom" constant="-10" id="tMM-kJ-2kL"/>
                             <constraint firstItem="VeI-3o-H1v" firstAttribute="top" secondItem="qSS-8V-nVb" secondAttribute="bottom" constant="25" id="tQo-as-iwQ"/>
                             <constraint firstItem="ZLB-jU-Ubl" firstAttribute="centerX" secondItem="CRY-vB-D4g" secondAttribute="centerX" id="uuh-PA-mzA"/>
                             <constraint firstAttribute="centerX" secondItem="aIH-QN-0eJ" secondAttribute="trailing" constant="25" id="vd2-1T-OR4"/>
-                            <constraint firstItem="Tz0-nL-Ihc" firstAttribute="bottom" secondItem="UUD-mo-j5Z" secondAttribute="bottom" constant="-10" id="wA2-aW-zvW"/>
                             <constraint firstItem="4vf-gz-VLD" firstAttribute="centerX" secondItem="CRY-vB-D4g" secondAttribute="centerX" id="ykA-8j-vPu"/>
-                            <constraint firstItem="QJ2-3s-zPC" firstAttribute="leading" secondItem="UUD-mo-j5Z" secondAttribute="leading" constant="10" id="ynN-La-fOa"/>
                             <constraint firstItem="z0o-qR-qMu" firstAttribute="leading" secondItem="2Aq-sO-LYB" secondAttribute="trailing" constant="50" id="ypu-77-6yL"/>
                             <constraint firstItem="kN2-Z1-cpg" firstAttribute="bottom" secondItem="HH0-RP-eBH" secondAttribute="bottom" constant="-10" id="zp8-gZ-95j"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="brokeDownButton" destination="3UG-2a-8Zu" id="EgZ-LX-Drg"/>
-                        <outlet property="def1Failure" destination="kN2-Z1-cpg" id="khj-9P-chC"/>
-                        <outlet property="def1Success" destination="G35-ZY-Nkk" id="5eO-SV-EOO"/>
-                        <outlet property="def2Failure" destination="UTr-GT-IIw" id="x2m-KU-p59"/>
-                        <outlet property="def2Success" destination="KgU-av-Rrf" id="0mc-kO-fXs"/>
-                        <outlet property="def3Failure" destination="wcZ-Ew-chu" id="FsH-9C-9CE"/>
-                        <outlet property="def3Success" destination="lSa-ds-LcT" id="fui-Vi-FnM"/>
-                        <outlet property="def4Failure" destination="Tz0-nL-Ihc" id="UKZ-sS-T8y"/>
-                        <outlet property="def4Success" destination="QJ2-3s-zPC" id="hGr-rA-1cI"/>
+                        <outlet property="cpFailure" destination="UTr-GT-IIw" id="o76-33-9a7"/>
+                        <outlet property="cpSuccess" destination="KgU-av-Rrf" id="nYg-xB-gUF"/>
                         <outlet property="driveButton" destination="2Aq-sO-LYB" id="y3n-6h-srT"/>
                         <outlet property="highGoalFailure" destination="FYM-9X-Ods" id="5Is-tV-U1q"/>
                         <outlet property="highGoalSuccess" destination="hXw-0z-d2d" id="NQO-eJ-ii9"/>
-                        <outlet property="lowBarFailure" destination="Om5-u2-JrP" id="EzJ-iC-v45"/>
-                        <outlet property="lowBarSuccess" destination="fjn-p2-6jq" id="5Fn-wN-x35"/>
                         <outlet property="lowGoalFailure" destination="CXu-fI-TBF" id="X5I-qS-kcE"/>
                         <outlet property="lowGoalSuccess" destination="npJ-Ef-0Mt" id="LNm-ch-JXT"/>
+                        <outlet property="lpFailure" destination="kN2-Z1-cpg" id="aJh-zC-Au2"/>
+                        <outlet property="lpSuccess" destination="G35-ZY-Nkk" id="ljE-dd-FNL"/>
                         <outlet property="noActionButton" destination="z0o-qR-qMu" id="Fbd-x7-hBM"/>
+                        <outlet property="rpFailure" destination="wcZ-Ew-chu" id="5t8-g7-1u0"/>
+                        <outlet property="rpSuccess" destination="lSa-ds-LcT" id="IZf-so-169"/>
                         <outlet property="shotsBlocked" destination="hVk-j9-BLI" id="Ga6-bt-XpW"/>
                     </connections>
                 </viewController>

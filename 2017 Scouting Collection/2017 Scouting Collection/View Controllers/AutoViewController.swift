@@ -22,16 +22,12 @@ class AutoViewController: ViewController {
     @IBOutlet weak var highGoalSuccess: UILabel!
     @IBOutlet weak var highGoalFailure: UILabel!
     
-    @IBOutlet weak var lowBarSuccess: UILabel!
-    @IBOutlet weak var lowBarFailure: UILabel!
-    @IBOutlet weak var def1Success: UILabel!
-    @IBOutlet weak var def1Failure: UILabel!
-    @IBOutlet weak var def2Success: UILabel!
-    @IBOutlet weak var def2Failure: UILabel!
-    @IBOutlet weak var def3Success: UILabel!
-    @IBOutlet weak var def3Failure: UILabel!
-    @IBOutlet weak var def4Success: UILabel!
-    @IBOutlet weak var def4Failure: UILabel!
+    @IBOutlet weak var leftPegSuccess: UILabel!
+    @IBOutlet weak var leftPegFailure: UILabel!
+    @IBOutlet weak var centerPegSuccess: UILabel!
+    @IBOutlet weak var centerPegFailure: UILabel!
+    @IBOutlet weak var rightPegSuccess: UILabel!
+    @IBOutlet weak var rightPegFailure: UILabel!
     
     @IBAction func autoUnwind(unwindSegue: UIStoryboardSegue) {
         
@@ -78,24 +74,20 @@ class AutoViewController: ViewController {
     }
     
     func reloadData() {
-        self.driveButton.toggle(toggleState: DataModel.currentMatch!.autoDrive)
-        self.noActionButton.toggle(toggleState: DataModel.currentMatch!.autoNoAction)
-        self.brokeDownButton.toggle(toggleState: DataModel.currentMatch!.autoBrokeDown)
-        self.collisionButton.toggle(toggleState: DataModel.currentMatch!.autoCollision)
-        self.reachButton.toggle(toggleState: DataModel.currentMatch!.autoReach)
-        self.lowGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoLowGoalSuccess)
-        self.lowGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoLowGoalFailure)
-        self.highGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoHighGoalSuccess)
-        self.highGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoHighGoalFailure)
-        self.lowBarSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoLowBarSuccess)
-        self.lowBarFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoLowBarFailure)
-        self.def1Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef1Success)
-        self.def1Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef1Failure)
-        self.def2Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef2Success)
-        self.def2Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef2Failure)
-        self.def3Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef3Success)
-        self.def3Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef3Failure)
-        self.def4Success.text = "S: " + String(describing: DataModel.currentMatch!.autoDef4Success)
-        self.def4Failure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef4Failure)
+        self.driveButton.toggle(toggleState: Data.currentMatch!.autoDrive)
+        self.noActionButton.toggle(toggleState: Data.currentMatch!.autoNoAction)
+        self.brokeDownButton.toggle(toggleState: Data.currentMatch!.autoBrokeDown)
+        self.collisionButton.toggle(toggleState: Data.currentMatch!.autoCollision)
+        self.reachButton.toggle(toggleState: Data.currentMatch!.autoReach)
+        self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoLowGoalSuccess)
+        self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoLowGoalFailure)
+        self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.autoHighGoalSuccess)
+        self.highGoalFailure.text = "F: " + String(describing: Data.currentMatch!.autoHighGoalFailure)
+        self.leftPegSuccess.text = "S: " + String(describing: Data.currentMatch!.autoDef1Success)
+        self.leftPegFailure.text = "F: " + String(describing: Data.currentMatch!.autoDef1Failure)
+        self.centerPegSuccess.text = "S: " + String(describing: Data.currentMatch!.autoDef2Success)
+        self.centerPegFailure.text = "F: " + String(describing: Data.currentMatch!.autoDef2Failure)
+        self.rightPegSuccess.text = "S: " + String(describing: Data.currentMatch!.autoDef3Success)
+        self.rightPegFailure.text = "F: " + String(describing: Data.currentMatch!.autoDef3Failure)
     }
 }
