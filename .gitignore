@@ -5,5 +5,5 @@
 2017\ Scouting\ Collection/Podfile.lock
 *.DS_Store
 *~
-xcuserdata/*
+xcuserdata/
 *.pbxproj
