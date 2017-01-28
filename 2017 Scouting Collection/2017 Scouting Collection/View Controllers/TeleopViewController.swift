@@ -92,19 +92,19 @@ class TeleopViewController: ViewController {
     }
     
     func reloadData() {
-        self.driveButton.toggle(toggleState: Data.currentMatch!.teleopDrive)
-        self.noActionButton.toggle(toggleState: Data.currentMatch!.teleopNoAction)
-        self.brokeDownButton.toggle(toggleState: Data.currentMatch!.teleopBrokeDown)
-        self.shotsBlocked.text = String(describing: Data.currentMatch!.teleopShotsBlocked)
-        self.lowGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopLowGoalSuccess)
-        self.lowGoalFailure.text = "F: " + String(describing: Data.currentMatch!.teleopLowGoalFailure)
-        self.highGoalSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopHighGoalSuccess)
-        self.highGoalFailure.text = "F: " + String(describing: Data.currentMatch!.teleopHighGoalFailure)
-        self.lpSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopDef1Success)
-        self.lpFailure.text = "F: " + String(describing: Data.currentMatch!.teleopDef1Failure)
-        self.cpSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopDef2Success)
-        self.cpFailure.text = "F: " + String(describing: Data.currentMatch!.teleopDef2Failure)
-        self.rpSuccess.text = "S: " + String(describing: Data.currentMatch!.teleopDef3Success)
-        self.rpFailure.text = "F: " + String(describing: Data.currentMatch!.teleopDef3Failure)
+        self.driveButton.toggle(toggleState: DataModel.currentMatch!.teleopDrive)
+        self.noActionButton.toggle(toggleState: DataModel.currentMatch!.teleopNoAction)
+        self.brokeDownButton.toggle(toggleState: DataModel.currentMatch!.teleopBrokeDown)
+        self.shotsBlocked.text = String(describing: DataModel.currentMatch!.teleopShotsBlocked)
+        self.lowGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopLowGoalSuccess)
+        self.lowGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopLowGoalFailure)
+        self.highGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopHighGoalSuccess)
+        self.highGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopHighGoalFailure)
+        self.lpSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef1Success)
+        self.lpFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef1Failure)
+        self.cpSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef2Success)
+        self.cpFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef2Failure)
+        self.rpSuccess.text = "S: " + String(describing: DataModel.currentMatch!.teleopDef3Success)
+        self.rpFailure.text = "F: " + String(describing: DataModel.currentMatch!.teleopDef3Failure)
     }
 }
