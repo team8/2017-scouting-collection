@@ -161,7 +161,6 @@
 				A50FE9F91E0746180087A052 /* Assets.xcassets */,
 				A50FE9FB1E0746180087A052 /* LaunchScreen.storyboard */,
 				A50FE9FE1E0746180087A052 /* Info.plist */,
-				A50FE9F61E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld */,
 				A50FEA221E074ADA0087A052 /* View Controllers */,
 				A547FA611E0C917000C14CB0 /* DataModel.swift */,
 			);
@@ -171,6 +170,7 @@
 		A50FEA221E074ADA0087A052 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A50FE9F61E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld */,
 				A50FE9F11E0746180087A052 /* ViewController.swift */,
 				A50FEA201E074AD40087A052 /* HomeViewController.swift */,
 				A544F1731E09E8550037A898 /* PrematchViewController.swift */,

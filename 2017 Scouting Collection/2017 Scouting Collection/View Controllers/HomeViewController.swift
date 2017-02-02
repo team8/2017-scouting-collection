@@ -10,68 +10,148 @@ import Foundation
 import UIKit
 import CoreData
 
-class HomeViewController: ViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+
+
+    var pickerData = [String]()
     
-    @IBOutlet weak var newButton: UIButton!
-    @IBOutlet weak var dataTable: UITableView!
+    @IBOutlet weak var viewSavedMatches: UIButton!
     
-    @IBAction func homeUnwind(unwindSegue: UIStoryboardSegue) {
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var matchType: UILabel!
+    @IBOutlet weak var matchNumber: UITextField!
+    @IBOutlet weak var matchNumberOf: UITextField!
+    @IBOutlet weak var matchNumberOfWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let grey = UIColor.gray.cgColor
+        
+        name.layer.borderColor = grey
+        name.layer.borderWidth = 0.5
+        name.layer.cornerRadius = 5.0
+        name.layer.masksToBounds = true
+        
+        matchType.layer.borderColor = grey
+        matchType.layer.borderWidth = 0.5
+        matchType.layer.cornerRadius = 5.0
+        matchType.layer.masksToBounds = true
+        
+        matchNumber.layer.borderColor = grey
+        matchNumber.layer.borderWidth = 0.5
+        matchNumber.layer.cornerRadius = 5.0
+        matchNumber.layer.masksToBounds = true
+        
+        matchNumberOf.layer.borderColor = grey
+        matchNumberOf.layer.borderWidth = 0.5
+        matchNumberOf.layer.cornerRadius = 5.0
+        matchNumberOf.layer.masksToBounds = true
         
     }
     
     override func viewDidLoad() {
-        dataTable.dataSource = self
-        dataTable.delegate = self
-        dataTable.register(TableViewCell.classForCoder(), forCellReuseIdentifier: "DataCell")
+        //Check for Core Data and then show the viewSavedMatches
+        
+        let matchTypeTap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.matchTypePressed))
+        matchType.addGestureRecognizer(matchTypeTap)
+        matchType.isUserInteractionEnabled = true
+        
+        
+        let hideTap = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.hideStuff))
+        view.addGestureRecognizer(hideTap)
+        
+        matchNumberOf.isUserInteractionEnabled = false
+        matchNumberOfWidth.constant = 0
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        
+
+        for family: String in UIFont.familyNames
+        {
+            print("\(family)")
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
     }
     
-    var testList: [NSManagedObject]?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        DataModel.reloadCoreData()
+    func hideStuff(){
+        view.endEditing(true)
+        pickerView.isHidden = true
+    }
+    func matchTypePressed(){
+        print("matchTypePressed")
+        view.endEditing(true)
+        pickerData = ["Qualifying","Quarter Finals","Semi Finals", "Finals"]
+        pickerView.reloadAllComponents()
+        pickerView.isHidden = false
+        if matchType.text! != "Qualifying" && matchType.text! != "Match Type"{
+            matchType.text = matchType.text
+        }else{
+            matchType.text = "Qualifying"
+        }
+        
+        matchType.textColor = UIColor.black
+        self.view.bringSubview(toFront: pickerView)
+        
     }
     
-    @IBAction func newMatchPressed(_ sender: UIButton) {
-        DataModel.currentMatch = DataModel()
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    //Fill table view
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let tempList = ["Team 8, Q1", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4", "Team 254, Q2", "Team 971, Q3", "Team 1678, Q4"]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! TableViewCell
-        cell.textLabel?.text = DataModel.matches[indexPath.row].name
-        cell.backgroundColor = UIColor.clear
-        cell.textLabel?.font = UIFont(name:"Lato", size:20)
-        cell.textLabel?.textColor = UIColor.white
-        cell.textLabel?.layer.borderWidth = 2
-        cell.textLabel?.layer.borderColor = UIColor.white.cgColor
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        return cell
+    @available(iOS 2.0, *)
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    //When table cell selected
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
-//
-//        if let dataToSend = cell.student {
-//            performSegue(withIdentifier: "DestinationView", sender: dataToSend)
-//        }
-//        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-//            cell.textLabel?.backgroundColor = UIColor.clear
-//        })
-        UIView.animateKeyframes(withDuration: 0.35 /*Total*/, delay:0.0, options: UIViewKeyframeAnimationOptions.calculationModeLinear, animations: {
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration:0.10, animations:{
-                cell.textLabel?.backgroundColor = UIColor.white
-            })
-            UIView.addKeyframe(withRelativeStartTime: 0.10, relativeDuration:0.25, animations:{
-                cell.textLabel?.backgroundColor = UIColor.clear
-            })
-        })
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataModel.matches.count
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+        return pickerData[row]
     }
+    
+    
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView{
+        
+        print("Returning Custom label")
+        var label = view as! UILabel!
+        if label == nil {
+            label = UILabel()
+        }
+        
+        label?.font = UIFont(name: "Lato-Light", size: 22.0)!
+        label?.text =  pickerData[row]
+        label?.textAlignment = .center
+        return label!
+        
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        matchType.text = pickerData[row]
+        
+        pickerView.isHidden = true
+        if pickerData[row] != "Qualifying"{
+            matchNumberOf.isUserInteractionEnabled = true
+            matchNumberOfWidth.constant = 197
+        }else{
+            matchNumberOf.isUserInteractionEnabled = false
+            matchNumberOfWidth.constant = 0
+            matchNumberOf.text = ""
+        }
+    }
+    
+    
+    
+
 }
