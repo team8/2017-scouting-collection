@@ -24,6 +24,7 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
     @IBOutlet weak var matchNumberOfWidth: NSLayoutConstraint!
     
     @IBOutlet weak var pickerView: UIPickerView!
+    @IBOutlet var startMatchButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -84,6 +85,7 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
     func hideStuff(){
         view.endEditing(true)
         pickerView.isHidden = true
+        startMatchButton.isHidden = false
     }
     func matchTypePressed(){
         print("matchTypePressed")
@@ -91,6 +93,7 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         pickerData = ["Qualifying","Quarter Finals","Semi Finals", "Finals"]
         pickerView.reloadAllComponents()
         pickerView.isHidden = false
+        startMatchButton.isHidden = true
         if matchType.text! != "Qualifying" && matchType.text! != "Match Type"{
             matchType.text = matchType.text
         }else{
@@ -137,10 +140,12 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         return label!
         
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         matchType.text = pickerData[row]
         
         pickerView.isHidden = true
+        startMatchButton.isHidden = false
         if pickerData[row] != "Qualifying"{
             matchNumberOf.isUserInteractionEnabled = true
             matchNumberOfWidth.constant = 197
@@ -150,6 +155,21 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
             matchNumberOf.text = ""
         }
     }
+    @IBAction func startMatchPressed(_ sender: Any) {
+        //TODO - Show Alert instead of printing
+        if name.text == " " || matchType.text == "Match Type" || matchNumber.text == "" || (matchNumberOf.text == "" && matchNumberOfWidth.constant > 0){
+            print("enter everything")
+            return
+        }
+        if Int(matchNumberOf.text!)! > 4{
+            print("wrong match number of")
+            return
+        }
+        //TODO Segue
+        
+
+    }
+    
     
     
     
