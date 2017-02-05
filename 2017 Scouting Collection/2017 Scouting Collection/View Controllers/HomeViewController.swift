@@ -156,17 +156,37 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     @IBAction func startMatchPressed(_ sender: Any) {
-        //TODO - Show Alert instead of printing
+
         if name.text == " " || matchType.text == "Match Type" || matchNumber.text == "" || (matchNumberOf.text == "" && matchNumberOfWidth.constant > 0){
-            print("enter everything")
+            
+            let alertController = UIAlertController(title: "Complete Form", message: "Please fill everything in. Thanks!", preferredStyle: .alert)
+            
+            self.present(alertController, animated: true, completion:nil)
+            
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            }
+            
+            alertController.addAction(OKAction)
+            
             return
         }
-        if Int(matchNumberOf.text!)! > 4{
-            print("wrong match number of")
-            return
+        if  (matchNumberOfWidth.constant > 0){
+            if Int(matchNumberOf.text!)! > 4{
+                let alertController = UIAlertController(title: "Invalid Match Number", message: "There can only be 4 matches played in the knockout stages", preferredStyle: .alert)
+                
+                self.present(alertController, animated: true, completion:nil)
+                
+                let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                }
+                
+                alertController.addAction(OKAction)
+                
+                return
+            }
         }
-        //TODO Segue
+
         
+        performSegue(withIdentifier: "startMatch", sender: self)
 
     }
     

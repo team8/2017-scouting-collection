@@ -11,83 +11,99 @@ import UIKit
 
 class AutoViewController: ViewController {
     
-    @IBOutlet weak var driveButton: ToggleButton!
-    @IBOutlet weak var noActionButton: ToggleButton!
-    @IBOutlet weak var brokeDownButton: ToggleButton!
-    @IBOutlet weak var collisionButton: ToggleButton!
-    @IBOutlet weak var reachButton: ToggleButton!
+    @IBOutlet weak var currentPeriod: UILabel!
+    @IBOutlet weak var timerLabel: UILabel!
     
-    @IBOutlet weak var lowGoalSuccess: UILabel!
-    @IBOutlet weak var lowGoalFailure: UILabel!
-    @IBOutlet weak var highGoalSuccess: UILabel!
-    @IBOutlet weak var highGoalFailure: UILabel!
+    var contentViewMaxHeight = 493
     
-    @IBOutlet weak var leftPegSuccess: UILabel!
-    @IBOutlet weak var leftPegFailure: UILabel!
-    @IBOutlet weak var centerPegSuccess: UILabel!
-    @IBOutlet weak var centerPegFailure: UILabel!
-    @IBOutlet weak var rightPegSuccess: UILabel!
-    @IBOutlet weak var rightPegFailure: UILabel!
+    @IBOutlet weak var gearButton: UIImageView!
+    @IBOutlet weak var gearView: UIView!
+    @IBOutlet weak var gearViewConstraint: NSLayoutConstraint!
     
-    @IBAction func autoUnwind(unwindSegue: UIStoryboardSegue) {
+    @IBOutlet weak var pressureButton: UIButton!
+    @IBOutlet weak var pressureView: UIView!
+    @IBOutlet weak var pressureViewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var fuelButton: UIImageView!
+    @IBOutlet weak var fuelView: UIView!
+    @IBOutlet weak var fuelViewConstraint: NSLayoutConstraint!
+    
+    var timeLeftTimer: Timer!
+    var timePassed : Int = 0
+    var isAuto = true
+    
+    override func viewDidLoad() {
+        timeLeftTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateLabel), userInfo: nil, repeats: true)
         
     }
-    
+    func updateLabel() {
+        timePassed += 1
+        if timePassed > 20{
+            isAuto = false
+            currentPeriod.text = "Teleop"
+        }
+        if isAuto{
+            timerLabel.text = "\(timePassed)"
+        }else{
+            let rawSeconds =  timePassed - 20
+            let minutes = floor(Double(rawSeconds / 60))
+            let seconds = Double(rawSeconds)  - (minutes * 60)
+            if seconds > 10{
+                timerLabel.text = "\(Int(minutes)):\(Int(seconds))"
+            }else{
+                timerLabel.text = "\(Int(minutes)):0\(Int(seconds))"
+            }
+            
+        }
+        
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadData()
+        
+        //Insets for the images
+        let insets = UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0)
+        
+        let gearImage = UIImage(named: "gears")!
+        gearButton.image = gearImage.imageWithInsets(insets: insets)
+        
+        let fuelImage = UIImage(named: "fuel-intake")
+        fuelButton.image = fuelImage?.imageWithInsets(insets: insets)
+        
+        //Tap recognizers for imageView
+        let gearTap = UITapGestureRecognizer(target: self, action: #selector(AutoViewController.gearButtonTapped()))
+        gearButton.addGestureRecognizer(gearTap)
+        gearButton.isUserInteractionEnabled = true
+        
+        let fuelTap = UITapGestureRecognizer(target: self, action: #selector(AutoViewController.fuelButtonTapped()))
+        fuelButton.addGestureRecognizer(fuelTap)
+        fuelButton.isUserInteractionEnabled = true
+        
+        //Hiding all of the content views
+        
+        
+        
+        
+//        gearButton.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
+        
     }
-    
-    @IBAction func toggleButtonPressed(_ sender: ToggleButton) {
-        switch(sender.tag) {
-            case 0:
-                //Drive
-                DataModel.currentMatch?.autoDrive = sender.toggleState
-                break
-            case 1:
-                //No Action
-                DataModel.currentMatch?.autoNoAction = sender.toggleState
-                break
-            case 2:
-                //Broken Down
-                DataModel.currentMatch?.autoBrokeDown = sender.toggleState
-                break
-            case 3:
-                //Collision
-                DataModel.currentMatch?.autoCollision = sender.toggleState
-                break
-            case 4:
-                //Reach
-                DataModel.currentMatch?.autoReach = sender.toggleState
-                break
-            default:
-                //wat
-                break
-        }
+    func gearButtonTapped(){
+        
     }
-    
-    @IBAction func SFButtonPressed(_ sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SFDialogViewController") as! SFDialogViewController
-        vc.parentValue = sender.tag
-        vc.period = "Autonomous"
-        self.present(vc, animated: false, completion: nil)
+    func fuelButtonTapped(){
+        
     }
-    
-    func reloadData() {
-        self.driveButton.toggle(toggleState: DataModel.currentMatch!.autoDrive)
-        self.noActionButton.toggle(toggleState: DataModel.currentMatch!.autoNoAction)
-        self.brokeDownButton.toggle(toggleState: DataModel.currentMatch!.autoBrokeDown)
-        self.collisionButton.toggle(toggleState: DataModel.currentMatch!.autoCollision)
-        self.reachButton.toggle(toggleState: DataModel.currentMatch!.autoReach)
-        self.lowGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoLowGoalSuccess)
-        self.lowGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoLowGoalFailure)
-        self.highGoalSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoHighGoalSuccess)
-        self.highGoalFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoHighGoalFailure)
-        self.leftPegSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoDef1Success)
-        self.leftPegFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef1Failure)
-        self.centerPegSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoDef2Success)
-        self.centerPegFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef2Failure)
-        self.rightPegSuccess.text = "S: " + String(describing: DataModel.currentMatch!.autoDef3Success)
-        self.rightPegFailure.text = "F: " + String(describing: DataModel.currentMatch!.autoDef3Failure)
+}
+extension UIImage {
+    func imageWithInsets(insets: UIEdgeInsets) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(
+            CGSize(width: self.size.width + insets.left + insets.right,
+                   height: self.size.height + insets.top + insets.bottom), false, self.scale)
+        let _ = UIGraphicsGetCurrentContext()
+        let origin = CGPoint(x: insets.left, y: insets.top)
+        self.draw(at: origin)
+        let imageWithInsets = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return imageWithInsets
     }
 }
