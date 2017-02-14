@@ -9,127 +9,94 @@
 import Foundation
 import UIKit
 
-class EndgameViewController: ViewController, UITextViewDelegate {
+
+class EndgameViewController: ViewController, UITextViewDelegate{
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var activeField: UITextView!
+    @IBOutlet weak var matchAbandoned: UISwitch!
+    @IBOutlet weak var robotScaled: UISwitch!
+    @IBOutlet weak var gearPlacementRating: UISlider!
+    @IBOutlet weak var gearPlacementLabel: UILabel!
+    @IBOutlet weak var lowGoalShootingRating: UISlider!
+    @IBOutlet weak var lowGoalShootingLabel: UILabel!
+    @IBOutlet weak var highGoalShootingRating: UISlider!
+    @IBOutlet weak var highGoalShootingLabel: UILabel!
+    @IBOutlet weak var groundFuelIntake: UISwitch!
+    @IBOutlet weak var additionalNotes: UITextView!
+    @IBOutlet weak var additionalNotesPopUpView: UIView!
+    @IBOutlet weak var additionalNotesTextView: UITextView!
+    @IBOutlet weak var additionalNotesDoneButton: UIButton!
     
-    @IBAction func toggleButtonPressed(_ sender: ToggleButton) {
-        switch(sender.tag) {
-        case 0:
-            //Challenge
-            print("Challenge")
-            DataModel.currentMatch!.challenge = sender.toggleState
-            break
-        case 1:
-            //Scale
-            print("Scale")
-            DataModel.currentMatch!.scale = sender.toggleState
-            break
-        default:
-            //wat
-            break
-        }
-    }
-    
-    @IBAction func endgameUnwind(unwindSegue: UIStoryboardSegue) {
-        
-    }
-    
-    @IBAction func finishButtonPressed(_ sender: Any) {
-        DataModel.currentMatch!.notes = activeField.text
-        DataModel.currentMatch!.save()
-        performSegue(withIdentifier: "endgameToViewData", sender: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activeField.delegate = self
-        self.hideKeyboardWhenTappedAround()
-    }
-    
-    //Text Field scrolling
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        registerForKeyboardNotifications()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        deregisterFromKeyboardNotifications()
-    }
-    
-    func registerForKeyboardNotifications(){
-        //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func deregisterFromKeyboardNotifications(){
-        //Removing notifies on keyboard appearing
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    var keyboardSize: CGSize?
-    
-    func textViewDidChange(_ textView: UITextView) {
-        var caret = activeField.caretRect(for: activeField.selectedTextRange!.start)
-        let keyboardTopBorder = activeField.bounds.size.height - self.keyboardSize!.height
         
-        if caret.origin.y > keyboardTopBorder {
-            caret.origin.y += self.scrollView.frame.origin.y
-            scrollView.scrollRectToVisible(caret, animated: true)
-        }
-    }
-    
-    func keyboardWasShown(notification: NSNotification){
-        self.scrollView.isScrollEnabled = true
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        self.keyboardSize = keyboardSize
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        let additionalNotesTap = UITapGestureRecognizer(target: self, action: #selector(additionalNotesTapped))
+        additionalNotes.addGestureRecognizer(additionalNotesTap)
+        additionalNotes.isUserInteractionEnabled = true
+        additionalNotes.layer.borderColor = UIColor.gray.cgColor
+        additionalNotes.layer.borderWidth = 1
+        additionalNotes.layer.cornerRadius = 5
+        additionalNotes.layer.masksToBounds = true
         
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
         
-        var caret = activeField.caretRect(for: activeField.selectedTextRange!.start)
-        let keyboardTopBorder = activeField.bounds.size.height - self.keyboardSize!.height
+        additionalNotesPopUpView.isHidden = true
+        
+        additionalNotesTextView.layer.borderColor = UIColor.gray.cgColor
+        additionalNotesTextView.layer.borderWidth = 1
+        additionalNotesTextView.layer.cornerRadius = 5
+        additionalNotesTextView.layer.masksToBounds = true
+        
+        additionalNotesDoneButton.layer.cornerRadius = 5
+        additionalNotesDoneButton.layer.masksToBounds = true
 
-        if caret.origin.y > keyboardTopBorder {
-            caret.origin.y += self.scrollView.frame.origin.y
-            scrollView.scrollRectToVisible(caret, animated: true)
-        }
+    }
+    @IBAction func gearPlacementRatingChanged(_ sender: Any) {
+        gearPlacementLabel.text = "\(Int(gearPlacementRating.value))/10"
+
+    }
+    @IBAction func lowGoalShootingChanged(_ sender: Any) {
+        lowGoalShootingLabel.text = "\(Int(lowGoalShootingRating.value))/10"
+        
+    }
+    @IBAction func highGoalShootingChanged(_ sender: Any) {
+        highGoalShootingLabel.text = "\(Int(highGoalShootingRating.value))/10"
     }
     
-    func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
+    func additionalNotesTapped(){
+        additionalNotesPopUpView.isHidden = false
+        view.layer.backgroundColor = UIColor.gray.cgColor
+        
+        matchAbandoned.isUserInteractionEnabled = false
+        robotScaled.isUserInteractionEnabled = false
+        gearPlacementRating.isUserInteractionEnabled = false
+        lowGoalShootingRating.isUserInteractionEnabled = false
+        highGoalShootingRating.isUserInteractionEnabled = false
+        groundFuelIntake.isUserInteractionEnabled = false
+        additionalNotes.isUserInteractionEnabled = false
+        
+        additionalNotesTextView.becomeFirstResponder()
+        
     }
-    
-    //Limit Textview # lines
-    func sizeOfString (string: String, constrainedToWidth width: Double, font: UIFont) -> CGSize {
-        return (string as NSString).boundingRect(with: CGSize(width: width, height: DBL_MAX),
-                                                         options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                         attributes: [NSFontAttributeName: font],
-                                                         context: nil).size
+    @IBAction func doneAdditionalNotes(_ sender: Any) {
+        view.endEditing(true)
+        additionalNotesPopUpView.isHidden = true
+        view.layer.backgroundColor = UIColor.white.cgColor
+        
+        matchAbandoned.isUserInteractionEnabled = true
+        robotScaled.isUserInteractionEnabled = true
+        gearPlacementRating.isUserInteractionEnabled = true
+        lowGoalShootingRating.isUserInteractionEnabled = true
+        highGoalShootingRating.isUserInteractionEnabled = true
+        groundFuelIntake.isUserInteractionEnabled = true
+        additionalNotes.isUserInteractionEnabled = true
+        
+        additionalNotes.text = additionalNotesTextView.text
+        additionalNotes.font = UIFont(name: "Lato-Light", size: 19.0)!
     }
-    
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
-        var textWidth = UIEdgeInsetsInsetRect(textView.frame, textView.textContainerInset).width
-        textWidth -= 2.0 * textView.textContainer.lineFragmentPadding;
-        
-        let boundingRect = sizeOfString(string: newText, constrainedToWidth: Double(textWidth), font: textView.font!)
-        let numberOfLines = boundingRect.height / textView.font!.lineHeight;
-        
-        return numberOfLines <= 17;
+        let numberOfChars = newText.characters.count
+        return numberOfChars < 150;
     }
+    
 }

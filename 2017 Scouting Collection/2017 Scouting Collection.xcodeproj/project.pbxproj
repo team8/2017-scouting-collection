@@ -22,11 +22,8 @@
 		A547FA621E0C917000C14CB0 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547FA611E0C917000C14CB0 /* DataModel.swift */; };
 		A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A8F831E15EF6B0017753B /* ToggleButton.swift */; };
 		A55165A21E15234F00502823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55165A11E15234F00502823 /* Button.swift */; };
-		A55CAD461E15056700EC173A /* SFDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55CAD451E15056700EC173A /* SFDialogViewController.swift */; };
 		A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */; };
-		A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */; };
 		A5A285A41E0E6A2C00FEB8A9 /* EndgameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */; };
-		A5A285AA1E0E6AA800FEB8A9 /* ViewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */; };
 		A5A285AC1E0E6AE100FEB8A9 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */; };
 		A5B693B81E178CA3003EC6FA /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5B693AD1E178CA3003EC6FA /* Lato-Black.ttf */; };
 		A5B693B91E178CA3003EC6FA /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5B693AE1E178CA3003EC6FA /* Lato-BlackItalic.ttf */; };
@@ -39,6 +36,7 @@
 		A5B693C01E178CA3003EC6FA /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5B693B51E178CA3003EC6FA /* Lato-LightItalic.ttf */; };
 		A5B693C11E178CA3003EC6FA /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5B693B61E178CA3003EC6FA /* Lato-Regular.ttf */; };
 		A5B693C21E178CA3003EC6FA /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A5B693B71E178CA3003EC6FA /* OFL.txt */; };
+		AAD745141E4AD81700BF0F08 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD745131E4AD81700BF0F08 /* Action.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,11 +80,8 @@
 		A547FA611E0C917000C14CB0 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A54A8F831E15EF6B0017753B /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleButton.swift; path = UI/ToggleButton.swift; sourceTree = "<group>"; };
 		A55165A11E15234F00502823 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = UI/Button.swift; sourceTree = "<group>"; };
-		A55CAD451E15056700EC173A /* SFDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SFDialogViewController.swift; path = "View Controllers/SFDialogViewController.swift"; sourceTree = "<group>"; };
 		A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AutoViewController.swift; path = "View Controllers/AutoViewController.swift"; sourceTree = "<group>"; };
-		A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeleopViewController.swift; path = "View Controllers/TeleopViewController.swift"; sourceTree = "<group>"; };
 		A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndgameViewController.swift; path = "View Controllers/EndgameViewController.swift"; sourceTree = "<group>"; };
-		A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewDataViewController.swift; path = "View Controllers/ViewDataViewController.swift"; sourceTree = "<group>"; };
 		A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRViewController.swift; path = "View Controllers/QRViewController.swift"; sourceTree = "<group>"; };
 		A5B693AD1E178CA3003EC6FA /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		A5B693AE1E178CA3003EC6FA /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
@@ -99,6 +94,7 @@
 		A5B693B51E178CA3003EC6FA /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		A5B693B61E178CA3003EC6FA /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		A5B693B71E178CA3003EC6FA /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		AAD745131E4AD81700BF0F08 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		DCDAABA3A9A00B1C1D66ECC3 /* Pods_2017_Scouting_CollectionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2017_Scouting_CollectionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2113E3F9639B4AD6747C434 /* Pods-2017 Scouting Collection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-2017 Scouting Collection.release.xcconfig"; path = "Pods/Target Support Files/Pods-2017 Scouting Collection/Pods-2017 Scouting Collection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +159,7 @@
 				A50FE9FE1E0746180087A052 /* Info.plist */,
 				A50FEA221E074ADA0087A052 /* View Controllers */,
 				A547FA611E0C917000C14CB0 /* DataModel.swift */,
+				AAD745131E4AD81700BF0F08 /* Action.swift */,
 			);
 			path = "2017 Scouting Collection";
 			sourceTree = "<group>";
@@ -175,11 +172,8 @@
 				A50FEA201E074AD40087A052 /* HomeViewController.swift */,
 				A544F1731E09E8550037A898 /* PrematchViewController.swift */,
 				A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */,
-				A5A285A11E0E6A1800FEB8A9 /* TeleopViewController.swift */,
 				A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */,
 				A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */,
-				A5A285A91E0E6AA800FEB8A9 /* ViewDataViewController.swift */,
-				A55CAD451E15056700EC173A /* SFDialogViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -528,20 +522,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A547FA621E0C917000C14CB0 /* DataModel.swift in Sources */,
+				AAD745141E4AD81700BF0F08 /* Action.swift in Sources */,
 				A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */,
 				A5A285A41E0E6A2C00FEB8A9 /* EndgameViewController.swift in Sources */,
 				A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */,
-				A5A285AA1E0E6AA800FEB8A9 /* ViewDataViewController.swift in Sources */,
 				A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */,
 				A50FE9F21E0746180087A052 /* ViewController.swift in Sources */,
-				A5A285A21E0E6A1800FEB8A9 /* TeleopViewController.swift in Sources */,
 				A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */,
 				A55165A21E15234F00502823 /* Button.swift in Sources */,
 				A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */,
 				A5A285AC1E0E6AE100FEB8A9 /* QRViewController.swift in Sources */,
 				A50FE9F81E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld in Sources */,
 				A50FE9F01E0746180087A052 /* AppDelegate.swift in Sources */,
-				A55CAD461E15056700EC173A /* SFDialogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

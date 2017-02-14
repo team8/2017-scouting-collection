@@ -22,6 +22,7 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
     @IBOutlet weak var matchNumber: UITextField!
     @IBOutlet weak var matchNumberOf: UITextField!
     @IBOutlet weak var matchNumberOfWidth: NSLayoutConstraint!
+    @IBOutlet weak var scoutingTeamNumber: UITextField!
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet var startMatchButton: UIButton!
@@ -30,6 +31,7 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         super.viewWillAppear(animated)
         
         let grey = UIColor.gray.cgColor
+        
         
         name.layer.borderColor = grey
         name.layer.borderWidth = 0.5
@@ -50,6 +52,11 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         matchNumberOf.layer.borderWidth = 0.5
         matchNumberOf.layer.cornerRadius = 5.0
         matchNumberOf.layer.masksToBounds = true
+        
+        scoutingTeamNumber.layer.borderColor = grey
+        scoutingTeamNumber.layer.borderWidth = 0.5
+        scoutingTeamNumber.layer.cornerRadius = 5.0
+        scoutingTeamNumber.layer.masksToBounds = true
         
     }
     
@@ -157,13 +164,14 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
     }
     @IBAction func startMatchPressed(_ sender: Any) {
 
-        if name.text == " " || matchType.text == "Match Type" || matchNumber.text == "" || (matchNumberOf.text == "" && matchNumberOfWidth.constant > 0){
+        if name.text == " " || matchType.text == "Match Type" || matchNumber.text == "" || (matchNumberOf.text == "" && matchNumberOfWidth.constant > 0) || scoutingTeamNumber.text == ""{
             
             let alertController = UIAlertController(title: "Complete Form", message: "Please fill everything in. Thanks!", preferredStyle: .alert)
             
             self.present(alertController, animated: true, completion:nil)
             
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                
             }
             
             alertController.addAction(OKAction)
@@ -184,8 +192,29 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
                 return
             }
         }
-
+        var matchTypeType : DataModel.MatchType = DataModel.MatchType.Unknown
+        switch matchType.text! {
+        case "Qualifying":
+            matchTypeType = DataModel.MatchType.Qualifying
+            break
+        case "Quarter Finals":
+            matchTypeType = DataModel.MatchType.QuarterFinals
+            break
+        case "Semi Finals":
+            matchTypeType = DataModel.MatchType.SemiFinals
+        case "Finals":
+            matchTypeType = DataModel.MatchType.Finals
+        default:
+            break
+        }
         
+        DataModel.scouterName = name.text!
+        DataModel.matchType = matchTypeType
+        DataModel.matchNumber = Int(matchNumber.text!)!
+        if matchTypeType != DataModel.MatchType.Qualifying{
+            DataModel.matchNumberOf = Int(matchNumberOf.text!)
+        }
+        DataModel.scoutingTeamNumber = Int(scoutingTeamNumber.text!)!
         performSegue(withIdentifier: "startMatch", sender: self)
 
     }
