@@ -26,6 +26,10 @@ class Action{
         case HighGoal
         case LowGoal
         case FuelRetrieved
+        
+        case BaselineCrossed
+        case NoAction
+        case BreakDown
     }
     
     enum Pegs{
@@ -42,6 +46,7 @@ class Action{
         case Hopper
         case AllainceStation
     }
+    
     
     init(time: Int, action : RobotAction){
         

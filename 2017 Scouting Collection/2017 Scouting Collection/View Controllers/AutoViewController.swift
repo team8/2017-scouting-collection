@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Spring
 
 class AutoViewController: ViewController {
     
@@ -17,22 +18,22 @@ class AutoViewController: ViewController {
     @IBOutlet weak var scoutingTeamNumber: UILabel!
     
     
-    var contentViewMaxHeight : CGFloat = 493.0
-    var active = "none"
+    var active : Int = 3
+    
+    @IBOutlet var contentViews: [SpringView]!
+    
     
     @IBOutlet weak var gearButton: UIImageView!
-    @IBOutlet weak var gearView: UIView!
-    @IBOutlet weak var gearViewConstraint: NSLayoutConstraint!
+    
     @IBOutlet var pegPosition: [UIButton]!
-    @IBOutlet weak var placedGearButton: UIView!
+    @IBOutlet weak var placedGearButton: SpringView!
     @IBOutlet weak var totalGearsPlacedLabel: UILabel!
     @IBOutlet weak var droppedGearButton: UIView!
     @IBOutlet weak var droppedGearLabel: UILabel!
     
     
     @IBOutlet weak var pressureButton: UIButton!
-    @IBOutlet weak var pressureView: UIView!
-    @IBOutlet weak var pressureViewConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var insideKeyButton: UIButton!
     @IBOutlet weak var outsideKeyButton: UIButton!
     @IBOutlet weak var highGoalsScoredButton: UIView!
@@ -44,12 +45,21 @@ class AutoViewController: ViewController {
     
     
     @IBOutlet weak var fuelButton: UIImageView!
-    @IBOutlet weak var fuelView: UIView!
-    @IBOutlet weak var fuelViewConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var fromHopperButton: UIView!
     @IBOutlet weak var totalFromHopperCollected: UILabel!
     @IBOutlet weak var fromAllainceStationButton: UILabel!
     @IBOutlet weak var totalFromAllainceStation: UILabel!
+    
+    @IBOutlet weak var otherButton: UIButton!
+    @IBOutlet weak var otherView: SpringView!
+    @IBOutlet var otherOptions: [UIButton]!
+    
+    @IBOutlet weak var otherConstraintOne: NSLayoutConstraint!
+    @IBOutlet weak var otherConstraintTwo: NSLayoutConstraint!
+    
+
+    
     
     
     var timeLeftTimer: Timer!
@@ -82,6 +92,28 @@ class AutoViewController: ViewController {
         
         
     }
+    func hideSelectedContentView(){
+        if active == 3{
+            for contentView in contentViews{
+                contentView.isHidden = true
+            }
+            return
+        }
+        contentViews[active].animation = "fadeOut"
+        contentViews[active].curve = "easeIn"
+        contentViews[active].duration = 1.0
+        contentViews[active].animate()
+        contentViews[active].isHidden = true
+    }
+    func showSelectedContentView(){
+        
+        contentViews[active].animation = "fadeIn"
+        contentViews[active].curve = "easeIn"
+        contentViews[active].duration = 1.0
+        contentViews[active].animate()
+        contentViews[active].isHidden = false
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         scoutingTeamNumber.text = "Team \(DataModel.scoutingTeamNumber)"
@@ -104,10 +136,7 @@ class AutoViewController: ViewController {
         fuelButton.addGestureRecognizer(fuelTap)
         fuelButton.isUserInteractionEnabled = true
         
-        //Hiding all of the content views
-        gearViewConstraint.constant = 0
-        fuelViewConstraint.constant = 0
-        pressureViewConstraint.constant = 0
+        hideSelectedContentView()
         
         //Adding tap recognizers for gear place/drop views
         let placedGearTap = UITapGestureRecognizer(target: self, action: #selector(placedGearButtonPressed))
@@ -142,24 +171,9 @@ class AutoViewController: ViewController {
     }
     
     func gearButtonTapped(){
-        switch active{
-            case "none":
-                break
-            case "gear":
-                break
-            case "fuel":
-                fuelViewConstraint.constant = 0
-                break
-            case "pressure":
-                pressureViewConstraint.constant = 0
-                break
-        default:
-            break
-        }
-        
-        
-        gearViewConstraint.constant = contentViewMaxHeight
-        active = "fuel"
+        hideSelectedContentView()
+        active = 0
+        showSelectedContentView()
         
         for senderX in pegPosition{
             senderX.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
@@ -206,6 +220,17 @@ class AutoViewController: ViewController {
 
     
     func placedGearButtonPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.placedGearButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.placedGearButton.alpha = 1.0
+            }
+        }
+        
+        
         var currentPegPosition = "";
         for selectedButton : UIButton in pegPosition{
             if selectedButton.backgroundColor == UIColor.white{
@@ -234,27 +259,24 @@ class AutoViewController: ViewController {
     }
     
     func droppedGearButtonPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.droppedGearButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.droppedGearButton.alpha = 1.0
+            }
+        }
         let action = Action(time: timePassed, action: Action.RobotAction.GearDropped)
         print("gearDropped")
         updateLabels()
     }
     
     @IBAction func pressureButtonTapped(_ sender: Any) {
-        switch active{
-        case "none":
-            break
-        case "gear":
-            gearViewConstraint.constant = 0
-        case "fuel":
-            fuelViewConstraint.constant = 0
-            break
-        case "pressure":
-            break
-        default:
-            break
-        }
-        pressureViewConstraint.constant = contentViewMaxHeight
-        active = "pressure"
+        hideSelectedContentView()
+        active = 1
+        showSelectedContentView()
         
         insideKeyButton.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
         insideKeyButton.layer.borderWidth = 0
@@ -308,6 +330,15 @@ class AutoViewController: ViewController {
     
     
     func highGoalsScoredPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.highGoalsScoredButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.highGoalsScoredButton.alpha = 1.0
+            }
+        }
         print("highGoalScored")
         var currentPosition = ""
         for selectedButton : UIButton in [insideKeyButton, outsideKeyButton]{
@@ -333,6 +364,15 @@ class AutoViewController: ViewController {
     }
     
     func highGoalsMissedPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.highGoalsMissedButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.highGoalsMissedButton.alpha = 1.0
+            }
+        }
         print("highGoalMissed")
         var currentPosition = ""
         for selectedButton : UIButton in [insideKeyButton, outsideKeyButton]{
@@ -357,6 +397,15 @@ class AutoViewController: ViewController {
     }
     
     func lowGoalDumpedPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.lowGoalDumpButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.lowGoalDumpButton.alpha = 1.0
+            }
+        }
         print("lowGoal")
         let action = Action(time: timePassed, action: Action.RobotAction.LowGoal)
         updateLabels()
@@ -364,24 +413,21 @@ class AutoViewController: ViewController {
     
     
     func fuelButtonTapped(){
-        switch active{
-        case "none":
-            break
-        case "gear":
-            gearViewConstraint.constant = 0
-        case "fuel":
-            break
-        case "pressure":
-            pressureViewConstraint.constant = 0
-        default:
-            break
-        }
-        
-        fuelViewConstraint.constant = contentViewMaxHeight
-        active = "fuel"
+        hideSelectedContentView()
+        active = 2
+        showSelectedContentView()
     }
     
     func fromHopperPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.fromHopperButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.fromHopperButton.alpha = 1.0
+            }
+        }
         print("hopper")
         let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.Hopper)
@@ -390,6 +436,15 @@ class AutoViewController: ViewController {
     }
     
     func fromAllainceStationPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.fromAllainceStationButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.fromAllainceStationButton.alpha = 1.0
+            }
+        }
         print("allaince")
         let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.AllainceStation)
@@ -397,10 +452,48 @@ class AutoViewController: ViewController {
         updateLabels()
     }
     
+    var otherViewShown = true
+    
+    @IBAction func dismissedButtonPressed(_ sender: UIButton) {
+        if otherViewShown{
+            otherView.animation = "fadeOut"
+            otherView.curve = "easeIn"
+            otherView.duration = 1.0
+            otherView.animate()
+
+            otherViewShown = false
+            sender.setTitle("Other", for: .normal)
+            return
+        }
+        otherView.animation = "slideRight"
+        otherView.curve = "linear"
+        otherView.duration = 1.0
+        otherView.animate()
+        otherViewShown = true
+        sender.setTitle("Dismiss", for: .normal)
+    }
+    
+    @IBAction func crossedBaselinePressed(_ sender: Any) {
+        let action = Action(time: timePassed, action: Action.RobotAction.BaselineCrossed)
+        otherConstraintOne.constant = 0
+        otherConstraintTwo.constant = 0
+        
+    }
+    @IBAction func noActionPressed(_ sender: Any) {
+        let action = Action(time: timePassed, action: Action.RobotAction.NoAction)
+        
+    }
+    @IBAction func brokeDownPressed(_ sender: Any) {
+        let action = Action(time: timePassed, action: Action.RobotAction.BreakDown)
+    }
+    
+    
+    
+    
     @IBAction func undoButtonPressed(_ sender: UIButton) {
         
         let lastAction : Action = DataModel.actions[(DataModel.actions.count - 1)]
-        let messageString : String
+        var messageString : String = ""
         switch lastAction.action {
         case Action.RobotAction.GearPlaced:
             messageString = "gear placed"
@@ -490,6 +583,7 @@ class AutoViewController: ViewController {
         totalFromAllainceStation.text = "Total: \(totalFuelRetrievedFromAllainceStation)"
         
     }
+    
     @IBAction func endMatchButtonPressed(_ sender: Any) {
         if timePassed > 279{
             performSegue(withIdentifier: "endMatch", sender: self)
