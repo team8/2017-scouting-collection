@@ -8,7 +8,8 @@ target '2017 Scouting Collection' do
   # Pods for 2017 Scouting Collection
   
   pod "QRCode"
-
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+  
   target '2017 Scouting CollectionTests' do
     inherit! :search_paths
     # Pods for testing
