@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mHB-uO-iEO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="mHB-uO-iEO">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team 8 Scouting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJK-bd-O4t">
-                                <rect key="frame" x="356" y="30" width="312.5" height="54"/>
+                                <rect key="frame" x="356.5" y="30" width="312.5" height="54"/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="45"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -285,7 +285,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="saved matches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHf-80-rrS">
-                                <rect key="frame" x="289" y="30" width="447" height="86.5"/>
+                                <rect key="frame" x="288.5" y="30" width="447" height="86.5"/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="72"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -508,6 +508,7 @@
                                 <color key="backgroundColor" red="0.92941176470588238" green="0.41568627450980389" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jh3-PH-6Pj" secondAttribute="height" multiplier="243:116" id="14k-Wd-RII"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="116" id="GHF-fb-68G"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="116" id="UXO-37-U9d"/>
                                     <constraint firstAttribute="height" constant="116" id="rfI-bp-M7N"/>
                                 </constraints>
@@ -888,7 +889,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RN9-RA-Wie">
-                                        <rect key="frame" x="298.5" y="0.0" width="290" height="68"/>
+                                        <rect key="frame" x="299" y="0.0" width="290" height="68"/>
                                         <color key="backgroundColor" red="0.95686274509803915" green="0.45490196078431372" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="68" id="qWL-eH-6Gt"/>
@@ -932,6 +933,20 @@
                                     <constraint firstAttribute="trailing" secondItem="EuS-Td-k2D" secondAttribute="trailing" id="y8T-89-cKi"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFq-hg-AcV" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="761" y="94" width="243" height="38"/>
+                                <color key="backgroundColor" red="0.4392156862745098" green="0.68235294117647061" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="LCl-E7-0bp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="26"/>
+                                <state key="normal" title="Redo">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="redoButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="tV1-7F-MJw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -950,9 +965,11 @@
                             <constraint firstItem="iMb-bv-ZLQ" firstAttribute="top" secondItem="UeB-Cg-r0K" secondAttribute="bottom" id="HPU-Xf-V0s"/>
                             <constraint firstItem="euO-PC-dTg" firstAttribute="top" secondItem="nP7-lW-Ei6" secondAttribute="top" id="IUa-dx-jma"/>
                             <constraint firstItem="PeK-6c-pCD" firstAttribute="top" secondItem="nVJ-c0-vrw" secondAttribute="top" constant="30" id="KDm-gu-zJ6"/>
+                            <constraint firstItem="Jh3-PH-6Pj" firstAttribute="trailing" secondItem="fFq-hg-AcV" secondAttribute="trailing" id="KSy-Lx-gFK"/>
                             <constraint firstItem="iJ4-Gs-bWU" firstAttribute="centerX" secondItem="nVJ-c0-vrw" secondAttribute="centerX" id="LFV-5a-fmI"/>
                             <constraint firstItem="l6s-bG-nKY" firstAttribute="leading" secondItem="nVJ-c0-vrw" secondAttribute="leadingMargin" id="MqZ-zD-DL6"/>
                             <constraint firstItem="2E9-CC-ivn" firstAttribute="leading" secondItem="BqV-Qm-CW7" secondAttribute="trailing" constant="8" id="Mrd-bs-CYd"/>
+                            <constraint firstItem="Jh3-PH-6Pj" firstAttribute="leading" secondItem="fFq-hg-AcV" secondAttribute="leading" id="NUh-AZ-LxD"/>
                             <constraint firstItem="Jh3-PH-6Pj" firstAttribute="top" secondItem="Qrs-QF-22H" secondAttribute="bottom" constant="111" id="Nwh-j8-kxJ"/>
                             <constraint firstItem="nH1-oi-YIb" firstAttribute="top" secondItem="Jh3-PH-6Pj" secondAttribute="bottom" constant="8" id="Pvj-SD-TSt"/>
                             <constraint firstItem="euO-PC-dTg" firstAttribute="leading" secondItem="nP7-lW-Ei6" secondAttribute="trailing" constant="8" id="R4j-5w-UDL"/>
@@ -977,6 +994,7 @@
                             <constraint firstItem="l6s-bG-nKY" firstAttribute="top" secondItem="Jh3-PH-6Pj" secondAttribute="bottom" constant="8" id="tJH-9i-LyO"/>
                             <constraint firstItem="Jh3-PH-6Pj" firstAttribute="trailing" secondItem="nVJ-c0-vrw" secondAttribute="trailingMargin" id="vCs-Ze-6oV"/>
                             <constraint firstItem="iJ4-Gs-bWU" firstAttribute="trailing" secondItem="PeK-6c-pCD" secondAttribute="trailing" id="vWw-4a-HyT"/>
+                            <constraint firstItem="Jh3-PH-6Pj" firstAttribute="top" secondItem="fFq-hg-AcV" secondAttribute="bottom" constant="-1" id="ved-Xv-Tf4"/>
                         </constraints>
                     </view>
                     <connections>
@@ -984,7 +1002,7 @@
                         <outlet property="droppedGearButton" destination="9b8-PX-gt2" id="VPt-Xu-BIe"/>
                         <outlet property="droppedGearLabel" destination="drC-Dm-iS8" id="C1X-OB-yyY"/>
                         <outlet property="endMatchButton" destination="K9A-ba-xuD" id="wAR-er-KbY"/>
-                        <outlet property="fromAllainceStationButton" destination="8n4-du-LL6" id="4DZ-83-Kq0"/>
+                        <outlet property="fromAllainceStationButton" destination="9VB-NY-4u8" id="UtV-pR-JDY"/>
                         <outlet property="fromHopperButton" destination="13n-kK-pEK" id="gi6-uR-oeG"/>
                         <outlet property="fuelButton" destination="2E9-CC-ivn" id="fu5-nC-VJ2"/>
                         <outlet property="gearButton" destination="qG4-hW-Dau" id="euE-Fe-B8q"/>
@@ -999,6 +1017,7 @@
                         <outlet property="outsideKeyButton" destination="1C1-LW-Fhd" id="sfb-QZ-omT"/>
                         <outlet property="placedGearButton" destination="mmd-oo-0Uq" id="2DT-vE-5Jy"/>
                         <outlet property="pressureButton" destination="BqV-Qm-CW7" id="ISf-W3-nqk"/>
+                        <outlet property="redoButton" destination="fFq-hg-AcV" id="dYL-CP-ULV"/>
                         <outlet property="scoutingTeamNumber" destination="iJ4-Gs-bWU" id="OdO-aR-k48"/>
                         <outlet property="timerLabel" destination="iMb-bv-ZLQ" id="nrh-mj-fx3"/>
                         <outlet property="totalFromAllainceStation" destination="ZlM-xp-uUi" id="lfm-cs-kIM"/>

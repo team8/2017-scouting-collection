@@ -18,6 +18,7 @@ class DataModel {
     static var matchNumber : Int = Int()
     static var matchNumberOf : Int?
     static var scoutingTeamNumber : Int = Int()
+    static var undidActions = [Action]()
     //Have to do endgame
     
     enum MatchType {
@@ -27,9 +28,24 @@ class DataModel {
         case Finals
         case Unknown
     }
+    
     static public func undoAction(){
-        DataModel.actions.removeLast()
+        if !(actions.isEmpty){
+            let lastAction = actions[actions.count - 1];
+            actions.removeLast()
+            undidActions.append(lastAction)
+        }
     }
+    
+    static public func redoAction(){
+        
+        if !(undidActions.isEmpty){
+            let lastUndidAction = undidActions[undidActions.count - 1];
+            undidActions.removeLast()
+            actions.append(lastUndidAction)
+        }
+    }
+    
     static public func printData(){
         print(actions)
     }

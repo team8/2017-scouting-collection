@@ -48,8 +48,8 @@ class AutoViewController: ViewController {
 
     @IBOutlet weak var fromHopperButton: UIView!
     @IBOutlet weak var totalFromHopperCollected: UILabel!
-    @IBOutlet weak var fromAllainceStationButton: UILabel!
     @IBOutlet weak var totalFromAllainceStation: UILabel!
+    @IBOutlet var fromAllainceStationButton: UIView!
     
     @IBOutlet weak var otherButton: UIButton!
     @IBOutlet weak var otherView: SpringView!
@@ -58,7 +58,7 @@ class AutoViewController: ViewController {
     @IBOutlet weak var otherConstraintOne: NSLayoutConstraint!
     @IBOutlet weak var otherConstraintTwo: NSLayoutConstraint!
     
-
+    @IBOutlet var redoButton: SpringButton!
     
     
     
@@ -164,6 +164,7 @@ class AutoViewController: ViewController {
         fromAllainceStationButton.addGestureRecognizer(fromAllainceStationTap)
         fromAllainceStationButton.isUserInteractionEnabled = true
         
+        redoButton.isHidden = true
         
         
 //        gearButton.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
@@ -436,6 +437,7 @@ class AutoViewController: ViewController {
     }
     
     func fromAllainceStationPressed(){
+        
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
             self.fromAllainceStationButton.alpha = 0.5
@@ -491,46 +493,28 @@ class AutoViewController: ViewController {
     
     
     @IBAction func undoButtonPressed(_ sender: UIButton) {
-        
-        let lastAction : Action = DataModel.actions[(DataModel.actions.count - 1)]
-        var messageString : String = ""
-        switch lastAction.action {
-        case Action.RobotAction.GearPlaced:
-            messageString = "gear placed"
-            break
-        case Action.RobotAction.GearDropped:
-            messageString = "gear dropped"
-            break
-        case Action.RobotAction.HighGoal:
-            if lastAction.highGoalSuccessful! == true{
-                messageString = "high goal scored"
-            }else{
-                messageString = "high goal missed"
-            }
-            break
-        case Action.RobotAction.LowGoal:
-            messageString = "low goal dump"
-            break
-        case Action.RobotAction.FuelRetrieved:
-            if lastAction.fuelRetrievialSource == Action.FuelRetrievalPositions.AllainceStation{
-                messageString = "fuel retrieved from allaince station"
-            }else{
-                messageString = "fuel retrieved from hopper"
-            }
-            break
-        default:
-            break
+        print("pressed")
+        DataModel.undoAction()
+        updateLabels()
+        if !DataModel.undidActions.isEmpty && redoButton.isHidden{
+            redoButton.isHidden = false
+            redoButton.animation = "slideUp"
+            redoButton.force = 0.1
+            redoButton.animate()
         }
-        
-        let alert = UIAlertController(title: "Undo Confirmation", message: "Are you sure you want to undo your last action? It was \(messageString)", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-            DataModel.undoAction()
-            self.updateLabels()
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
-        }))
-        self.present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func redoButtonPressed(_ sender: Any) {
+        DataModel.redoAction()
+        updateLabels()
+        print(DataModel.undidActions)
+        if DataModel.undidActions.isEmpty{
+            redoButton.animation = "fadeOut"
+            redoButton.animate()
+            redoButton.isHidden = true
+        }
+    }
+    
     
     func updateLabels(){
         print("updatingLabels")
