@@ -56,12 +56,15 @@ class Action{
         case Dropped
     }
     
-    init(time: Int, action : RobotAction){
+    init(isAuto: Bool, time: Int, action: RobotAction){
         
         self.time = Int(time)
         self.action = action
-        
-        DataModel.actions.append(self)
+        if (isAuto) {
+            DataModel.autoActions.append(self)
+        } else {
+            DataModel.teleActions.append(self)
+        }
     }
     
     public func gearPlaced(pegPosition: Pegs){

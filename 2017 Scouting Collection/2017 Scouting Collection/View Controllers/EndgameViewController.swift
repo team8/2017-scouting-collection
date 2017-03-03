@@ -14,13 +14,18 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     
     @IBOutlet weak var matchAbandoned: UISwitch!
 //    @IBOutlet weak var robotScaled: UISwitch!
-    @IBOutlet weak var gearPlacementRating: UISlider!
-    @IBOutlet weak var gearPlacementLabel: UILabel!
-    @IBOutlet weak var lowGoalShootingRating: UISlider!
-    @IBOutlet weak var lowGoalShootingLabel: UILabel!
-    @IBOutlet weak var highGoalShootingRating: UISlider!
-    @IBOutlet weak var highGoalShootingLabel: UILabel!
-    @IBOutlet weak var groundFuelIntake: UISwitch!
+    @IBOutlet weak var takeoff: UISegmentedControl!
+    @IBOutlet weak var takeoffSpeed: UISlider!
+    @IBOutlet weak var takeoffLabel: UILabel!
+    @IBOutlet weak var defenseSwitch: UISwitch!
+    @IBOutlet weak var defenseRating: UISlider!
+    @IBOutlet weak var defenseLabel: UILabel!
+    @IBOutlet weak var gearGroundIntakeSwitch: UISwitch!
+    @IBOutlet weak var gearGroundIntakeRating: UISlider!
+    @IBOutlet weak var gearGroundIntakeLabel: UILabel!
+    @IBOutlet weak var fuelGroundIntakeSwitch: UISwitch!
+    @IBOutlet weak var fuelGroundIntakeRating: UISlider!
+    @IBOutlet weak var fuelGroundIntakeLabel: UILabel!
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var additionalNotesPopUpView: UIView!
     @IBOutlet weak var additionalNotesTextView: UITextView!
@@ -29,6 +34,11 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        takeoffSpeed.isEnabled = false
+        defenseRating.isEnabled = false
+        gearGroundIntakeRating.isEnabled = false
+        fuelGroundIntakeRating.isEnabled = false
         
         let additionalNotesTap = UITapGestureRecognizer(target: self, action: #selector(additionalNotesTapped))
         additionalNotes.addGestureRecognizer(additionalNotesTap)
@@ -50,16 +60,47 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         additionalNotesDoneButton.layer.masksToBounds = true
 
     }
-    @IBAction func gearPlacementRatingChanged(_ sender: Any) {
-        gearPlacementLabel.text = "\(Int(gearPlacementRating.value))/10"
+    @IBAction func takeoffChanged(_ sender: Any) {
+        if(takeoff.selectedSegmentIndex == 2) {
+            takeoffSpeed.isEnabled = true
+        } else {
+            takeoffSpeed.isEnabled = false
+        }
+    }
+    @IBAction func takeoffSpeedChanged(_ sender: Any) {
+        takeoffLabel.text = "\(Int(takeoffSpeed.value))/5"
+    }
+    @IBAction func defenseSwitchChanged(_ sender: Any) {
+        if(defenseSwitch.isOn) {
+            defenseRating.isEnabled = true
+        } else {
+            defenseRating.isEnabled = false
+        }
+    }
+    @IBAction func defenseRatingChanged(_ sender: Any) {
+        defenseLabel.text = "\(Int(defenseRating.value))/5"
 
     }
-    @IBAction func lowGoalShootingChanged(_ sender: Any) {
-        lowGoalShootingLabel.text = "\(Int(lowGoalShootingRating.value))/10"
+    @IBAction func gearGroundIntakeSwitchChanged(_ sender: Any) {
+        if(gearGroundIntakeSwitch.isOn) {
+            gearGroundIntakeRating.isEnabled = true
+        } else {
+            gearGroundIntakeRating.isEnabled = false
+        }
+    }
+    @IBAction func gearGroundIntakeChanged(_ sender: Any) {
+        gearGroundIntakeLabel.text = "\(Int(gearGroundIntakeRating.value))/5"
         
     }
-    @IBAction func highGoalShootingChanged(_ sender: Any) {
-        highGoalShootingLabel.text = "\(Int(highGoalShootingRating.value))/10"
+    @IBAction func fuelGroundIntakeSwitchChanged(_ sender: Any) {
+        if(fuelGroundIntakeSwitch.isOn) {
+            fuelGroundIntakeRating.isEnabled = true
+        } else {
+            fuelGroundIntakeRating.isEnabled = false
+        }
+    }
+    @IBAction func fuelGroundIntakeChanged(_ sender: Any) {
+        fuelGroundIntakeLabel.text = "\(Int(fuelGroundIntakeRating.value))/5"
     }
     
     func additionalNotesTapped(){
@@ -67,11 +108,14 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         view.layer.backgroundColor = UIColor.gray.cgColor
         
         matchAbandoned.isUserInteractionEnabled = false
-//        robotScaled.isUserInteractionEnabled = false
-        gearPlacementRating.isUserInteractionEnabled = false
-        lowGoalShootingRating.isUserInteractionEnabled = false
-        highGoalShootingRating.isUserInteractionEnabled = false
-        groundFuelIntake.isUserInteractionEnabled = false
+        takeoff.isUserInteractionEnabled = false
+        takeoffSpeed.isUserInteractionEnabled = false
+        defenseSwitch.isUserInteractionEnabled = false
+        defenseRating.isUserInteractionEnabled = false
+        gearGroundIntakeSwitch.isUserInteractionEnabled = false
+        gearGroundIntakeRating.isUserInteractionEnabled = false
+        fuelGroundIntakeSwitch.isUserInteractionEnabled = false
+        fuelGroundIntakeRating.isUserInteractionEnabled = false
         additionalNotes.isUserInteractionEnabled = false
         
         additionalNotesTextView.becomeFirstResponder()
@@ -83,11 +127,14 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         view.layer.backgroundColor = UIColor.white.cgColor
         
         matchAbandoned.isUserInteractionEnabled = true
-//        robotScaled.isUserInteractionEnabled = true
-        gearPlacementRating.isUserInteractionEnabled = true
-        lowGoalShootingRating.isUserInteractionEnabled = true
-        highGoalShootingRating.isUserInteractionEnabled = true
-        groundFuelIntake.isUserInteractionEnabled = true
+        takeoff.isUserInteractionEnabled = true
+        takeoffSpeed.isUserInteractionEnabled = true
+        defenseSwitch.isUserInteractionEnabled = true
+        defenseRating.isUserInteractionEnabled = true
+        gearGroundIntakeSwitch.isUserInteractionEnabled = true
+        gearGroundIntakeRating.isUserInteractionEnabled = true
+        fuelGroundIntakeSwitch.isUserInteractionEnabled = true
+        fuelGroundIntakeRating.isUserInteractionEnabled = true
         additionalNotes.isUserInteractionEnabled = true
         
         additionalNotes.text = additionalNotesTextView.text
@@ -99,4 +146,24 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         return numberOfChars < 150;
     }
     
+    @IBAction func submitPressed(_ sender: Any) {
+        DataModel.data["no_show"] = Int(NSNumber(value: matchAbandoned.isOn))
+        DataModel.data["takeoff"] = takeoff.selectedSegmentIndex
+        if(takeoff.selectedSegmentIndex == 2) {
+            DataModel.data["takeoff_speed"] = takeoffSpeed.value
+        }
+        DataModel.data["defense"] = Int(NSNumber(value: defenseSwitch.isOn))
+        if(defenseSwitch.isOn) {
+            DataModel.data["defense_rating"] = defenseRating.value
+        }
+        DataModel.data["gear_ground_intake"] = Int(NSNumber(value: gearGroundIntakeSwitch.isOn))
+        if(gearGroundIntakeSwitch.isOn) {
+            DataModel.data["gear_ground_intake_rating"] = gearGroundIntakeRating.value
+        }
+        DataModel.data["fuel_ground_intake"] = Int(NSNumber(value: fuelGroundIntakeSwitch.isOn))
+        if(fuelGroundIntakeSwitch.isOn) {
+            DataModel.data["fuel_ground_intake_rating"] = fuelGroundIntakeRating.value
+        }
+        self.performSegue(withIdentifier: "endgameToQR", sender: nil)
+    }
 }

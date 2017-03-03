@@ -18,7 +18,7 @@ class QRCodeViewController : ViewController {
     
     override func viewDidLoad() {
         
-        TextTOQRCode = "QR Code String Goes Here"
+        TextTOQRCode = DataModel.CSV()
         
         var qrCode = QRCode(TextTOQRCode)
         qrCode?.size = CGSize(width: 300, height: 300)
@@ -26,5 +26,18 @@ class QRCodeViewController : ViewController {
         qrC?.image = qrCode?.image
     }
     
+    @IBAction func finishPressed(_ sender: Any) {
+        DataModel.autoActions = [Action]()
+        DataModel.teleActions = [Action]()
+        DataModel.scouterName = String()
+        DataModel.matchType = nil
+        DataModel.matchNumber = Int()
+        DataModel.matchNumberOf = nil
+        DataModel.scoutingTeamNumber = Int()
+        DataModel.autoUndidActions = [Action]()
+        DataModel.teleUndidActions = [Action]()
+        DataModel.data = [String: Any]()
+        self.performSegue(withIdentifier: "unwindQRToHome", sender: nil)
+    }
     
 }

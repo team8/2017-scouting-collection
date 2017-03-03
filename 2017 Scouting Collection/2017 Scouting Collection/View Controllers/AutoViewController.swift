@@ -271,7 +271,7 @@ class AutoViewController: ViewController {
             }
         }
         
-        let action = Action(time: timePassed, action: Action.RobotAction.GearPlaced)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearPlaced)
         switch currentPegPosition {
         case "Key Peg":
             action.gearPlaced(pegPosition: Action.Pegs.Key)
@@ -301,7 +301,7 @@ class AutoViewController: ViewController {
                 self.droppedGearButton.alpha = 1.0
             }
         }
-        let action = Action(time: timePassed, action: Action.RobotAction.GearDropped)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearDropped)
         print("gearDropped")
         updateLabels()
     }
@@ -380,7 +380,7 @@ class AutoViewController: ViewController {
             }
         }
         
-        let action = Action(time: timePassed, action: Action.RobotAction.HighGoal)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.HighGoal)
         
         switch currentPosition {
         case "Inside Key":
@@ -414,7 +414,7 @@ class AutoViewController: ViewController {
             }
         }
         
-        let action = Action(time: timePassed, action: Action.RobotAction.HighGoal)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.HighGoal)
         
         switch currentPosition {
         case "Inside Key":
@@ -440,7 +440,7 @@ class AutoViewController: ViewController {
             }
         }
         print("lowGoal")
-        let action = Action(time: timePassed, action: Action.RobotAction.LowGoal)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.LowGoal)
         action.lowGoal(full: true)
         updateLabels()
     }
@@ -456,7 +456,7 @@ class AutoViewController: ViewController {
             }
         }
         print("half lowGoal")
-        let action = Action(time: timePassed, action: Action.RobotAction.LowGoal)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.LowGoal)
         action.lowGoal(full: false)
         updateLabels()
     }
@@ -479,7 +479,7 @@ class AutoViewController: ViewController {
             }
         }
         print("fuel hopper")
-        let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.Hopper)
         updateLabels()
         
@@ -497,7 +497,7 @@ class AutoViewController: ViewController {
             }
         }
         print("fuel loading")
-        let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.LoadingStation)
         DataModel.printData()
         updateLabels()
@@ -515,7 +515,7 @@ class AutoViewController: ViewController {
             }
         }
         print("gear ground")
-        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.Ground)
         DataModel.printData()
         updateLabels()
@@ -533,7 +533,7 @@ class AutoViewController: ViewController {
             }
         }
         print("gear loading")
-        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.LoadingStation)
         DataModel.printData()
         updateLabels()
@@ -551,7 +551,7 @@ class AutoViewController: ViewController {
             }
         }
         print("gear dropped")
-        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.Dropped)
         DataModel.printData()
         updateLabels()
@@ -579,7 +579,7 @@ class AutoViewController: ViewController {
     }
     
     @IBAction func crossedBaselinePressed(_ sender: Any) {
-//        let action = Action(time: timePassed, action: Action.RobotAction.BaselineCrossed)
+//        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.BaselineCrossed)
 //        otherConstraintOne.constant = 0
 //        otherConstraintTwo.constant = 0
         if let baseline = DataModel.data["baseline"] as? Bool {
@@ -605,7 +605,7 @@ class AutoViewController: ViewController {
         })
     }
     @IBAction func noActionPressed(_ sender: Any) {
-        //        let action = Action(time: timePassed, action: Action.RobotAction.NoAction)
+        //        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.NoAction)
         if let baseline = DataModel.data["no_action"] as? Bool {
             if(baseline) {
                 DataModel.data["no_action"] = false
@@ -655,9 +655,9 @@ class AutoViewController: ViewController {
     
     @IBAction func undoButtonPressed(_ sender: UIButton) {
         print("pressed")
-        DataModel.undoAction()
+        DataModel.undoAction(isAuto)
         updateLabels()
-        if !DataModel.undidActions.isEmpty && redoButton.isHidden{
+        if ((isAuto && !DataModel.autoUndidActions.isEmpty) || (!isAuto && !DataModel.teleUndidActions.isEmpty)) && redoButton.isHidden {
             redoButton.isHidden = false
             redoButton.animation = "slideUp"
             redoButton.force = 0.1
@@ -666,10 +666,10 @@ class AutoViewController: ViewController {
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
-        DataModel.redoAction()
+        DataModel.redoAction(isAuto)
         updateLabels()
-        print(DataModel.undidActions)
-        if DataModel.undidActions.isEmpty{
+//        print(DataModel.undidActions)
+        if ((isAuto && DataModel.autoUndidActions.isEmpty) || (!isAuto && DataModel.teleUndidActions.isEmpty)) {
             redoButton.animation = "fadeOut"
             redoButton.animate()
             redoButton.isHidden = true
@@ -691,7 +691,15 @@ class AutoViewController: ViewController {
         var totalGearsRetrievedFromLoadingStation : Int = 0
         var totalGearsDroppedAtLoadingStation : Int = 0
         
-        for actionX in DataModel.actions{
+        var actions: [Action]
+        
+        if (isAuto) {
+            actions = DataModel.autoActions
+        } else {
+            actions = DataModel.teleActions
+        }
+        
+        for actionX in actions {
             print(actionX.action)
             switch actionX.action {
             case Action.RobotAction.GearPlaced:
@@ -743,7 +751,7 @@ class AutoViewController: ViewController {
         self.totalLowGoalDumps.text = "Total: \(totalLowGoalDumps)"
         self.totalHalfLowGoal.text = "Total: \(totalHalfLowGoal)"
         self.totalHighGoals.text = "Total High Cycles: \(totalSuccessfulHighGoals + totalUnsuccessfulHighGoals)"
-        self.totalLowGoals.text = "Total High Cycles: \(totalLowGoalDumps + totalHalfLowGoal)"
+        self.totalLowGoals.text = "Total Low Cycles: \(totalLowGoalDumps + totalHalfLowGoal)"
         totalFuelFromHopperCollected.text = "Total: \(totalFuelRetrievedFromHoppers)"
         totalFuelFromLoadingStation.text = "Total: \(totalFuelRetrievedFromLoadingStation)"
         totalGearsGroundIntake.text = "Total: \(totalGearsRetrievedFromGround)"
@@ -757,7 +765,7 @@ class AutoViewController: ViewController {
             let alert = UIAlertController(title: "Continue Confirmation", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
                 self.toTeleop()
-                
+                self.updateLabels()
             }))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
             }))
