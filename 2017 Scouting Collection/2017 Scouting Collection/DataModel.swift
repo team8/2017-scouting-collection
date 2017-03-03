@@ -19,7 +19,7 @@ class DataModel {
     static var matchNumberOf : Int?
     static var scoutingTeamNumber : Int = Int()
     static var undidActions = [Action]()
-    //Have to do endgame
+    static var data = [String: Any]()
     
     enum MatchType {
         case Qualifying

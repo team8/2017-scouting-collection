@@ -13,7 +13,7 @@ import UIKit
 class EndgameViewController: ViewController, UITextViewDelegate{
     
     @IBOutlet weak var matchAbandoned: UISwitch!
-    @IBOutlet weak var robotScaled: UISwitch!
+//    @IBOutlet weak var robotScaled: UISwitch!
     @IBOutlet weak var gearPlacementRating: UISlider!
     @IBOutlet weak var gearPlacementLabel: UILabel!
     @IBOutlet weak var lowGoalShootingRating: UISlider!
@@ -67,7 +67,7 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         view.layer.backgroundColor = UIColor.gray.cgColor
         
         matchAbandoned.isUserInteractionEnabled = false
-        robotScaled.isUserInteractionEnabled = false
+//        robotScaled.isUserInteractionEnabled = false
         gearPlacementRating.isUserInteractionEnabled = false
         lowGoalShootingRating.isUserInteractionEnabled = false
         highGoalShootingRating.isUserInteractionEnabled = false
@@ -83,7 +83,7 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         view.layer.backgroundColor = UIColor.white.cgColor
         
         matchAbandoned.isUserInteractionEnabled = true
-        robotScaled.isUserInteractionEnabled = true
+//        robotScaled.isUserInteractionEnabled = true
         gearPlacementRating.isUserInteractionEnabled = true
         lowGoalShootingRating.isUserInteractionEnabled = true
         highGoalShootingRating.isUserInteractionEnabled = true

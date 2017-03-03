@@ -42,18 +42,32 @@ class AutoViewController: ViewController {
     @IBOutlet weak var totalHighGoalsMissedButton: UILabel!
     @IBOutlet weak var lowGoalDumpButton: UIView!
     @IBOutlet weak var totalLowGoalDumps: UILabel!
-    
+    @IBOutlet weak var halfLowGoalButton: UIView!
+    @IBOutlet weak var totalHalfLowGoal: UILabel!
+    @IBOutlet weak var totalHighGoals: UILabel!
+    @IBOutlet weak var totalLowGoals: UILabel!
     
     @IBOutlet weak var fuelButton: UIImageView!
 
-    @IBOutlet weak var fromHopperButton: UIView!
-    @IBOutlet weak var totalFromHopperCollected: UILabel!
-    @IBOutlet weak var totalFromAllainceStation: UILabel!
-    @IBOutlet var fromAllainceStationButton: UIView!
+    @IBOutlet weak var fuelFromHopperButton: UIView!
+    @IBOutlet weak var totalFuelFromHopperCollected: UILabel!
+    @IBOutlet weak var totalFuelFromLoadingStation: UILabel!
+    @IBOutlet var fuelFromLoadingStationButton: UIView!
+    
+    @IBOutlet weak var gearsGroundIntakeButton: UIView!
+    @IBOutlet weak var gearsFromLoadingStationButton: UIView!
+    @IBOutlet weak var gearsDroppedAtLoadingStationButton: UIView!
+    @IBOutlet weak var totalGearsGroundIntake: UILabel!
+    @IBOutlet weak var totalGearsFromLoadingStation: UILabel!
+    @IBOutlet weak var totalGearsDroppedAtLoadingStation: UILabel!
     
     @IBOutlet weak var otherButton: UIButton!
     @IBOutlet weak var otherView: SpringView!
     @IBOutlet var otherOptions: [UIButton]!
+    
+    @IBOutlet weak var baselineButton: UIButton!
+    @IBOutlet weak var noActionButton: UIButton!
+    @IBOutlet weak var brokeDownButton: UIButton!
     
     @IBOutlet weak var otherConstraintOne: NSLayoutConstraint!
     @IBOutlet weak var otherConstraintTwo: NSLayoutConstraint!
@@ -72,10 +86,6 @@ class AutoViewController: ViewController {
     }
     func updateTimeLabel() {
         timePassed += 1
-        if timePassed > 20{
-            isAuto = false
-            currentPeriod.text = "Teleop"
-        }
         if isAuto{
             timerLabel.text = "\(timePassed)"
         }else{
@@ -91,6 +101,13 @@ class AutoViewController: ViewController {
         }
         
         
+    }
+    func toTeleop() {
+        isAuto = false
+        timePassed = 20
+        currentPeriod.text = "Teleop"
+        otherConstraintOne.constant = 0
+        otherConstraintTwo.constant = 0
     }
     func hideSelectedContentView(){
         if active == 3{
@@ -154,15 +171,30 @@ class AutoViewController: ViewController {
         let lowGoalDumpTap = UITapGestureRecognizer(target: self, action: #selector(lowGoalDumpedPressed))
         lowGoalDumpButton.addGestureRecognizer(lowGoalDumpTap)
         lowGoalDumpButton.isUserInteractionEnabled = true
+        let halfLowGoalTap = UITapGestureRecognizer(target: self, action: #selector(halfLowGoalPressed))
+        halfLowGoalButton.addGestureRecognizer(halfLowGoalTap)
+        halfLowGoalButton.isUserInteractionEnabled = true
         
         //Adding the gesture recognizers for the fuel buttons
-        let fromHopperTap = UITapGestureRecognizer(target: self, action: #selector(fromHopperPressed))
-        fromHopperButton.addGestureRecognizer(fromHopperTap)
-        fromHopperButton.isUserInteractionEnabled = true
+        let fuelFromHopperTap = UITapGestureRecognizer(target: self, action: #selector(fuelFromHopperPressed))
+        fuelFromHopperButton.addGestureRecognizer(fuelFromHopperTap)
+        fuelFromHopperButton.isUserInteractionEnabled = true
         
-        let fromAllainceStationTap = UITapGestureRecognizer(target: self, action: #selector(fromAllainceStationPressed))
-        fromAllainceStationButton.addGestureRecognizer(fromAllainceStationTap)
-        fromAllainceStationButton.isUserInteractionEnabled = true
+        let fuelFromLoadingStationTap = UITapGestureRecognizer(target: self, action: #selector(fuelFromLoadingStationPressed))
+        fuelFromLoadingStationButton.addGestureRecognizer(fuelFromLoadingStationTap)
+        fuelFromLoadingStationButton.isUserInteractionEnabled = true
+        
+        let gearsGroundIntakeTap = UITapGestureRecognizer(target: self, action: #selector(gearsGroundIntakePressed))
+        gearsGroundIntakeButton.addGestureRecognizer(gearsGroundIntakeTap)
+        gearsGroundIntakeButton.isUserInteractionEnabled = true
+        
+        let gearsFromLoadingStationTap = UITapGestureRecognizer(target: self, action: #selector(gearsFromLoadingStationPressed))
+        gearsFromLoadingStationButton.addGestureRecognizer(gearsFromLoadingStationTap)
+        gearsFromLoadingStationButton.isUserInteractionEnabled = true
+        
+        let gearsDroppedAtLoadingStationTap = UITapGestureRecognizer(target: self, action: #selector(gearsDroppedAtLoadingStationPressed))
+        gearsDroppedAtLoadingStationButton.addGestureRecognizer(gearsDroppedAtLoadingStationTap)
+        gearsDroppedAtLoadingStationButton.isUserInteractionEnabled = true
         
         redoButton.isHidden = true
         
@@ -409,6 +441,23 @@ class AutoViewController: ViewController {
         }
         print("lowGoal")
         let action = Action(time: timePassed, action: Action.RobotAction.LowGoal)
+        action.lowGoal(full: true)
+        updateLabels()
+    }
+    
+    func halfLowGoalPressed(){
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.halfLowGoalButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.halfLowGoalButton.alpha = 1.0
+            }
+        }
+        print("half lowGoal")
+        let action = Action(time: timePassed, action: Action.RobotAction.LowGoal)
+        action.lowGoal(full: false)
         updateLabels()
     }
     
@@ -419,37 +468,91 @@ class AutoViewController: ViewController {
         showSelectedContentView()
     }
     
-    func fromHopperPressed(){
+    func fuelFromHopperPressed(){
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.fromHopperButton.alpha = 0.5
+            self.fuelFromHopperButton.alpha = 0.5
             
         }) { (done) in
             if done{
-                self.fromHopperButton.alpha = 1.0
+                self.fuelFromHopperButton.alpha = 1.0
             }
         }
-        print("hopper")
+        print("fuel hopper")
         let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.Hopper)
         updateLabels()
         
     }
     
-    func fromAllainceStationPressed(){
+    func fuelFromLoadingStationPressed(){
         
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.fromAllainceStationButton.alpha = 0.5
+            self.fuelFromLoadingStationButton.alpha = 0.5
             
         }) { (done) in
             if done{
-                self.fromAllainceStationButton.alpha = 1.0
+                self.fuelFromLoadingStationButton.alpha = 1.0
             }
         }
-        print("allaince")
+        print("fuel loading")
         let action = Action(time: timePassed, action: Action.RobotAction.FuelRetrieved)
-        action.fuelRetrieved(source: Action.FuelRetrievalPositions.AllainceStation)
+        action.fuelRetrieved(source: Action.FuelRetrievalPositions.LoadingStation)
+        DataModel.printData()
+        updateLabels()
+    }
+    
+    func gearsGroundIntakePressed(){
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.gearsGroundIntakeButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.gearsGroundIntakeButton.alpha = 1.0
+            }
+        }
+        print("gear ground")
+        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        action.gearRetrieved(source: Action.GearRetrievalPositions.Ground)
+        DataModel.printData()
+        updateLabels()
+    }
+    
+    func gearsFromLoadingStationPressed(){
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.gearsFromLoadingStationButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.gearsFromLoadingStationButton.alpha = 1.0
+            }
+        }
+        print("gear loading")
+        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        action.gearRetrieved(source: Action.GearRetrievalPositions.LoadingStation)
+        DataModel.printData()
+        updateLabels()
+    }
+    
+    func gearsDroppedAtLoadingStationPressed(){
+        
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            self.gearsDroppedAtLoadingStationButton.alpha = 0.5
+            
+        }) { (done) in
+            if done{
+                self.gearsDroppedAtLoadingStationButton.alpha = 1.0
+            }
+        }
+        print("gear dropped")
+        let action = Action(time: timePassed, action: Action.RobotAction.GearRetrieved)
+        action.gearRetrieved(source: Action.GearRetrievalPositions.Dropped)
         DataModel.printData()
         updateLabels()
     }
@@ -476,17 +579,75 @@ class AutoViewController: ViewController {
     }
     
     @IBAction func crossedBaselinePressed(_ sender: Any) {
-        let action = Action(time: timePassed, action: Action.RobotAction.BaselineCrossed)
-        otherConstraintOne.constant = 0
-        otherConstraintTwo.constant = 0
-        
+//        let action = Action(time: timePassed, action: Action.RobotAction.BaselineCrossed)
+//        otherConstraintOne.constant = 0
+//        otherConstraintTwo.constant = 0
+        if let baseline = DataModel.data["baseline"] as? Bool {
+            print(baseline)
+            if(baseline) {
+                DataModel.data["baseline"] = false
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.baselineButton.layer.borderWidth = 0
+                    self.baselineButton.layer.backgroundColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
+//                    UIColor(red)
+                    self.baselineButton.setTitleColor(UIColor.white, for: .normal)
+                })
+                return
+            }
+        }
+        DataModel.data["baseline"] = true
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
+            self.baselineButton.layer.borderWidth = 1
+            self.baselineButton.layer.backgroundColor = UIColor.white.cgColor
+            self.baselineButton.setTitleColor(UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1), for: .normal)
+            
+        })
     }
     @IBAction func noActionPressed(_ sender: Any) {
-        let action = Action(time: timePassed, action: Action.RobotAction.NoAction)
+        //        let action = Action(time: timePassed, action: Action.RobotAction.NoAction)
+        if let baseline = DataModel.data["no_action"] as? Bool {
+            if(baseline) {
+                DataModel.data["no_action"] = false
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.noActionButton.layer.borderWidth = 0
+                    self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+                    self.noActionButton.setTitleColor(UIColor.white, for: .normal)
+                })
+                return
+            }
+        }
+        DataModel.data["no_action"] = true
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.noActionButton.layer.borderColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+            self.noActionButton.layer.borderWidth = 1
+            self.noActionButton.layer.backgroundColor = UIColor.white.cgColor
+            self.noActionButton.setTitleColor(UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1), for: .normal)
+            
+        })
         
     }
     @IBAction func brokeDownPressed(_ sender: Any) {
-        let action = Action(time: timePassed, action: Action.RobotAction.BreakDown)
+        //        let action = Action(time: timePassed, action: Action.RobotAction.BreakDown)
+        if let baseline = DataModel.data["broke_down"] as? Bool {
+            if(baseline) {
+                DataModel.data["broke_down"] = false
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.brokeDownButton.layer.borderWidth = 0
+                    self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+                    self.brokeDownButton.setTitleColor(UIColor.white, for: .normal)
+                })
+                return
+            }
+        }
+        DataModel.data["broke_down"] = true
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.brokeDownButton.layer.borderColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+            self.brokeDownButton.layer.borderWidth = 1
+            self.brokeDownButton.layer.backgroundColor = UIColor.white.cgColor
+            self.brokeDownButton.setTitleColor(UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1), for: .normal)
+            
+        })
     }
     
     
@@ -520,11 +681,15 @@ class AutoViewController: ViewController {
         print("updatingLabels")
         var totalGearsPlaced : Int = 0
         var totalGearsDropped : Int = 0
-        var totalSuccessfulHighGoals : Int = 0
-        var totalUnsuccessfulHighGoals : Int = 0
-        var totalLowGoalDumps : Int = 0
-        var totalFuelRetrievedFromAllainceStation : Int = 0
+        var totalSuccessfulHighGoals : Float = 0
+        var totalUnsuccessfulHighGoals : Float = 0
+        var totalLowGoalDumps : Float = 0
+        var totalHalfLowGoal : Float = 0
+        var totalFuelRetrievedFromLoadingStation : Int = 0
         var totalFuelRetrievedFromHoppers : Int = 0
+        var totalGearsRetrievedFromGround : Int = 0
+        var totalGearsRetrievedFromLoadingStation : Int = 0
+        var totalGearsDroppedAtLoadingStation : Int = 0
         
         for actionX in DataModel.actions{
             print(actionX.action)
@@ -541,17 +706,30 @@ class AutoViewController: ViewController {
                 if actionX.highGoalSuccessful! == true{
                     totalSuccessfulHighGoals += 1
                 }else{
-                    totalUnsuccessfulHighGoals += 1
+                    totalUnsuccessfulHighGoals += 0.5
                 }
                 break
             case Action.RobotAction.LowGoal:
-                totalLowGoalDumps += 1
+                if actionX.fullLowGoal! == true{
+                    totalLowGoalDumps += 1
+                }else{
+                    totalHalfLowGoal += 0.5
+                }
                 break
             case Action.RobotAction.FuelRetrieved:
-                if actionX.fuelRetrievialSource == Action.FuelRetrievalPositions.AllainceStation{
-                    totalFuelRetrievedFromAllainceStation += 1
+                if actionX.fuelRetrievialSource == Action.FuelRetrievalPositions.LoadingStation{
+                    totalFuelRetrievedFromLoadingStation += 1
                 }else{
                     totalFuelRetrievedFromHoppers += 1
+                }
+                break
+            case Action.RobotAction.GearRetrieved:
+                if actionX.gearRetrievialSource == Action.GearRetrievalPositions.LoadingStation{
+                    totalGearsRetrievedFromLoadingStation += 1
+                }else if actionX.gearRetrievialSource == Action.GearRetrievalPositions.Ground{
+                    totalGearsRetrievedFromGround += 1
+                }else{
+                    totalGearsDroppedAtLoadingStation += 1
                 }
                 break
             default:
@@ -560,17 +738,30 @@ class AutoViewController: ViewController {
         }
         totalGearsPlacedLabel.text = "Placed: \(totalGearsPlaced)"
         droppedGearLabel.text = "Dropped: \(totalGearsDropped)"
-        totalHighGoalsScoredLabel.text = "Scored: \(totalSuccessfulHighGoals)"
-        totalHighGoalsMissedButton.text = "Missed: \(totalUnsuccessfulHighGoals)"
-        self.totalLowGoalDumps.text = "Dumps: \(totalLowGoalDumps)"
-        totalFromHopperCollected.text = "Total: \(totalFuelRetrievedFromHoppers)"
-        totalFromAllainceStation.text = "Total: \(totalFuelRetrievedFromAllainceStation)"
+        totalHighGoalsScoredLabel.text = "Total: \(totalSuccessfulHighGoals)"
+        totalHighGoalsMissedButton.text = "Total: \(totalUnsuccessfulHighGoals)"
+        self.totalLowGoalDumps.text = "Total: \(totalLowGoalDumps)"
+        self.totalHalfLowGoal.text = "Total: \(totalHalfLowGoal)"
+        self.totalHighGoals.text = "Total High Cycles: \(totalSuccessfulHighGoals + totalUnsuccessfulHighGoals)"
+        self.totalLowGoals.text = "Total High Cycles: \(totalLowGoalDumps + totalHalfLowGoal)"
+        totalFuelFromHopperCollected.text = "Total: \(totalFuelRetrievedFromHoppers)"
+        totalFuelFromLoadingStation.text = "Total: \(totalFuelRetrievedFromLoadingStation)"
+        totalGearsGroundIntake.text = "Total: \(totalGearsRetrievedFromGround)"
+        totalGearsFromLoadingStation.text = "Total: \(totalGearsRetrievedFromLoadingStation)"
+        self.totalGearsDroppedAtLoadingStation.text = "Total: \(totalGearsDroppedAtLoadingStation)"
         
     }
     
     @IBAction func endMatchButtonPressed(_ sender: Any) {
-        if timePassed > 279{
-            performSegue(withIdentifier: "endMatch", sender: self)
+        if isAuto {
+            let alert = UIAlertController(title: "Continue Confirmation", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+                self.toTeleop()
+                
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion: nil)
         }else{
             let alert = UIAlertController(title: "Match End Confirmation", message: "Are you sure you want to end match?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in

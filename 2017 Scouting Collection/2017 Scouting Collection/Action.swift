@@ -16,9 +16,11 @@ class Action{
     var inPeg: Pegs?
     
     var highGoalSuccessful : Bool?
+    var fullLowGoal : Bool?
     var shootingPosition : ShootingPosition?
     
     var fuelRetrievialSource : FuelRetrievalPositions?
+    var gearRetrievialSource : GearRetrievalPositions?
     
     enum RobotAction{
         case GearPlaced
@@ -26,6 +28,7 @@ class Action{
         case HighGoal
         case LowGoal
         case FuelRetrieved
+        case GearRetrieved
         
         case BaselineCrossed
         case NoAction
@@ -44,9 +47,14 @@ class Action{
     
     enum FuelRetrievalPositions{
         case Hopper
-        case AllainceStation
+        case LoadingStation
     }
     
+    enum GearRetrievalPositions{
+        case LoadingStation
+        case Ground
+        case Dropped
+    }
     
     init(time: Int, action : RobotAction){
         
@@ -66,8 +74,16 @@ class Action{
         self.shootingPosition = shootingPosition
     }
     
+    public func lowGoal(full: Bool){
+        fullLowGoal = full
+    }
+    
     public func fuelRetrieved(source : FuelRetrievalPositions){
         fuelRetrievialSource = source
+    }
+    
+    public func gearRetrieved(source : GearRetrievalPositions){
+        gearRetrievialSource = source
     }
     
     
