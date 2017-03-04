@@ -196,11 +196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "2017 Scouting Collection/DataModel.swift"
-            timestampString = "510225653.559162"
+            timestampString = "510315605.730495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100">
+            startingLineNumber = "366"
+            endingLineNumber = "366">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -210,11 +210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "2017 Scouting Collection/DataModel.swift"
-            timestampString = "510225653.559162"
+            timestampString = "510315605.730495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139">
+            startingLineNumber = "405"
+            endingLineNumber = "405">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -224,11 +224,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "2017 Scouting Collection/View Controllers/AutoViewController.swift"
-            timestampString = "510215023.36858"
+            timestampString = "510315870.956158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "586"
-            endingLineNumber = "586"
+            startingLineNumber = "598"
+            endingLineNumber = "598"
             landmarkName = "crossedBaselinePressed(_:)"
             landmarkType = "7">
          </BreakpointContent>

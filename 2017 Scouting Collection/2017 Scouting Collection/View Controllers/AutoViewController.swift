@@ -77,15 +77,15 @@ class AutoViewController: ViewController {
     
     
     var timeLeftTimer: Timer!
-    var timePassed : Int = 0
+    var timePassed : Float = 0
     var isAuto = true
     
     override func viewDidLoad() {
-        timeLeftTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
+        timeLeftTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateTimeLabel), userInfo: nil, repeats: true)
         
     }
     func updateTimeLabel() {
-        timePassed += 1
+        timePassed += 0.1
         if isAuto{
             timerLabel.text = "\(timePassed)"
         }else{
@@ -108,6 +108,17 @@ class AutoViewController: ViewController {
         currentPeriod.text = "Teleop"
         otherConstraintOne.constant = 0
         otherConstraintTwo.constant = 0
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.noActionButton.layer.borderWidth = 0
+            self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+            self.noActionButton.setTitleColor(UIColor.white, for: .normal)
+        })
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.brokeDownButton.layer.borderWidth = 0
+            self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+            self.brokeDownButton.setTitleColor(UIColor.white, for: .normal)
+        })
+
     }
     func hideSelectedContentView(){
         if active == 3{
@@ -582,10 +593,11 @@ class AutoViewController: ViewController {
 //        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.BaselineCrossed)
 //        otherConstraintOne.constant = 0
 //        otherConstraintTwo.constant = 0
-        if let baseline = DataModel.data["baseline"] as? Bool {
+        
+        if let baseline = DataModel.data["auto_baseline"] as? Bool {
             print(baseline)
             if(baseline) {
-                DataModel.data["baseline"] = false
+                DataModel.data["auto_baseline"] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.baselineButton.layer.borderWidth = 0
                     self.baselineButton.layer.backgroundColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
@@ -595,7 +607,7 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data["baseline"] = true
+        DataModel.data["auto_baseline"] = 1
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
             self.baselineButton.layer.borderWidth = 1
@@ -606,9 +618,15 @@ class AutoViewController: ViewController {
     }
     @IBAction func noActionPressed(_ sender: Any) {
         //        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.NoAction)
-        if let baseline = DataModel.data["no_action"] as? Bool {
+        var key: String
+        if (isAuto) {
+            key = "auto_no_action"
+        }else{
+            key = "tele_no_action"
+        }
+        if let baseline = DataModel.data[key] as? Bool {
             if(baseline) {
-                DataModel.data["no_action"] = false
+                DataModel.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.noActionButton.layer.borderWidth = 0
                     self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
@@ -617,7 +635,7 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data["no_action"] = true
+        DataModel.data[key] = 1
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.noActionButton.layer.borderColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
             self.noActionButton.layer.borderWidth = 1
@@ -629,9 +647,15 @@ class AutoViewController: ViewController {
     }
     @IBAction func brokeDownPressed(_ sender: Any) {
         //        let action = Action(time: timePassed, action: Action.RobotAction.BreakDown)
-        if let baseline = DataModel.data["broke_down"] as? Bool {
+        var key: String
+        if (isAuto) {
+            key = "auto_broke_down"
+        }else{
+            key = "tele_broke_down"
+        }
+        if let baseline = DataModel.data[key] as? Bool {
             if(baseline) {
-                DataModel.data["broke_down"] = false
+                DataModel.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.brokeDownButton.layer.borderWidth = 0
                     self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
@@ -640,7 +664,7 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data["broke_down"] = true
+        DataModel.data[key] = 1
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.brokeDownButton.layer.borderColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
             self.brokeDownButton.layer.borderWidth = 1

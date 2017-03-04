@@ -10,7 +10,7 @@ import Foundation
 
 class Action{
     
-    var time : Int
+    var time : Float
     var action : RobotAction
     
     var inPeg: Pegs?
@@ -56,15 +56,16 @@ class Action{
         case Dropped
     }
     
-    init(isAuto: Bool, time: Int, action: RobotAction){
+    init(isAuto: Bool, time: Float, action: RobotAction){
         
-        self.time = Int(time)
+        self.time = time
         self.action = action
         if (isAuto) {
             DataModel.autoActions.append(self)
         } else {
             DataModel.teleActions.append(self)
         }
+        print(self.time	)
     }
     
     public func gearPlaced(pegPosition: Pegs){

@@ -147,23 +147,47 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     }
     
     @IBAction func submitPressed(_ sender: Any) {
+        if(DataModel.data["auto_baseline"] == nil) {
+            DataModel.data["auto_baseline"] = 0
+        }
+        if(DataModel.data["auto_no_action"] == nil) {
+            DataModel.data["auto_no_action"] = 0
+        }
+        if(DataModel.data["auto_broke_down"] == nil) {
+            DataModel.data["auto_broke_down"] = 0
+        }
+        if(DataModel.data["tele_no_action"] == nil) {
+            DataModel.data["tele_no_action"] = 0
+        }
+        if(DataModel.data["tele_broke_down"] == nil) {
+            DataModel.data["tele_broke_down"] = 0
+        }
         DataModel.data["no_show"] = Int(NSNumber(value: matchAbandoned.isOn))
         DataModel.data["takeoff"] = takeoff.selectedSegmentIndex
         if(takeoff.selectedSegmentIndex == 2) {
-            DataModel.data["takeoff_speed"] = takeoffSpeed.value
+            DataModel.data["takeoff_speed"] = Int(takeoffSpeed.value)
+        } else {
+            DataModel.data["takeoff_speed"] = -1
         }
         DataModel.data["defense"] = Int(NSNumber(value: defenseSwitch.isOn))
         if(defenseSwitch.isOn) {
-            DataModel.data["defense_rating"] = defenseRating.value
+            DataModel.data["defense_rating"] = Int(defenseRating.value)
+        } else {
+            DataModel.data["defense_rating"] = -1
         }
         DataModel.data["gear_ground_intake"] = Int(NSNumber(value: gearGroundIntakeSwitch.isOn))
         if(gearGroundIntakeSwitch.isOn) {
-            DataModel.data["gear_ground_intake_rating"] = gearGroundIntakeRating.value
+            DataModel.data["gear_ground_intake_rating"] = Int(gearGroundIntakeRating.value)
+        } else {
+            DataModel.data["gear_ground_intake_rating"] = -1
         }
         DataModel.data["fuel_ground_intake"] = Int(NSNumber(value: fuelGroundIntakeSwitch.isOn))
         if(fuelGroundIntakeSwitch.isOn) {
-            DataModel.data["fuel_ground_intake_rating"] = fuelGroundIntakeRating.value
+            DataModel.data["fuel_ground_intake_rating"] = Int(fuelGroundIntakeRating.value)
+        } else {
+            DataModel.data["fuel_ground_intake_rating"] = -1
         }
+        DataModel.data["notes"] = additionalNotesTextView.text
         self.performSegue(withIdentifier: "endgameToQR", sender: nil)
     }
 }

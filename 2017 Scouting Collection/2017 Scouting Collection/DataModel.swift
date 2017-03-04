@@ -36,6 +36,7 @@ class DataModel {
             case .QuarterFinals: return "qf";
             case .SemiFinals: return "sf";
             case .Finals: return "f";
+            default: return "un"
             }
         }
     }
@@ -78,35 +79,262 @@ class DataModel {
     }
     
     static public func CSV() -> String {
-//        var retVal = matchNumber + "," +
-//            scoutingTeamNumber + "," +
-//            matchType.string + "," +
-//            data["baseline"]
-//        scoringElements["match"] = splitVersion[0]
-//        scoringElements["team"] = splitVersion[1]
-//        scoringElements["comp_level"] = "qm"
-//        scoringElements["auto_baseline"] = splitVersion[2]
-//        scoringElements["auto_gears"] = splitVersion[3]
-//        scoringElements["auto_gear_positions"] = splitVersion[4]
-//        scoringElements["auto_gears_dropped"] = splitVersion[5]
-//        scoringElements["auto_high_fuel"] = splitVersion[6]
-//        scoringElements["auto_high_fuel_positions"] = splitVersion[7]
-//        scoringElements["auto_low_cycles"] = splitVersion[8]
-//        scoringElements["auto_intake_hopper"] = splitVersion[9]
-//        scoringElements["tele_gears"] = splitVersion[10]
-//        scoringElements["tele_gear_positions"] = splitVersion[11]
-//        scoringElements["tele_gears_dropped"] = splitVersion[12]
-//        scoringElements["tele_high_fuel"] = splitVersion[13]
-//        scoringElements["tele_high_fuel_positions"] = splitVersion[14]
-//        scoringElements["tele_low_cycles"] = splitVersion[15]
-//        scoringElements["tele_intake_hopper"] = splitVersion[16]
-//        scoringElements["tele_intake_loading"] = splitVersion[17]
-//        scoringElements["tele_defense"] = splitVersion[18]
-//        scoringElements["end_climb"] = splitVersion[19]
-//        scoringElements["end_ground_intake_gear"] = splitVersion[20]
-//        scoringElements["end_ground_intake_fuel"] = splitVersion[21]
-//        scoringElements["end_stop_gearing"] = splitVersion[21]
-//        scoringElements["end_fouls"] = splitVersion[22]
-        return "test"
+        var gears = [0,0]
+        var gearsDropped = [0,0]
+        var gearsIntakeGround = [0,0]
+        var autoGearPositions = ""
+        var teleGearPositions = [0,0,0]
+        var highGoals = [0.0,0.0]
+        var lowGoals = [0.0,0.0]
+        var fuelIntakeHopper = [0,0]
+        var autoHighGoalsPositions = ""
+        var teleHighGoalsPositions = [0,0]
+        var teleGearsIntakeLoadingStation = 0
+        var teleGearsIntakeDropped = 0
+        var teleGearsCycleTimes = ""
+        var teleHighCycleTimes = ""
+        var teleLowCycleTimes = ""
+        var teleFuelIntakeLoadingStation = 0
+        
+        var i = 0
+        
+        while(i<2){
+        
+            var actions: [Action]
+            
+            if (i == 0) {
+                actions = DataModel.autoActions
+            } else {
+                actions = DataModel.teleActions
+            }
+            
+            var previousTime: Float?
+            var previousPreviousTime: Float?
+            
+            var gearIntaked = false
+            var fuelIntaked = false
+            
+            for actionX in actions {
+                print(actionX.action)
+                switch actionX.action {
+                case Action.RobotAction.GearPlaced:
+                    gears[i] += 1
+                    if actionX.inPeg! == Action.Pegs.Key {
+                        if(i == 0) {
+                            autoGearPositions += "b;"
+                        } else {
+                            teleGearPositions[0] += 1
+                        }
+                    } else if actionX.inPeg! == Action.Pegs.Middle{
+                        if(i == 0) {
+                            autoGearPositions += "m;"
+                        } else {
+                            teleGearPositions[1] += 1
+                        }
+                    } else {
+                        if(i == 0) {
+                            autoGearPositions += "l;"
+                        } else {
+                            teleGearPositions[2] += 1
+                        }
+                    }
+                    if(i==1) {
+                        if(previousTime != nil) {
+                            if(!fuelIntaked) {
+                                teleGearsCycleTimes += String(actionX.time-previousTime!) + ";"
+                            } else {
+                                if(previousPreviousTime != nil) {
+                                    teleGearsCycleTimes += String(actionX.time-previousPreviousTime!) + ";"
+                                }
+                                fuelIntaked = false
+                            }
+                            previousTime = actionX.time
+                            previousPreviousTime = previousTime!
+                            break
+                        }
+                        previousTime = actionX.time
+                    }
+//                    print("gears-placed")
+                    break
+                case Action.RobotAction.GearDropped:
+                    gearsDropped[i] += 1
+//                    print("gears-dropped")
+                    break
+                case Action.RobotAction.HighGoal:
+                    if actionX.highGoalSuccessful! == true{
+                        highGoals[i] += 1.0
+                    }else{
+                        highGoals[i] += 0.5
+                    }
+                    if actionX.shootingPosition! == Action.ShootingPosition.InsideKey {
+                        if(i == 0) {
+                            autoHighGoalsPositions += "i;"
+                        } else {
+                            teleHighGoalsPositions[0] += 1
+                        }
+                    } else {
+                        if(i == 0) {
+                            autoHighGoalsPositions += "o;"
+                        } else {
+                            teleHighGoalsPositions[1] += 1
+                        }
+                    }
+                    if (i==1){
+                        if(previousTime != nil) {
+                            if(!gearIntaked) {
+                                teleHighCycleTimes += String(actionX.time-previousTime!) + ";"
+                            } else {
+                                if(previousPreviousTime != nil) {
+                                    teleHighCycleTimes += String(actionX.time-previousPreviousTime!) + ";"
+                                }
+                                gearIntaked = false
+                            }
+                            previousTime = actionX.time
+                            previousPreviousTime = previousTime!
+                            break
+                        }
+                        previousTime = actionX.time
+                    }
+                    break
+                case Action.RobotAction.LowGoal:
+                    if actionX.fullLowGoal! == true{
+                        lowGoals[i] += 1
+                    }else{
+                        lowGoals[i] += 0.5
+                    }
+                    if(i==1){
+                        if(previousTime != nil) {
+                            if(!gearIntaked) {
+                                teleLowCycleTimes += String(actionX.time-previousTime!) + ";"
+                            } else {
+                                if(previousPreviousTime != nil) {
+                                    teleLowCycleTimes += String(actionX.time-previousPreviousTime!) + ";"
+                                }
+                                gearIntaked = false
+                            }
+                            previousTime = actionX.time
+                            previousPreviousTime = previousTime!
+                            break
+                        }
+                        previousTime = actionX.time
+                    }
+                    break
+                case Action.RobotAction.FuelRetrieved:
+                    if actionX.fuelRetrievialSource! == Action.FuelRetrievalPositions.LoadingStation{
+                        teleFuelIntakeLoadingStation += 1
+                    }else{
+                        fuelIntakeHopper[i] += 1
+                    }
+                    fuelIntaked = true
+                    break
+                case Action.RobotAction.GearRetrieved:
+                    if actionX.gearRetrievialSource! == Action.GearRetrievalPositions.LoadingStation{
+                        teleGearsIntakeLoadingStation += 1
+                    }else if actionX.gearRetrievialSource! == Action.GearRetrievalPositions.Ground{
+                        gearsIntakeGround[i] += 1
+                    }else{
+                        teleGearsIntakeDropped += 1
+                    }
+                    gearIntaked = true
+                    break
+                default:
+                    break
+                }
+            }
+            i += 1
+        }
+        print(teleGearsCycleTimes)
+        print(teleHighCycleTimes)
+        print(teleLowCycleTimes)
+        var matchIn: Int
+        if(matchNumberOf == nil) {
+            matchIn = -1
+        } else {
+            matchIn = matchNumberOf!
+        }
+        let retVal = scouterName + "," +
+            matchType.string + "," +
+            String(matchNumber) + "," +
+            String(matchIn) + "," +
+            String(scoutingTeamNumber) + "," +
+            String(describing: data["auto_baseline"]!) + "," +
+            String(describing: data["auto_no_action"]!) + "," +
+            String(describing: data["auto_broke_down"]!) + "," +
+            String(gears[0]) + "," +
+            autoGearPositions + "," +
+            String(gearsDropped[0]) + "," +
+            String(gearsIntakeGround[0]) + "," +
+            String(highGoals[0]) + "," +
+            autoHighGoalsPositions + "," +
+            String(lowGoals[0]) + "," +
+            String(fuelIntakeHopper[0]) + "," +
+            String(describing: data["tele_no_action"]!) + "," +
+            String(describing: data["tele_broke_down"]!) + "," +
+            String(gears[1]) + "," +
+            String(teleGearPositions[0]) + "," +
+            String(teleGearPositions[1]) + "," +
+            String(teleGearPositions[2]) + "," +
+            String(gearsDropped[1]) + "," +
+            String(gearsIntakeGround[1]) + "," +
+            String(teleGearsIntakeLoadingStation) + "," +
+            String(teleGearsIntakeDropped) + "," +
+            teleGearsCycleTimes + "," +
+            String(highGoals[1]) + "," +
+            String(teleHighGoalsPositions[0]) + "," +
+            String(teleHighGoalsPositions[1]) + "," +
+            teleHighCycleTimes + "," +
+            String(lowGoals[1]) + "," +
+            teleLowCycleTimes + "," +
+            String(fuelIntakeHopper[1]) + "," +
+            String(teleFuelIntakeLoadingStation) + "," +
+            String(describing: data["no_show"]!) + "," +
+            String(describing: data["takeoff"]!) + "," +
+            String(describing: data["takeoff_speed"]!) + "," +
+            String(describing: data["defense"]!) + "," +
+            String(describing: data["defense_rating"]!) + "," +
+            String(describing: data["gear_ground_intake"]!) + "," +
+            String(describing: data["gear_ground_intake_rating"]!) + "," +
+            String(describing: data["fuel_ground_intake"]!) + "," +
+            String(describing: data["fuel_ground_intake_rating"]!) + "," +
+            String(describing: data["notes"]!) + "," +
+            "2017ctwat"
+//        auto gears
+//        auto gear positions
+//        auto gears dropped
+//        auto gears ground intaked
+//        auto high cycles
+//        auto high cycle positions
+//        auto low cycles
+//        auto intake hopper
+//        tele no action
+//        tele broke down
+//        tele gears
+//        tele gear boiler
+//        tele gear middle
+//        tele gear loading
+//        tele gears dropped
+//        tele gears intake ground
+//        tele gears intake loading station
+//        tele gears intake dropped
+//        tele gear cycle times
+//        tele high cycles
+//        tele high cycle in key
+//        tele high cycle out of key
+//        tele high cycle times
+//        tele low cycles
+//        tele low cycle times
+//        tele intake hopper
+//        tele intake loading station
+//        end no show
+//        end takeoff
+//        end takeoff speed
+//        end defense
+//        end defense rating
+//        end gear ground intake
+//        end gear ground intake rating
+//        end fuel ground intake
+//        end fuel ground intake rating
+//        notes
+        return retVal
     }
 }
