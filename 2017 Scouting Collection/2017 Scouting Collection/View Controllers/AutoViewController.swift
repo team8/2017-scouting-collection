@@ -264,9 +264,9 @@ class AutoViewController: ViewController {
 
     
     func placedGearButtonPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.placedGearButton.alpha = 0.5
+            self.placedGearButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -303,9 +303,9 @@ class AutoViewController: ViewController {
     }
     
     func droppedGearButtonPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.droppedGearButton.alpha = 0.5
+            self.droppedGearButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -374,9 +374,9 @@ class AutoViewController: ViewController {
     
     
     func highGoalsScoredPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.highGoalsScoredButton.alpha = 0.5
+            self.highGoalsScoredButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -408,9 +408,9 @@ class AutoViewController: ViewController {
     }
     
     func highGoalsMissedPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.highGoalsMissedButton.alpha = 0.5
+            self.highGoalsMissedButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -441,9 +441,9 @@ class AutoViewController: ViewController {
     }
     
     func lowGoalDumpedPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.lowGoalDumpButton.alpha = 0.5
+            self.lowGoalDumpButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -457,9 +457,9 @@ class AutoViewController: ViewController {
     }
     
     func halfLowGoalPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.halfLowGoalButton.alpha = 0.5
+            self.halfLowGoalButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -480,9 +480,9 @@ class AutoViewController: ViewController {
     }
     
     func fuelFromHopperPressed(){
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.fuelFromHopperButton.alpha = 0.5
+            self.fuelFromHopperButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -498,9 +498,9 @@ class AutoViewController: ViewController {
     
     func fuelFromLoadingStationPressed(){
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.fuelFromLoadingStationButton.alpha = 0.5
+            self.fuelFromLoadingStationButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -516,9 +516,9 @@ class AutoViewController: ViewController {
     
     func gearsGroundIntakePressed(){
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.gearsGroundIntakeButton.alpha = 0.5
+            self.gearsGroundIntakeButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -534,9 +534,9 @@ class AutoViewController: ViewController {
     
     func gearsFromLoadingStationPressed(){
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.gearsFromLoadingStationButton.alpha = 0.5
+            self.gearsFromLoadingStationButton.alpha = 0
             
         }) { (done) in
             if done{
@@ -552,9 +552,9 @@ class AutoViewController: ViewController {
     
     func gearsDroppedAtLoadingStationPressed(){
         
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.gearsDroppedAtLoadingStationButton.alpha = 0.5
+            self.gearsDroppedAtLoadingStationButton.alpha = 0
             
         }) { (done) in
             if done{
