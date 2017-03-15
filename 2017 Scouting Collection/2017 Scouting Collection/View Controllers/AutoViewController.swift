@@ -284,7 +284,7 @@ class AutoViewController: ViewController {
         
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearPlaced)
         switch currentPegPosition {
-        case "Key Peg":
+        case "Boiler Peg":
             action.gearPlaced(pegPosition: Action.Pegs.Key)
             break
         case "Middle Peg":
@@ -594,9 +594,9 @@ class AutoViewController: ViewController {
 //        otherConstraintOne.constant = 0
 //        otherConstraintTwo.constant = 0
         
-        if let baseline = DataModel.data["auto_baseline"] as? Bool {
+        if let baseline = DataModel.data["auto_baseline"] as? Int {
             print(baseline)
-            if(baseline) {
+            if(baseline == 1) {
                 DataModel.data["auto_baseline"] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.baselineButton.layer.borderWidth = 0
@@ -608,6 +608,7 @@ class AutoViewController: ViewController {
             }
         }
         DataModel.data["auto_baseline"] = 1
+        print(DataModel.data["auto_baseline"])
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
             self.baselineButton.layer.borderWidth = 1
@@ -624,8 +625,8 @@ class AutoViewController: ViewController {
         }else{
             key = "tele_no_action"
         }
-        if let baseline = DataModel.data[key] as? Bool {
-            if(baseline) {
+        if let baseline = DataModel.data[key] as? Int {
+            if(baseline == 1) {
                 DataModel.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.noActionButton.layer.borderWidth = 0
@@ -653,8 +654,8 @@ class AutoViewController: ViewController {
         }else{
             key = "tele_broke_down"
         }
-        if let baseline = DataModel.data[key] as? Bool {
-            if(baseline) {
+        if let baseline = DataModel.data[key] as? Int {
+            if(baseline == 1) {
                 DataModel.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.brokeDownButton.layer.borderWidth = 0

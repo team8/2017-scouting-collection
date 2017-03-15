@@ -27,17 +27,24 @@ class QRCodeViewController : ViewController {
     }
     
     @IBAction func finishPressed(_ sender: Any) {
-        DataModel.autoActions = [Action]()
-        DataModel.teleActions = [Action]()
-        DataModel.scouterName = String()
-        DataModel.matchType = nil
-        DataModel.matchNumber = Int()
-        DataModel.matchNumberOf = nil
-        DataModel.scoutingTeamNumber = Int()
-        DataModel.autoUndidActions = [Action]()
-        DataModel.teleUndidActions = [Action]()
-        DataModel.data = [String: Any]()
-        self.performSegue(withIdentifier: "unwindQRToHome", sender: nil)
+        let alert = UIAlertController(title: "Finish Confirmation", message: "Are you sure you want to finish?", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+            DataModel.autoActions = [Action]()
+            DataModel.teleActions = [Action]()
+            DataModel.scouterName = String()
+            DataModel.matchType = nil
+            DataModel.matchNumber = Int()
+            DataModel.matchNumberOf = nil
+            DataModel.scoutingTeamNumber = Int()
+            DataModel.autoUndidActions = [Action]()
+            DataModel.teleUndidActions = [Action]()
+            DataModel.data = [String: Any]()
+            self.performSegue(withIdentifier: "unwindQRToHome", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
 }

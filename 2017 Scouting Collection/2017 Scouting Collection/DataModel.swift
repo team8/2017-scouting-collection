@@ -297,44 +297,7 @@ class DataModel {
             String(describing: data["fuel_ground_intake"]!) + "," +
             String(describing: data["fuel_ground_intake_rating"]!) + "," +
             String(describing: data["notes"]!) + "," +
-            "2017ctwat"
-//        auto gears
-//        auto gear positions
-//        auto gears dropped
-//        auto gears ground intaked
-//        auto high cycles
-//        auto high cycle positions
-//        auto low cycles
-//        auto intake hopper
-//        tele no action
-//        tele broke down
-//        tele gears
-//        tele gear boiler
-//        tele gear middle
-//        tele gear loading
-//        tele gears dropped
-//        tele gears intake ground
-//        tele gears intake loading station
-//        tele gears intake dropped
-//        tele gear cycle times
-//        tele high cycles
-//        tele high cycle in key
-//        tele high cycle out of key
-//        tele high cycle times
-//        tele low cycles
-//        tele low cycle times
-//        tele intake hopper
-//        tele intake loading station
-//        end no show
-//        end takeoff
-//        end takeoff speed
-//        end defense
-//        end defense rating
-//        end gear ground intake
-//        end gear ground intake rating
-//        end fuel ground intake
-//        end fuel ground intake rating
-//        notes
+            "2017inwla" //event
         return retVal
     }
 }
