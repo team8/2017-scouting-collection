@@ -26,6 +26,8 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     @IBOutlet weak var fuelGroundIntakeSwitch: UISwitch!
     @IBOutlet weak var fuelGroundIntakeRating: UISlider!
     @IBOutlet weak var fuelGroundIntakeLabel: UILabel!
+    @IBOutlet weak var driverSkillRating: UISlider!
+    @IBOutlet weak var driverSkillRatingLabel: UILabel!
     @IBOutlet weak var additionalNotes: UITextView!
     @IBOutlet weak var additionalNotesPopUpView: UIView!
     @IBOutlet weak var additionalNotesTextView: UITextView!
@@ -102,6 +104,9 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     @IBAction func fuelGroundIntakeChanged(_ sender: Any) {
         fuelGroundIntakeLabel.text = "\(Int(fuelGroundIntakeRating.value))/5"
     }
+    @IBAction func driverSkillRatingChanged(_ sender: Any) {
+        driverSkillRatingLabel.text = "\(Int(driverSkillRating.value))/5"
+    }
     
     func additionalNotesTapped(){
         additionalNotesPopUpView.isHidden = false
@@ -146,6 +151,15 @@ class EndgameViewController: ViewController, UITextViewDelegate{
         return numberOfChars < 150;
     }
     
+    @IBAction func backPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Go Back Confirmation", message: "Are you sure you want to go back to teleop? This will erase all data inputted on this page.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+            self.performSegue(withIdentifier: "unwindEndgameToAuto", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     @IBAction func submitPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Submit Confirmation", message: "Are you sure you want to submit?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
@@ -189,12 +203,25 @@ class EndgameViewController: ViewController, UITextViewDelegate{
             } else {
                 DataModel.data["fuel_ground_intake_rating"] = -1
             }
+            DataModel.data["driver_skill_rating"] = Int(self.driverSkillRating.value)
             DataModel.data["notes"] = self.additionalNotesTextView.text
-            self.performSegue(withIdentifier: "endgameToQR", sender: nil)
+            
+            DataModel.storedCSVs.append(DataModel.CSV())
+            DataModel.saveCSVsToCoreData()
+            
+            self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.CSV())
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
         }))
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if (segue.identifier == "endgameToQR") {
+            let secondViewController = segue.destination as! QRCodeViewController
+            let csv = sender as! String
+            secondViewController.TextTOQRCode = csv
+        }
     }
 }

@@ -18,7 +18,7 @@
 		A50FE9FD1E0746180087A052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50FE9FB1E0746180087A052 /* LaunchScreen.storyboard */; };
 		A50FEA211E074AD40087A052 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50FEA201E074AD40087A052 /* HomeViewController.swift */; };
 		A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AE68B1E0896DC00240523 /* TableViewCell.swift */; };
-		A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544F1731E09E8550037A898 /* PrematchViewController.swift */; };
+		A544F1741E09E8550037A898 /* TheRealHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A544F1731E09E8550037A898 /* TheRealHomeViewController.swift */; };
 		A547FA621E0C917000C14CB0 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547FA611E0C917000C14CB0 /* DataModel.swift */; };
 		A54A8F841E15EF6B0017753B /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54A8F831E15EF6B0017753B /* ToggleButton.swift */; };
 		A55165A21E15234F00502823 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55165A11E15234F00502823 /* Button.swift */; };
@@ -76,7 +76,7 @@
 		A50FEA0E1E0746180087A052 /* 2017 Scouting CollectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "2017 Scouting CollectionUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50FEA201E074AD40087A052 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = "View Controllers/HomeViewController.swift"; sourceTree = "<group>"; };
 		A53AE68B1E0896DC00240523 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = UI/TableViewCell.swift; sourceTree = "<group>"; };
-		A544F1731E09E8550037A898 /* PrematchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrematchViewController.swift; path = "View Controllers/PrematchViewController.swift"; sourceTree = "<group>"; };
+		A544F1731E09E8550037A898 /* TheRealHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TheRealHomeViewController.swift; path = "View Controllers/TheRealHomeViewController.swift"; sourceTree = "<group>"; };
 		A547FA611E0C917000C14CB0 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		A54A8F831E15EF6B0017753B /* ToggleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToggleButton.swift; path = UI/ToggleButton.swift; sourceTree = "<group>"; };
 		A55165A11E15234F00502823 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = UI/Button.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 				A50FE9F61E0746180087A052 /* _017_Scouting_Collection.xcdatamodeld */,
 				A50FE9F11E0746180087A052 /* ViewController.swift */,
 				A50FEA201E074AD40087A052 /* HomeViewController.swift */,
-				A544F1731E09E8550037A898 /* PrematchViewController.swift */,
+				A544F1731E09E8550037A898 /* TheRealHomeViewController.swift */,
 				A5A2859F1E0E6A0600FEB8A9 /* AutoViewController.swift */,
 				A5A285A31E0E6A2C00FEB8A9 /* EndgameViewController.swift */,
 				A5A285AB1E0E6AE100FEB8A9 /* QRViewController.swift */,
@@ -524,7 +524,7 @@
 			files = (
 				A547FA621E0C917000C14CB0 /* DataModel.swift in Sources */,
 				AAD745141E4AD81700BF0F08 /* Action.swift in Sources */,
-				A544F1741E09E8550037A898 /* PrematchViewController.swift in Sources */,
+				A544F1741E09E8550037A898 /* TheRealHomeViewController.swift in Sources */,
 				A5A285A41E0E6A2C00FEB8A9 /* EndgameViewController.swift in Sources */,
 				A53AE68C1E0896DC00240523 /* TableViewCell.swift in Sources */,
 				A5A285A01E0E6A0600FEB8A9 /* AutoViewController.swift in Sources */,

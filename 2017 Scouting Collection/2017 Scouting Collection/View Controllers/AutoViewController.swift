@@ -26,7 +26,6 @@ class AutoViewController: ViewController {
     @IBOutlet weak var gearButton: UIImageView!
     
     @IBOutlet var pegPosition: [UIButton]!
-    @IBOutlet weak var placedGearButton: SpringView!
     @IBOutlet weak var totalGearsPlacedLabel: UILabel!
     @IBOutlet weak var droppedGearButton: UIView!
     @IBOutlet weak var droppedGearLabel: UILabel!
@@ -88,7 +87,15 @@ class AutoViewController: ViewController {
         timePassed += 0.1
         if isAuto{
             timerLabel.text = "\(timePassed)"
+            if (timePassed > 15) {
+                if (timePassed.truncatingRemainder(dividingBy: 0.2) < 0.1) {
+                    self.endMatchButton.alpha = 0
+                } else {
+                    self.endMatchButton.alpha = 1
+                }
+            }
         }else{
+            self.endMatchButton.alpha = 1
             let rawSeconds =  timePassed - 20
             let minutes = floor(Double(rawSeconds / 60))
             let seconds = Double(rawSeconds)  - (minutes * 60)
@@ -102,24 +109,24 @@ class AutoViewController: ViewController {
         
         
     }
+    func toAuto() {
+        isAuto = true
+        timePassed = 0
+        currentPeriod.text = "Autonomous"
+        otherConstraintOne.constant = 8.5
+        otherConstraintTwo.constant = 290
+        updateLabels()
+    }
     func toTeleop() {
         isAuto = false
         timePassed = 20
         currentPeriod.text = "Teleop"
         otherConstraintOne.constant = 0
         otherConstraintTwo.constant = 0
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.noActionButton.layer.borderWidth = 0
-            self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
-            self.noActionButton.setTitleColor(UIColor.white, for: .normal)
-        })
-        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.brokeDownButton.layer.borderWidth = 0
-            self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
-            self.brokeDownButton.setTitleColor(UIColor.white, for: .normal)
-        })
+        updateLabels()
 
     }
+    
     func hideSelectedContentView(){
         if active == 3{
             for contentView in contentViews{
@@ -167,8 +174,6 @@ class AutoViewController: ViewController {
         hideSelectedContentView()
         
         //Adding tap recognizers for gear place/drop views
-        let placedGearTap = UITapGestureRecognizer(target: self, action: #selector(placedGearButtonPressed))
-        placedGearButton.addGestureRecognizer(placedGearTap)
         
         let droppedGearTap = UITapGestureRecognizer(target: self, action: #selector(droppedGearButtonPressed))
         droppedGearButton.addGestureRecognizer(droppedGearTap)
@@ -219,68 +224,21 @@ class AutoViewController: ViewController {
         active = 0
         showSelectedContentView()
         
-        for senderX in pegPosition{
-            senderX.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
-            senderX.layer.borderWidth = 0
-            senderX.setTitleColor(UIColor.white, for: UIControlState.normal)
-        }
-
-        placedGearButton.isUserInteractionEnabled = false
-        placedGearButton.layer.opacity = 0.5
-
-        
     }
     
     @IBAction func pegButtonPressed(_ sender: UIButton) {
         
-        if sender.backgroundColor == UIColor.white{
-            
-            sender.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
-            sender.layer.borderWidth = 0
-            sender.setTitleColor(UIColor.white, for: UIControlState.normal)
-            
-            placedGearButton.isUserInteractionEnabled = false
-            placedGearButton.layer.opacity = 0.5
-            
-        }else{
-            for button in pegPosition{
-                button.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
-                button.layer.borderWidth = 0
-                button.titleLabel!.textColor = UIColor.white
-            }
-            
-            sender.backgroundColor = UIColor.white
-            sender.layer.borderWidth = 1
-            sender.layer.borderColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1).cgColor
-            
-            sender.setTitleColor(UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1), for: UIControlState.normal)
-            
-            placedGearButton.isUserInteractionEnabled = true
-            placedGearButton.layer.opacity = 1
-            
-        }
         
-    }
-
-    
-    func placedGearButtonPressed(){
         UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             
-            self.placedGearButton.alpha = 0
+            sender.alpha = 0
             
         }) { (done) in
             if done{
-                self.placedGearButton.alpha = 1.0
+                sender.alpha = 1.0
             }
         }
-        
-        
-        var currentPegPosition = "";
-        for selectedButton : UIButton in pegPosition{
-            if selectedButton.backgroundColor == UIColor.white{
-                currentPegPosition = selectedButton.titleLabel!.text!
-            }
-        }
+        let currentPegPosition = sender.titleLabel!.text!
         
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearPlaced)
         switch currentPegPosition {
@@ -299,7 +257,6 @@ class AutoViewController: ViewController {
         DataModel.printData()
         
         updateLabels()
-        
     }
     
     func droppedGearButtonPressed(){
@@ -319,7 +276,7 @@ class AutoViewController: ViewController {
     
     @IBAction func pressureButtonTapped(_ sender: Any) {
         hideSelectedContentView()
-        active = 1
+        active = 2
         showSelectedContentView()
         
         insideKeyButton.backgroundColor = UIColor(colorLiteralRed: 60/255, green: 110/255, blue: 113/255, alpha: 1)
@@ -475,7 +432,7 @@ class AutoViewController: ViewController {
     
     func fuelButtonTapped(){
         hideSelectedContentView()
-        active = 2
+        active = 1
         showSelectedContentView()
     }
     
@@ -783,8 +740,111 @@ class AutoViewController: ViewController {
         totalGearsFromLoadingStation.text = "Total: \(totalGearsRetrievedFromLoadingStation)"
         self.totalGearsDroppedAtLoadingStation.text = "Total: \(totalGearsDroppedAtLoadingStation)"
         
+        if let baseline = DataModel.data["auto_baseline"] as? Int {
+            if(baseline == 1) {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
+                    self.baselineButton.layer.borderWidth = 1
+                    self.baselineButton.layer.backgroundColor = UIColor.white.cgColor
+                    self.baselineButton.setTitleColor(UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1), for: .normal)
+                    
+                })
+            } else {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.baselineButton.layer.borderWidth = 0
+                    self.baselineButton.layer.backgroundColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
+                    self.baselineButton.setTitleColor(UIColor.white, for: .normal)
+                })
+            }
+        } else {
+            UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.baselineButton.layer.borderWidth = 0
+                self.baselineButton.layer.backgroundColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
+                self.baselineButton.setTitleColor(UIColor.white, for: .normal)
+            })
+        }
+        var nkey: String
+        if (isAuto) {
+            nkey = "auto_no_action"
+        }else{
+            nkey = "tele_no_action"
+        }
+        if let baseline = DataModel.data[nkey] as? Int {
+            if(baseline == 1) {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.noActionButton.layer.borderColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+                    self.noActionButton.layer.borderWidth = 1
+                    self.noActionButton.layer.backgroundColor = UIColor.white.cgColor
+                    self.noActionButton.setTitleColor(UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1), for: .normal)
+                    
+                })
+            } else {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.noActionButton.layer.borderWidth = 0
+                    self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+                    self.noActionButton.setTitleColor(UIColor.white, for: .normal)
+                })
+            }
+        } else {
+            UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.noActionButton.layer.borderWidth = 0
+                self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
+                self.noActionButton.setTitleColor(UIColor.white, for: .normal)
+            })
+        }
+        var bkey: String
+        if (isAuto) {
+            bkey = "auto_broke_down"
+        }else{
+            bkey = "tele_broke_down"
+        }
+        if let baseline = DataModel.data[bkey] as? Int {
+            if(baseline == 1) {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.brokeDownButton.layer.borderColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+                    self.brokeDownButton.layer.borderWidth = 1
+                    self.brokeDownButton.layer.backgroundColor = UIColor.white.cgColor
+                    self.brokeDownButton.setTitleColor(UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1), for: .normal)
+                    
+                })
+            } else {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                    self.brokeDownButton.layer.borderWidth = 0
+                    self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+                    self.brokeDownButton.setTitleColor(UIColor.white, for: .normal)
+                })
+            }
+        } else {
+            UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+                self.brokeDownButton.layer.borderWidth = 0
+                self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
+                self.brokeDownButton.setTitleColor(UIColor.white, for: .normal)
+            })
+        }
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        if isAuto {
+            let alert = UIAlertController(title: "Cancel Match Confirmation", message: "Are you sure you want to cancel this match?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+                self.performSegue(withIdentifier: "unwindAutoToPrematch", sender: nil)
+                DataModel.clearData()
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Go Back Confirmation", message: "Are you sure you want to go back to Autonomous?", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+//                self.performSegue(withIdentifier: "endMatch", sender: self)
+                self.toAuto()
+                self.updateLabels()
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     @IBAction func endMatchButtonPressed(_ sender: Any) {
         if isAuto {
             let alert = UIAlertController(title: "Continue Confirmation", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
@@ -805,6 +865,10 @@ class AutoViewController: ViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func autoUnwind(unwindSegue: UIStoryboardSegue) {
+        
     }
     
     

@@ -12,6 +12,8 @@ import UIKit
 
 class DataModel {
     
+    static var storedCSVs = [String]()
+    
     static var autoActions = [Action]()
     static var teleActions = [Action]()
     static var scouterName = String()
@@ -76,6 +78,88 @@ class DataModel {
     static public func printData(){
         print(autoActions)
         print(teleActions)
+    }
+    
+    static public func clearData() {
+        DataModel.autoActions = [Action]()
+        DataModel.teleActions = [Action]()
+        DataModel.scouterName = String()
+        DataModel.matchType = nil
+        DataModel.matchNumber = Int()
+        DataModel.matchNumberOf = nil
+        DataModel.scoutingTeamNumber = Int()
+        DataModel.autoUndidActions = [Action]()
+        DataModel.teleUndidActions = [Action]()
+        DataModel.data = [String: Any]()
+    }
+    
+    static func saveCSVsToCoreData() {
+        //Getting stuff from the appDelegate
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDel.managedObjectContext
+        let entity = NSEntityDescription.entity(forEntityName: "Data", in: managedContext)
+        
+        //Delete saved data
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = entity
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            if (results.count > 0) {
+                if let managedObjectResults = results as? [NSManagedObject] {
+                    for i: NSManagedObject in managedObjectResults {
+                        managedContext.delete(i)
+                    }
+                }
+                
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
+        
+        //Creating the managed object and saving the match
+        for csv in DataModel.storedCSVs {
+            let managedObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+            managedObject.setValue(csv, forKey: "csv")
+        }
+        //This will succeed 99% of the time
+        do{
+            try managedContext.save()
+        }catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    static func fetchCSVsFromCoreData() {
+        //Clear list
+        storedCSVs.removeAll()
+        
+        //Getting stuff from the appDelegate
+        let appDel = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDel.managedObjectContext
+        let entity = NSEntityDescription.entity(forEntityName: "Data", in: managedContext)
+        
+        //Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        fetchRequest.entity = entity
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            if (results.count > 0) {
+                if let managedObjectResults = results as? [NSManagedObject] {
+                    for i: NSManagedObject in managedObjectResults {
+                        storedCSVs.append(i.value(forKey: "csv") as! String)
+                    }
+                }
+                
+            }
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
+        }
     }
     
     static public func CSV() -> String {
@@ -296,8 +380,9 @@ class DataModel {
             String(describing: data["gear_ground_intake_rating"]!) + "," +
             String(describing: data["fuel_ground_intake"]!) + "," +
             String(describing: data["fuel_ground_intake_rating"]!) + "," +
+            String(describing: data["driver_skill_rating"]!) + "," +
             String(describing: data["notes"]!) + "," +
-            "2017inwla" //event
+            "2017cave" //event
         return retVal
     }
 }
