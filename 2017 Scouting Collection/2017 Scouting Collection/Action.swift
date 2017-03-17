@@ -24,6 +24,7 @@ class Action{
     
     enum RobotAction{
         case GearPlaced
+        case GearFailed
         case GearDropped
         case HighGoal
         case LowGoal

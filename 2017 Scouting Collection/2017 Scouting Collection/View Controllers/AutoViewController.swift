@@ -68,6 +68,15 @@ class AutoViewController: ViewController {
     @IBOutlet weak var noActionButton: UIButton!
     @IBOutlet weak var brokeDownButton: UIButton!
     
+    @IBOutlet weak var droppedGearHeight: NSLayoutConstraint!
+    @IBOutlet weak var gearFailedLabel: UILabel!
+    @IBOutlet weak var boilerPegButton: UIButton!
+    @IBOutlet weak var middlePegButton: UIButton!
+    @IBOutlet weak var loadingPegButton: UIButton!
+    
+    @IBOutlet weak var gearFailedCount: UILabel!
+    
+    
     @IBOutlet weak var otherConstraintOne: NSLayoutConstraint!
     @IBOutlet weak var otherConstraintTwo: NSLayoutConstraint!
     
@@ -86,6 +95,7 @@ class AutoViewController: ViewController {
     func updateTimeLabel() {
         timePassed += 0.1
         if isAuto{
+            droppedGearHeight.constant = 0
             timerLabel.text = "\(timePassed)"
             if (timePassed > 15) {
                 if (timePassed.truncatingRemainder(dividingBy: 0.2) < 0.1) {
@@ -115,6 +125,11 @@ class AutoViewController: ViewController {
         currentPeriod.text = "Autonomous"
         otherConstraintOne.constant = 8.5
         otherConstraintTwo.constant = 290
+        droppedGearHeight.constant = 0
+        gearFailedLabel.text = "Gear Failed Attempt In:"
+        boilerPegButton.alpha = 1
+        middlePegButton.alpha = 1
+        loadingPegButton.alpha = 1
         updateLabels()
     }
     func toTeleop() {
@@ -123,6 +138,11 @@ class AutoViewController: ViewController {
         currentPeriod.text = "Teleop"
         otherConstraintOne.constant = 0
         otherConstraintTwo.constant = 0
+        droppedGearHeight.constant = 100
+        gearFailedLabel.text = ""
+        boilerPegButton.alpha = 0
+        middlePegButton.alpha = 0
+        loadingPegButton.alpha = 0
         updateLabels()
 
     }
@@ -241,6 +261,39 @@ class AutoViewController: ViewController {
         let currentPegPosition = sender.titleLabel!.text!
         
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearPlaced)
+        switch currentPegPosition {
+        case "Boiler Peg":
+            action.gearPlaced(pegPosition: Action.Pegs.Key)
+            break
+        case "Middle Peg":
+            action.gearPlaced(pegPosition: Action.Pegs.Middle)
+            break
+        case "Loading Peg":
+            action.gearPlaced(pegPosition: Action.Pegs.Loading)
+            break
+        default:
+            break
+        }
+        DataModel.printData()
+        
+        updateLabels()
+    }
+    
+    @IBAction func failedPegButtonPressed(_ sender: UIButton) {
+        
+        
+        UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            
+            sender.alpha = 0
+            
+        }) { (done) in
+            if done{
+                sender.alpha = 1.0
+            }
+        }
+        let currentPegPosition = sender.titleLabel!.text!
+        
+        let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearFailed)
         switch currentPegPosition {
         case "Boiler Peg":
             action.gearPlaced(pegPosition: Action.Pegs.Key)
@@ -662,6 +715,7 @@ class AutoViewController: ViewController {
     func updateLabels(){
         print("updatingLabels")
         var totalGearsPlaced : Int = 0
+        var totalGearsFailed : Int = 0
         var totalGearsDropped : Int = 0
         var totalSuccessfulHighGoals : Float = 0
         var totalUnsuccessfulHighGoals : Float = 0
@@ -686,6 +740,10 @@ class AutoViewController: ViewController {
             switch actionX.action {
             case Action.RobotAction.GearPlaced:
                 totalGearsPlaced += 1
+                print("gears-placed")
+                break
+            case Action.RobotAction.GearFailed:
+                totalGearsFailed += 1
                 print("gears-placed")
                 break
             case Action.RobotAction.GearDropped:
@@ -727,6 +785,11 @@ class AutoViewController: ViewController {
             }
         }
         totalGearsPlacedLabel.text = "Placed: \(totalGearsPlaced)"
+        if (isAuto) {
+            gearFailedCount.text = "Failed: \(totalGearsFailed)"
+        } else {
+            gearFailedCount.text = ""
+        }
         droppedGearLabel.text = "Dropped: \(totalGearsDropped)"
         totalHighGoalsScoredLabel.text = "Total: \(totalSuccessfulHighGoals)"
         totalHighGoalsMissedButton.text = "Total: \(totalUnsuccessfulHighGoals)"

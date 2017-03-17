@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
 
     var pickerData = [String]()
@@ -77,6 +77,9 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
         pickerView.dataSource = self
         pickerView.delegate = self
         
+        matchNumber.delegate = self
+        matchNumberOf.delegate = self
+        scoutingTeamNumber.delegate = self
         
 
         for family: String in UIFont.familyNames
@@ -87,6 +90,17 @@ class HomeViewController: ViewController, UIPickerViewDelegate, UIPickerViewData
                 print("== \(names)")
             }
         }
+    }
+    
+    //Restrict text fields to numbers only
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //        if !(textField == self.name){
+        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        return string == numberFiltered
+        //        }
+        //        return true
     }
     
     func hideStuff(){

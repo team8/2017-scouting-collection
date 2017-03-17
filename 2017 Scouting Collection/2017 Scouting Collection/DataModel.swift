@@ -164,6 +164,8 @@ class DataModel {
     
     static public func CSV() -> String {
         var gears = [0,0]
+        var autoGearsFailed = 0
+        var autoGearsFailedPositions = ""
         var gearsDropped = [0,0]
         var gearsIntakeGround = [0,0]
         var autoGearPositions = ""
@@ -239,6 +241,16 @@ class DataModel {
                         previousTime = actionX.time
                     }
 //                    print("gears-placed")
+                    break
+                case Action.RobotAction.GearFailed:
+                    autoGearsFailed += 1
+                    if actionX.inPeg! == Action.Pegs.Key {
+                        autoGearsFailedPositions += "b;"
+                    } else if actionX.inPeg! == Action.Pegs.Middle{
+                        autoGearsFailedPositions += "m;"
+                    } else {
+                        autoGearsFailedPositions += "l;"
+                    }
                     break
                 case Action.RobotAction.GearDropped:
                     gearsDropped[i] += 1
@@ -346,7 +358,8 @@ class DataModel {
             String(describing: data["auto_broke_down"]!) + "," +
             String(gears[0]) + "," +
             autoGearPositions + "," +
-            String(gearsDropped[0]) + "," +
+            String(autoGearsFailed) + "," +
+            String(autoGearsFailedPositions) + "," +
             String(gearsIntakeGround[0]) + "," +
             String(highGoals[0]) + "," +
             autoHighGoalsPositions + "," +
