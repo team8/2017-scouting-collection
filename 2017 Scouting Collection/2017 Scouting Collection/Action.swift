@@ -62,9 +62,9 @@ class Action{
         self.time = time
         self.action = action
         if (isAuto) {
-            DataModel.autoActions.append(self)
+            DataModel.currentData!.autoActions.append(self)
         } else {
-            DataModel.teleActions.append(self)
+            DataModel.currentData!.teleActions.append(self)
         }
         print(self.time	)
     }

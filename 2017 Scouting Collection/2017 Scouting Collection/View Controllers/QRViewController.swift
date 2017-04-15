@@ -40,7 +40,7 @@ class QRCodeViewController : ViewController {
     @IBAction func finishPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Finish Confirmation", message: "Are you sure you want to finish?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-            DataModel.clearData()
+//            DataModel.currentData!.clearData()
             self.performSegue(withIdentifier: "unwindQRToHome", sender: nil)
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in

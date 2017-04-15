@@ -24,7 +24,8 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DataModel.fetchCSVsFromCoreData()
+        MatchModel.fetchMatchesFromCoreData(event: DataModel.competition)
+        DataModel.fetchDataFromCoreData(event: DataModel.competition)
         tableView.reloadData()
         
         self.tableView.delegate = self
@@ -35,23 +36,76 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
         super.viewWillDisappear(animated)
     }
     
+    @IBAction func newMatchPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "homeToPrematch", sender: nil)
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+        ServerInteractor.getMatches(MatchModel.handleMatchJSON, callback2: fetchComplete, key: DataModel.competition)
+    }
+    
+    func fetchComplete() {
+        tableView.reloadData()
+        print("fetch complete")
+        print(MatchModel.matchList)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
         
-        let csv = DataModel.storedCSVs[indexPath.row]
-        let vars = csv.components(separatedBy: ",")
-        let name = vars[0]
-        let compLevel = vars[1]
-        let matchNum = vars[2]
-        let matchIn = vars[3]
-        let teamNumber = vars[4]
-        let event = vars[vars.count - 1]
+        var practice = [DataModel]()
         
-        if (matchIn == "-1") {
-            cell.textLabel!.text = name + ", Team " + teamNumber + ", " + compLevel + matchNum + ", " + event
-        } else {
-            cell.textLabel!.text = name + ", Team " + teamNumber + ", " + compLevel + matchNum + "m" + matchIn + ", " + event
+        for d in DataModel.dataList {
+//            print(d.matchType.string)
+            if d.data["comp_level"] as! String == "pr" {
+                practice.append(d)
+            }
         }
+        
+        var compLevel: String
+        var matchNum: String
+        var matchIn = "-1"
+        var teamNumber: String
+        var data: DataModel?
+        
+        if indexPath.row < practice.count {
+            data = practice[indexPath.row]
+            compLevel = data!.data["comp_level"] as! String
+            matchNum = String(data!.data["match_number"] as! Int)
+            teamNumber = String(data!.data["scouting_team_number"] as! Int)
+        } else {
+            let match = MatchModel.matchList[indexPath.row - practice.count]
+            compLevel = match.matchType.string
+            matchNum = String(match.matchNumber)
+            matchIn = "-1"
+            if let m = match.matchIn {
+                matchIn = String(m)
+            }
+            teamNumber = String(match.getTeam()!)
+            data = match.getData()
+        }
+        
+        
+        let event = DataModel.competition
+        
+        if let d = data {
+            let csv = d.CSV()
+            let vars = csv.components(separatedBy: ",")
+            let name = vars[0]
+            if (matchIn == "-1") {
+                cell.textLabel!.text = "[Scouted] " + compLevel + matchNum + ", " + name + ", Team " + teamNumber + ", " + event
+            } else {
+                cell.textLabel!.text = "[Scouted] " + compLevel + matchNum + "m" + matchIn + ", " + name + ", Team " + teamNumber + ", " + event
+            }
+
+        } else {
+            if (matchIn == "-1") {
+                cell.textLabel!.text = compLevel + matchNum + ", Team " + teamNumber + ", " + event
+            } else {
+                cell.textLabel!.text = compLevel + matchNum + "m" + matchIn + ", Team " + teamNumber +  ", " + event
+            }
+        }
+        
         cell.backgroundColor = UIColor.clear
         
         return cell
@@ -59,7 +113,28 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "homeToQR", sender: DataModel.storedCSVs[indexPath.row])
+        var practice = [DataModel]()
+        
+        for d in DataModel.dataList {
+            //            print(d.matchType.string)
+            if d.data["comp_level"] as! String == "pr" {
+                practice.append(d)
+            }
+        }
+        
+        if indexPath.row < practice.count {
+            let data = practice[indexPath.row]
+            let csv = data.CSV()
+            self.performSegue(withIdentifier: "homeToQR", sender: csv)
+        } else {
+            let match = MatchModel.matchList[indexPath.row - practice.count]
+            if let data = match.getData() {
+                let csv = data.CSV()
+                self.performSegue(withIdentifier: "homeToQR", sender: csv)
+            } else {
+                self.performSegue(withIdentifier: "homeToPrematch", sender: match)
+            }
+        }
     }
     
     
@@ -68,10 +143,15 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
             let secondViewController = segue.destination as! QRCodeViewController
             let csv = sender as! String
             secondViewController.TextTOQRCode = csv
+        } else if (segue.identifier == "homeToPrematch") {
+            let secondViewController = segue.destination as! HomeViewController
+            if let match = sender as? MatchModel {
+                secondViewController.match = match
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataModel.storedCSVs.count
+        return MatchModel.matchList.count
     }
 }

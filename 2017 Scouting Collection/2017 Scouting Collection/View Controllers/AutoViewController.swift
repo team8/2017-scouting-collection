@@ -99,9 +99,9 @@ class AutoViewController: ViewController {
             timerLabel.text = "\(timePassed)"
             if (timePassed > 15) {
                 if (timePassed.truncatingRemainder(dividingBy: 0.2) < 0.1) {
-                    self.endMatchButton.alpha = 0
+                    self.endMatchButton.layer.backgroundColor = UIColor.white.cgColor
                 } else {
-                    self.endMatchButton.alpha = 1
+                    self.endMatchButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
                 }
             }
         }else{
@@ -171,7 +171,7 @@ class AutoViewController: ViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        scoutingTeamNumber.text = "Team \(DataModel.scoutingTeamNumber)"
+        scoutingTeamNumber.text = "Team \(DataModel.currentData!.scoutingTeamNumber)"
         
         //Insets for the images
         let insets = UIEdgeInsets(top: 25, left: 0, bottom: 25, right: 0)
@@ -274,7 +274,7 @@ class AutoViewController: ViewController {
         default:
             break
         }
-        DataModel.printData()
+        DataModel.currentData!.printData()
         
         updateLabels()
     }
@@ -307,7 +307,7 @@ class AutoViewController: ViewController {
         default:
             break
         }
-        DataModel.printData()
+        DataModel.currentData!.printData()
         
         updateLabels()
     }
@@ -520,7 +520,7 @@ class AutoViewController: ViewController {
         print("fuel loading")
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.FuelRetrieved)
         action.fuelRetrieved(source: Action.FuelRetrievalPositions.LoadingStation)
-        DataModel.printData()
+        DataModel.currentData!.printData()
         updateLabels()
     }
     
@@ -538,7 +538,7 @@ class AutoViewController: ViewController {
         print("gear ground")
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.Ground)
-        DataModel.printData()
+        DataModel.currentData!.printData()
         updateLabels()
     }
     
@@ -556,7 +556,7 @@ class AutoViewController: ViewController {
         print("gear loading")
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.LoadingStation)
-        DataModel.printData()
+        DataModel.currentData!.printData()
         updateLabels()
     }
     
@@ -574,7 +574,7 @@ class AutoViewController: ViewController {
         print("gear dropped")
         let action = Action(isAuto: isAuto, time: timePassed, action: Action.RobotAction.GearRetrieved)
         action.gearRetrieved(source: Action.GearRetrievalPositions.Dropped)
-        DataModel.printData()
+        DataModel.currentData!.printData()
         updateLabels()
     }
     
@@ -604,10 +604,10 @@ class AutoViewController: ViewController {
 //        otherConstraintOne.constant = 0
 //        otherConstraintTwo.constant = 0
         
-        if let baseline = DataModel.data["auto_baseline"] as? Int {
+        if let baseline = DataModel.currentData!.data["auto_baseline"] as? Int {
             print(baseline)
             if(baseline == 1) {
-                DataModel.data["auto_baseline"] = 0
+                DataModel.currentData!.data["auto_baseline"] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.baselineButton.layer.borderWidth = 0
                     self.baselineButton.layer.backgroundColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
@@ -617,8 +617,8 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data["auto_baseline"] = 1
-        print(DataModel.data["auto_baseline"])
+        DataModel.currentData!.data["auto_baseline"] = 1
+        print(DataModel.currentData!.data["auto_baseline"])
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
             self.baselineButton.layer.borderWidth = 1
@@ -635,9 +635,9 @@ class AutoViewController: ViewController {
         }else{
             key = "tele_no_action"
         }
-        if let baseline = DataModel.data[key] as? Int {
+        if let baseline = DataModel.currentData!.data[key] as? Int {
             if(baseline == 1) {
-                DataModel.data[key] = 0
+                DataModel.currentData!.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.noActionButton.layer.borderWidth = 0
                     self.noActionButton.layer.backgroundColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
@@ -646,7 +646,7 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data[key] = 1
+        DataModel.currentData!.data[key] = 1
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.noActionButton.layer.borderColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
             self.noActionButton.layer.borderWidth = 1
@@ -664,9 +664,9 @@ class AutoViewController: ViewController {
         }else{
             key = "tele_broke_down"
         }
-        if let baseline = DataModel.data[key] as? Int {
+        if let baseline = DataModel.currentData!.data[key] as? Int {
             if(baseline == 1) {
-                DataModel.data[key] = 0
+                DataModel.currentData!.data[key] = 0
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.brokeDownButton.layer.borderWidth = 0
                     self.brokeDownButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
@@ -675,7 +675,7 @@ class AutoViewController: ViewController {
                 return
             }
         }
-        DataModel.data[key] = 1
+        DataModel.currentData!.data[key] = 1
         UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
             self.brokeDownButton.layer.borderColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
             self.brokeDownButton.layer.borderWidth = 1
@@ -690,9 +690,9 @@ class AutoViewController: ViewController {
     
     @IBAction func undoButtonPressed(_ sender: UIButton) {
         print("pressed")
-        DataModel.undoAction(isAuto)
+        DataModel.currentData!.undoAction(isAuto)
         updateLabels()
-        if ((isAuto && !DataModel.autoUndidActions.isEmpty) || (!isAuto && !DataModel.teleUndidActions.isEmpty)) && redoButton.isHidden {
+        if ((isAuto && !DataModel.currentData!.autoUndidActions.isEmpty) || (!isAuto && !DataModel.currentData!.teleUndidActions.isEmpty)) && redoButton.isHidden {
             redoButton.isHidden = false
             redoButton.animation = "slideUp"
             redoButton.force = 0.1
@@ -701,10 +701,10 @@ class AutoViewController: ViewController {
     }
     
     @IBAction func redoButtonPressed(_ sender: Any) {
-        DataModel.redoAction(isAuto)
+        DataModel.currentData!.redoAction(isAuto)
         updateLabels()
-//        print(DataModel.undidActions)
-        if ((isAuto && DataModel.autoUndidActions.isEmpty) || (!isAuto && DataModel.teleUndidActions.isEmpty)) {
+//        print(DataModel.currentData!.undidActions)
+        if ((isAuto && DataModel.currentData!.autoUndidActions.isEmpty) || (!isAuto && DataModel.currentData!.teleUndidActions.isEmpty)) {
             redoButton.animation = "fadeOut"
             redoButton.animate()
             redoButton.isHidden = true
@@ -730,9 +730,9 @@ class AutoViewController: ViewController {
         var actions: [Action]
         
         if (isAuto) {
-            actions = DataModel.autoActions
+            actions = DataModel.currentData!.autoActions
         } else {
-            actions = DataModel.teleActions
+            actions = DataModel.currentData!.teleActions
         }
         
         for actionX in actions {
@@ -803,7 +803,7 @@ class AutoViewController: ViewController {
         totalGearsFromLoadingStation.text = "Total: \(totalGearsRetrievedFromLoadingStation)"
         self.totalGearsDroppedAtLoadingStation.text = "Total: \(totalGearsDroppedAtLoadingStation)"
         
-        if let baseline = DataModel.data["auto_baseline"] as? Int {
+        if let baseline = DataModel.currentData!.data["auto_baseline"] as? Int {
             if(baseline == 1) {
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.baselineButton.layer.borderColor = UIColor(colorLiteralRed: 112/255, green: 174/255, blue: 110/255, alpha: 1).cgColor
@@ -832,7 +832,7 @@ class AutoViewController: ViewController {
         }else{
             nkey = "tele_no_action"
         }
-        if let baseline = DataModel.data[nkey] as? Int {
+        if let baseline = DataModel.currentData!.data[nkey] as? Int {
             if(baseline == 1) {
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.noActionButton.layer.borderColor = UIColor(colorLiteralRed: 224/255, green: 116/255, blue: 59/255, alpha: 1).cgColor
@@ -861,7 +861,7 @@ class AutoViewController: ViewController {
         }else{
             bkey = "tele_broke_down"
         }
-        if let baseline = DataModel.data[bkey] as? Int {
+        if let baseline = DataModel.currentData!.data[bkey] as? Int {
             if(baseline == 1) {
                 UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
                     self.brokeDownButton.layer.borderColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
@@ -891,7 +891,7 @@ class AutoViewController: ViewController {
             let alert = UIAlertController(title: "Cancel Match Confirmation", message: "Are you sure you want to cancel this match?", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
                 self.performSegue(withIdentifier: "unwindAutoToPrematch", sender: nil)
-                DataModel.clearData()
+//                DataModel.currentData!.clearData()
             }))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
             }))

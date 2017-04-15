@@ -10,40 +10,27 @@ import Foundation
 import CoreData
 import UIKit
 
-class DataModel {
+class DataModel: CoreData {
     
-    static var storedCSVs = [String]()
+//    static var storedCSVs = [String]()
+    static var competition = "2017casj" //temp
     
-    static var autoActions = [Action]()
-    static var teleActions = [Action]()
-    static var scouterName = String()
-    static var matchType : MatchType!
-    static var matchNumber : Int = Int()
-    static var matchNumberOf : Int?
-    static var scoutingTeamNumber : Int = Int()
-    static var autoUndidActions = [Action]()
-    static var teleUndidActions = [Action]()
-    static var data = [String: Any]()
+    static var currentData: DataModel?
+    static var dataList = [DataModel]()
     
-    enum MatchType {
-        case Qualifying
-        case QuarterFinals
-        case SemiFinals
-        case Finals
-        case Unknown
-        
-        var string: String {
-            switch self {
-            case .Qualifying: return "qm";
-            case .QuarterFinals: return "qf";
-            case .SemiFinals: return "sf";
-            case .Finals: return "f";
-            default: return "un"
-            }
-        }
-    }
+    var autoActions = [Action]()
+    var teleActions = [Action]()
+    var scouterName = String()
+    var matchType : MatchModel.MatchType!
+    var matchNumber : Int = Int()
+    var matchNumberOf : Int?
+    var scoutingTeamNumber : Int = Int()
+    var autoUndidActions = [Action]()
+    var teleUndidActions = [Action]()
+    var data = [String: Any]()
     
-    static public func undoAction(_ isAuto: Bool){
+    
+    public func undoAction(_ isAuto: Bool){
         if(isAuto) {
             if !(autoActions.isEmpty){
                 let lastAction = autoActions[autoActions.count - 1];
@@ -59,7 +46,7 @@ class DataModel {
         }
     }
     
-    static public func redoAction(_ isAuto: Bool){
+    public func redoAction(_ isAuto: Bool){
         if(isAuto) {
             if !(autoUndidActions.isEmpty){
                 let lastUndidAction = autoUndidActions[autoUndidActions.count - 1];
@@ -75,66 +62,54 @@ class DataModel {
         }
     }
     
-    static public func printData(){
+    public func printData(){
         print(autoActions)
         print(teleActions)
     }
     
-    static public func clearData() {
-        DataModel.autoActions = [Action]()
-        DataModel.teleActions = [Action]()
-        DataModel.scouterName = String()
-        DataModel.matchType = nil
-        DataModel.matchNumber = Int()
-        DataModel.matchNumberOf = nil
-        DataModel.scoutingTeamNumber = Int()
-        DataModel.autoUndidActions = [Action]()
-        DataModel.teleUndidActions = [Action]()
-        DataModel.data = [String: Any]()
+//    public func clearData() {
+//        autoActions = [Action]()
+//        teleActions = [Action]()
+//        scouterName = String()
+//        matchType = nil
+//        matchNumber = Int()
+//        matchNumberOf = nil
+//        scoutingTeamNumber = Int()
+//        autoUndidActions = [Action]()
+//        teleUndidActions = [Action]()
+//        data = [String: Any]()
+//    }
+    
+    init() {
+        super.init(entityName: "Data")
     }
     
-    static func saveCSVsToCoreData() {
-        //Getting stuff from the appDelegate
-        let appDel = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDel.managedObjectContext
-        let entity = NSEntityDescription.entity(forEntityName: "Data", in: managedContext)
-        
-        //Delete saved data
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-        fetchRequest.entity = entity
-        
+    override init(_ managedObject: NSManagedObject) {
+        let unarchivedData : NSData = managedObject.value(forKey: "data") as! NSData
         do {
-            let results = try managedContext.fetch(fetchRequest)
-            if (results.count > 0) {
-                if let managedObjectResults = results as? [NSManagedObject] {
-                    for i: NSManagedObject in managedObjectResults {
-                        managedContext.delete(i)
-                    }
-                }
-                
-            }
+            let dict: NSDictionary = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(unarchivedData) as! NSDictionary
+            self.data = dict as! [String : Any]
+            
+            super.init(managedObject)
             
         } catch {
-            let fetchError = error as NSError
-            print(fetchError)
+            fatalError("core data fetch error")
         }
-        
-        //Creating the managed object and saving the match
-        for csv in DataModel.storedCSVs {
-            let managedObject = NSManagedObject(entity: entity!, insertInto: managedContext)
-            managedObject.setValue(csv, forKey: "csv")
-        }
-        //This will succeed 99% of the time
-        do{
-            try managedContext.save()
-        }catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+    }
+
+    override func getJSON() -> NSDictionary {
+        return data as NSDictionary
+    }
+    
+    static func saveDataToCoreData() {
+        for data in dataList {
+            data.saveToCoreData()
         }
     }
     
-    static func fetchCSVsFromCoreData() {
+    static func fetchDataFromCoreData(event: String) {
         //Clear list
-        storedCSVs.removeAll()
+        dataList.removeAll()
         
         //Getting stuff from the appDelegate
         let appDel = UIApplication.shared.delegate as! AppDelegate
@@ -150,7 +125,9 @@ class DataModel {
             if (results.count > 0) {
                 if let managedObjectResults = results as? [NSManagedObject] {
                     for i: NSManagedObject in managedObjectResults {
-                        storedCSVs.append(i.value(forKey: "csv") as! String)
+                        if (i.value(forKey: "event") as! String == DataModel.competition) {
+                            dataList.append(DataModel(i))
+                        }
                     }
                 }
                 
@@ -161,8 +138,78 @@ class DataModel {
             print(fetchError)
         }
     }
+
     
-    static public func CSV() -> String {
+//    static func saveCSVsToCoreData() {
+//        //Getting stuff from the appDelegate
+//        let appDel = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDel.managedObjectContext
+//        let entity = NSEntityDescription.entity(forEntityName: "Data", in: managedContext)
+//        
+//        //Delete saved data
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+//        fetchRequest.entity = entity
+//        
+//        do {
+//            let results = try managedContext.fetch(fetchRequest)
+//            if (results.count > 0) {
+//                if let managedObjectResults = results as? [NSManagedObject] {
+//                    for i: NSManagedObject in managedObjectResults {
+//                        managedContext.delete(i)
+//                    }
+//                }
+//                
+//            }
+//            
+//        } catch {
+//            let fetchError = error as NSError
+//            print(fetchError)
+//        }
+//        
+//        //Creating the managed object and saving the match
+//        for csv in DataModel.storedCSVs {
+//            let managedObject = NSManagedObject(entity: entity!, insertInto: managedContext)
+//            managedObject.setValue(csv, forKey: "csv")
+//        }
+//        //This will succeed 99% of the time
+//        do{
+//            try managedContext.save()
+//        }catch let error as NSError  {
+//            print("Could not save \(error), \(error.userInfo)")
+//        }
+//    }
+//    
+//    static func fetchCSVsFromCoreData() {
+//        //Clear list
+//        storedCSVs.removeAll()
+//        
+//        //Getting stuff from the appDelegate
+//        let appDel = UIApplication.shared.delegate as! AppDelegate
+//        let managedContext = appDel.managedObjectContext
+//        let entity = NSEntityDescription.entity(forEntityName: "Data", in: managedContext)
+//        
+//        //Fetch Request
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+//        fetchRequest.entity = entity
+//        
+//        do {
+//            let results = try managedContext.fetch(fetchRequest)
+//            if (results.count > 0) {
+//                if let managedObjectResults = results as? [NSManagedObject] {
+//                    for i: NSManagedObject in managedObjectResults {
+//                        storedCSVs.append(i.value(forKey: "csv") as! String)
+//                    }
+//                }
+//                
+//            }
+//            
+//        } catch {
+//            let fetchError = error as NSError
+//            print(fetchError)
+//        }
+//    }
+    
+    public func compile() {
         var gears = [0,0]
         var autoGearsFailed = 0
         var autoGearsFailedPositions = ""
@@ -189,9 +236,9 @@ class DataModel {
             var actions: [Action]
             
             if (i == 0) {
-                actions = DataModel.autoActions
+                actions = autoActions
             } else {
-                actions = DataModel.teleActions
+                actions = teleActions
             }
             
             var previousTime: Float?
@@ -348,42 +395,78 @@ class DataModel {
         } else {
             matchIn = matchNumberOf!
         }
-        let retVal = scouterName + "," +
-            matchType.string + "," +
-            String(matchNumber) + "," +
-            String(matchIn) + "," +
-            String(scoutingTeamNumber) + "," +
+        data["name"] = scouterName
+        data["comp_level"] = matchType.string
+        data["match_number"] = matchNumber
+        data["match_in"] = matchIn
+        data["scouting_team_number"] = scoutingTeamNumber
+        data["auto_gears"] = String(gears[0])
+        data["auto_gears_positions"] = autoGearPositions
+        data["auto_gears_failed"] = String(autoGearsFailed)
+        data["auto_gears_failed_positions"] = String(autoGearsFailedPositions)
+        data["auto_gears_intake_ground"] = String(gearsIntakeGround[0])
+        data["auto_fuel_high_cycles"] = String(highGoals[0])
+        data["auto_fuel_high_cycles_positions"] = autoHighGoalsPositions
+        data["auto_fuel_low_cycles"] = String(lowGoals[0])
+        data["auto_fuel_intake_hopper"] = String(fuelIntakeHopper[0])
+        data["tele_gears_cycles"] = String(gears[1])
+        data["tele_gears_cycles_boiler"] = String(teleGearPositions[0])
+        data["tele_gears_cycles_middle"] = String(teleGearPositions[1])
+        data["tele_gears_cycles_loading"] = String(teleGearPositions[2])
+        data["tele_gears_dropped"] = String(gearsDropped[1])
+        data["tele_gears_intake_ground"] = String(gearsIntakeGround[1])
+        data["tele_gears_intake_loading_station"] = String(teleGearsIntakeLoadingStation)
+        data["tele_gears_intake_dropped"] = String(teleGearsIntakeDropped)
+        data["tele_gears_cycles_times"] = teleGearsCycleTimes
+        data["tele_fuel_high_cycles"] = String(highGoals[1])
+        data["tele_fuel_high_cycles_in_key"] = String(teleHighGoalsPositions[0])
+        data["tele_fuel_high_cycles_out_of_key"] = String(teleHighGoalsPositions[1])
+        data["tele_fuel_high_cycles_times"] = teleHighCycleTimes
+        data["tele_fuel_low_cycles"] = String(lowGoals[1])
+        data["tele_fuel_low_cycles_times"] = teleLowCycleTimes
+        data["tele_fuel_intake_hopper"] = String(fuelIntakeHopper[1])
+        data["tele_fuel_intake_loading_station"] = String(teleFuelIntakeLoadingStation)
+        data["event"] = DataModel.competition //temp
+//        return retVal
+    }
+    
+    public func CSV() -> String {
+        let retVal = String(describing: data["name"]!) + "," +
+            String(describing: data["comp_level"]!) + "," +
+            String(describing: data["match_number"]!) + "," +
+            String(describing: data["match_in"]!) + "," +
+            String(describing: data["scouting_team_number"]!) + "," +
             String(describing: data["auto_baseline"]!) + "," +
             String(describing: data["auto_no_action"]!) + "," +
             String(describing: data["auto_broke_down"]!) + "," +
-            String(gears[0]) + "," +
-            autoGearPositions + "," +
-            String(autoGearsFailed) + "," +
-            String(autoGearsFailedPositions) + "," +
-            String(gearsIntakeGround[0]) + "," +
-            String(highGoals[0]) + "," +
-            autoHighGoalsPositions + "," +
-            String(lowGoals[0]) + "," +
-            String(fuelIntakeHopper[0]) + "," +
+            String(describing: data["auto_gears"]!) + "," +
+            String(describing: data["auto_gears_positions"]!) + "," +
+            String(describing: data["auto_gears_failed"]!) + "," +
+            String(describing: data["auto_gears_failed_positions"]!) + "," +
+            String(describing: data["auto_gears_intake_ground"]!) + "," +
+            String(describing: data["auto_fuel_high_cycles"]!) + "," +
+            String(describing: data["auto_fuel_high_cycles_positions"]!) + "," +
+            String(describing: data["auto_fuel_low_cycles"]!) + "," +
+            String(describing: data["auto_fuel_intake_hopper"]!) + "," +
             String(describing: data["tele_no_action"]!) + "," +
             String(describing: data["tele_broke_down"]!) + "," +
-            String(gears[1]) + "," +
-            String(teleGearPositions[0]) + "," +
-            String(teleGearPositions[1]) + "," +
-            String(teleGearPositions[2]) + "," +
-            String(gearsDropped[1]) + "," +
-            String(gearsIntakeGround[1]) + "," +
-            String(teleGearsIntakeLoadingStation) + "," +
-            String(teleGearsIntakeDropped) + "," +
-            teleGearsCycleTimes + "," +
-            String(highGoals[1]) + "," +
-            String(teleHighGoalsPositions[0]) + "," +
-            String(teleHighGoalsPositions[1]) + "," +
-            teleHighCycleTimes + "," +
-            String(lowGoals[1]) + "," +
-            teleLowCycleTimes + "," +
-            String(fuelIntakeHopper[1]) + "," +
-            String(teleFuelIntakeLoadingStation) + "," +
+            String(describing: data["tele_gears_cycles"]!) + "," +
+            String(describing: data["tele_gears_cycles_boiler"]!) + "," +
+            String(describing: data["tele_gears_cycles_middle"]!) + "," +
+            String(describing: data["tele_gears_cycles_loading"]!) + "," +
+            String(describing: data["tele_gears_dropped"]!) + "," +
+            String(describing: data["tele_gears_intake_ground"]!) + "," +
+            String(describing: data["tele_gears_intake_loading_station"]!) + "," +
+            String(describing: data["tele_gears_intake_dropped"]!) + "," +
+            String(describing: data["tele_gears_cycles_times"]!) + "," +
+            String(describing: data["tele_fuel_high_cycles"]!) + "," +
+            String(describing: data["tele_fuel_high_cycles_in_key"]!) + "," +
+            String(describing: data["tele_fuel_high_cycles_out_of_key"]!) + "," +
+            String(describing: data["tele_fuel_high_cycles_times"]!) + "," +
+            String(describing: data["tele_fuel_low_cycles"]!) + "," +
+            String(describing: data["tele_fuel_low_cycles_times"]!) + "," +
+            String(describing: data["tele_fuel_intake_hopper"]!) + "," +
+            String(describing: data["tele_fuel_intake_loading_station"]!) + "," +
             String(describing: data["no_show"]!) + "," +
             String(describing: data["takeoff"]!) + "," +
             String(describing: data["takeoff_speed"]!) + "," +
@@ -395,7 +478,7 @@ class DataModel {
             String(describing: data["fuel_ground_intake_rating"]!) + "," +
             String(describing: data["driver_skill_rating"]!) + "," +
             String(describing: data["notes"]!) + "," +
-            "2017casj" //event
+            String(describing: data["event"]!)
         return retVal
     }
 }

@@ -23,7 +23,7 @@
         <scene sceneID="dEF-Jv-kk0">
             <objects>
                 <navigationController navigationBarHidden="YES" id="TEE-as-9Tr" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOc-7r-FQS">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="wOc-7r-FQS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -60,11 +60,11 @@
                                     <constraint firstAttribute="height" constant="60" id="Zba-lx-yK0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="25"/>
-                                <state key="normal" title="+ Scout New Match">
+                                <state key="normal" title="Scout Practice Match">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="dIp-L2-mM3"/>
+                                    <action selector="newMatchPressed:" destination="2h0-zP-AT7" eventType="touchUpInside" id="TEq-ab-d4f"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eCD-9z-teQ">
@@ -75,12 +75,22 @@
                                         <rect key="frame" x="0.0" y="28" width="1024" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gaW-Yg-Vle" id="dmN-ms-PoT">
-                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="1024" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5I2-FG-28V">
+                                <rect key="frame" x="854" y="40.5" width="150" height="33"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <state key="normal" title="Get Match Schedule">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="refresh:" destination="2h0-zP-AT7" eventType="touchUpInside" id="H5E-RE-cov"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,7 +100,9 @@
                             <constraint firstItem="wB2-ZN-clb" firstAttribute="top" secondItem="eCD-9z-teQ" secondAttribute="bottom" constant="20" id="WIF-bI-iCb"/>
                             <constraint firstItem="jvq-qm-AUY" firstAttribute="centerX" secondItem="mSn-Bd-QYt" secondAttribute="centerX" id="boN-0Q-9AE"/>
                             <constraint firstItem="jvq-qm-AUY" firstAttribute="top" secondItem="RxP-3q-gX0" secondAttribute="bottom" constant="10" id="cDt-FN-o1r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5I2-FG-28V" secondAttribute="trailing" id="eOz-GK-g8b"/>
                             <constraint firstItem="wB2-ZN-clb" firstAttribute="leading" secondItem="mSn-Bd-QYt" secondAttribute="leadingMargin" id="fPI-xV-NbJ"/>
+                            <constraint firstItem="5I2-FG-28V" firstAttribute="centerY" secondItem="jvq-qm-AUY" secondAttribute="centerY" id="n4A-A4-cWB"/>
                             <constraint firstAttribute="bottom" secondItem="wB2-ZN-clb" secondAttribute="bottom" constant="20" id="nOG-8j-Z11"/>
                             <constraint firstAttribute="trailing" secondItem="eCD-9z-teQ" secondAttribute="trailing" id="u6U-Fv-Gqp"/>
                         </constraints>
@@ -125,9 +137,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soW-Iq-LG5">
-                                <rect key="frame" x="386.5" y="92" width="252" height="30"/>
+                                <rect key="frame" x="428" y="92" width="169.5" height="30"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="Ventura Regional 2017">
+                                    <fragment content="Practice Match">
                                         <attributes>
                                             <font key="NSFont" metaFont="system" size="25"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -145,39 +157,10 @@
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOk-bu-WeR">
-                                <rect key="frame" x="20" y="213" width="585" height="41"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Practice Match Number" textAlignment="center" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-a4-lPf">
+                                <rect key="frame" x="20" y="274" width="984" height="41"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="KyJ-tR-HTJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                <color key="textColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.83137254901960778" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Number" textAlignment="center" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="p1T-a4-lPf">
-                                <rect key="frame" x="613" y="213" width="186" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="p1T-a4-lPf" secondAttribute="height" multiplier="186:41" id="htF-Zo-t28"/>
                                     <constraint firstAttribute="height" constant="41" id="wdy-id-QFJ"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                            </textField>
-                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVG-92-Zs6">
-                                <rect key="frame" x="0.0" y="438" width="1024" height="330"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="330" id="vMQ-Mw-Vry"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Cdl-yg-p0g"/>
-                                </connections>
-                            </pickerView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Match Number Of 4" textAlignment="center" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="m8W-QG-HcF">
-                                <rect key="frame" x="807" y="213" width="197" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="197" id="PYe-zu-jKN"/>
-                                    <constraint firstAttribute="height" constant="41" id="ZVK-cN-d3Z"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
@@ -198,7 +181,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Scouting Team Number" textAlignment="center" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="gwS-IN-pAT">
-                                <rect key="frame" x="20" y="274" width="984" height="41"/>
+                                <rect key="frame" x="20" y="335" width="984" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="8AN-b0-F88"/>
                                 </constraints>
@@ -221,47 +204,52 @@
                                     <segue destination="ZbV-HW-FcX" kind="unwind" unwindAction="realHomeUnwindWithUnwindSegue:" id="ezP-cg-sn3"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your Team Number" textAlignment="center" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="1Pb-wY-bWf">
+                                <rect key="frame" x="20" y="213" width="984" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="R6p-r5-co1"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="R9i-i6-8mH" firstAttribute="leading" secondItem="4Qn-wX-OPb" secondAttribute="leading" id="1gm-eD-dkB"/>
                             <constraint firstItem="soW-Iq-LG5" firstAttribute="top" secondItem="iJK-bd-O4t" secondAttribute="bottom" constant="8" id="3g8-kq-WeV"/>
                             <constraint firstItem="R9i-i6-8mH" firstAttribute="centerY" secondItem="iJK-bd-O4t" secondAttribute="centerY" id="45z-CA-Alf"/>
-                            <constraint firstItem="gwS-IN-pAT" firstAttribute="top" secondItem="m8W-QG-HcF" secondAttribute="bottom" constant="20" id="4R1-Xn-k8i"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Qn-wX-OPb" secondAttribute="bottom" constant="20" id="4ov-YR-btq"/>
-                            <constraint firstItem="m8W-QG-HcF" firstAttribute="leading" secondItem="p1T-a4-lPf" secondAttribute="trailing" constant="8" id="74b-tI-5JY"/>
                             <constraint firstItem="gwS-IN-pAT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8ed-Oq-hFO"/>
-                            <constraint firstItem="hOk-bu-WeR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Bzj-Kq-Q7f"/>
+                            <constraint firstItem="p1T-a4-lPf" firstAttribute="top" secondItem="1Pb-wY-bWf" secondAttribute="bottom" constant="20" id="Bfg-pg-F4z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Pb-wY-bWf" secondAttribute="trailing" id="EZ0-JT-t62"/>
                             <constraint firstItem="gwS-IN-pAT" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Ndr-al-WCw"/>
                             <constraint firstItem="bZw-2m-Qvh" firstAttribute="top" secondItem="soW-Iq-LG5" secondAttribute="bottom" constant="30" id="Oxm-S8-Sp5"/>
                             <constraint firstItem="iJK-bd-O4t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pm2-s4-F7k"/>
-                            <constraint firstItem="hOk-bu-WeR" firstAttribute="top" secondItem="bZw-2m-Qvh" secondAttribute="bottom" constant="20" id="Sum-Pb-hg6"/>
                             <constraint firstItem="soW-Iq-LG5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TBl-hL-VAb"/>
-                            <constraint firstAttribute="trailing" secondItem="xVG-92-Zs6" secondAttribute="trailing" id="V6i-RX-5sJ"/>
                             <constraint firstItem="bZw-2m-Qvh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="WAG-li-cOe"/>
-                            <constraint firstItem="p1T-a4-lPf" firstAttribute="top" secondItem="bZw-2m-Qvh" secondAttribute="bottom" constant="20" id="WZb-2Y-mMm"/>
+                            <constraint firstItem="1Pb-wY-bWf" firstAttribute="top" secondItem="bZw-2m-Qvh" secondAttribute="bottom" constant="20" id="YPz-Ju-xOc"/>
                             <constraint firstItem="4Qn-wX-OPb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Yzc-XY-Mv7"/>
-                            <constraint firstItem="m8W-QG-HcF" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="cqv-Au-UXb"/>
                             <constraint firstItem="iJK-bd-O4t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="fO9-LM-kYa"/>
+                            <constraint firstItem="gwS-IN-pAT" firstAttribute="top" secondItem="p1T-a4-lPf" secondAttribute="bottom" constant="20" id="j3t-gw-myU"/>
                             <constraint firstItem="gwS-IN-pAT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kPr-Re-QJ2"/>
-                            <constraint firstItem="xVG-92-Zs6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mXD-x4-0TP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xVG-92-Zs6" secondAttribute="bottom" id="pje-Gn-yNd"/>
+                            <constraint firstItem="1Pb-wY-bWf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="mCX-63-38h"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p1T-a4-lPf" secondAttribute="trailing" id="pKe-3e-2zp"/>
                             <constraint firstItem="4Qn-wX-OPb" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="r5N-9d-bB4"/>
+                            <constraint firstItem="p1T-a4-lPf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rbO-RG-nEK"/>
                             <constraint firstItem="bZw-2m-Qvh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="veu-XE-wsR"/>
-                            <constraint firstItem="p1T-a4-lPf" firstAttribute="leading" secondItem="hOk-bu-WeR" secondAttribute="trailing" constant="8" id="yPX-40-FQ9"/>
-                            <constraint firstItem="m8W-QG-HcF" firstAttribute="top" secondItem="bZw-2m-Qvh" secondAttribute="bottom" constant="20" id="yv0-1y-tuF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9lc-db-hi8"/>
                     <connections>
+                        <outlet property="matchLabel" destination="soW-Iq-LG5" id="kIz-ZF-A2K"/>
                         <outlet property="matchNumber" destination="p1T-a4-lPf" id="ZgL-aX-psH"/>
-                        <outlet property="matchNumberOf" destination="m8W-QG-HcF" id="RXK-TA-JC4"/>
-                        <outlet property="matchNumberOfWidth" destination="PYe-zu-jKN" id="vOQ-mn-A06"/>
-                        <outlet property="matchType" destination="hOk-bu-WeR" id="JT6-65-iqD"/>
+                        <outlet property="matchNumberHeight" destination="wdy-id-QFJ" id="k1r-yK-Wek"/>
                         <outlet property="name" destination="bZw-2m-Qvh" id="rTe-cm-NOW"/>
-                        <outlet property="pickerView" destination="xVG-92-Zs6" id="q3z-xf-Pul"/>
                         <outlet property="scoutingTeamNumber" destination="gwS-IN-pAT" id="sSV-Xy-FLl"/>
+                        <outlet property="scoutingTeamNumberHeight" destination="8AN-b0-F88" id="uAR-Ev-txN"/>
                         <outlet property="startMatchButton" destination="4Qn-wX-OPb" id="BdH-VZ-Zj0"/>
+                        <outlet property="yourTeamNumber" destination="1Pb-wY-bWf" id="30Y-k9-kdO"/>
                         <segue destination="KP8-II-Zc9" kind="show" identifier="startMatch" id="qD6-NA-FJ1"/>
                     </connections>
                 </viewController>
@@ -1182,7 +1170,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Match" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gdt-Qi-odF">
-                                <rect key="frame" x="408" y="28" width="208" height="54"/>
+                                <rect key="frame" x="408.5" y="28" width="208" height="54"/>
                                 <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="45"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1601,6 +1589,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Y2k-8C-i5z"/>
-        <segue reference="dIp-L2-mM3"/>
     </inferredMetricsTieBreakers>
 </document>

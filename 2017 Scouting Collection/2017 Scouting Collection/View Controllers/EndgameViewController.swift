@@ -163,53 +163,56 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     @IBAction func submitPressed(_ sender: Any) {
         let alert = UIAlertController(title: "Submit Confirmation", message: "Are you sure you want to submit?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
-            if(DataModel.data["auto_baseline"] == nil) {
-                DataModel.data["auto_baseline"] = 0
+            if(DataModel.currentData!.data["auto_baseline"] == nil) {
+                DataModel.currentData!.data["auto_baseline"] = 0
             }
-            if(DataModel.data["auto_no_action"] == nil) {
-                DataModel.data["auto_no_action"] = 0
+            if(DataModel.currentData!.data["auto_no_action"] == nil) {
+                DataModel.currentData!.data["auto_no_action"] = 0
             }
-            if(DataModel.data["auto_broke_down"] == nil) {
-                DataModel.data["auto_broke_down"] = 0
+            if(DataModel.currentData!.data["auto_broke_down"] == nil) {
+                DataModel.currentData!.data["auto_broke_down"] = 0
             }
-            if(DataModel.data["tele_no_action"] == nil) {
-                DataModel.data["tele_no_action"] = 0
+            if(DataModel.currentData!.data["tele_no_action"] == nil) {
+                DataModel.currentData!.data["tele_no_action"] = 0
             }
-            if(DataModel.data["tele_broke_down"] == nil) {
-                DataModel.data["tele_broke_down"] = 0
+            if(DataModel.currentData!.data["tele_broke_down"] == nil) {
+                DataModel.currentData!.data["tele_broke_down"] = 0
             }
-            DataModel.data["no_show"] = Int(NSNumber(value: self.matchAbandoned.isOn))
-            DataModel.data["takeoff"] = self.takeoff.selectedSegmentIndex
+            DataModel.currentData!.data["no_show"] = Int(NSNumber(value: self.matchAbandoned.isOn))
+            DataModel.currentData!.data["takeoff"] = self.takeoff.selectedSegmentIndex
             if(self.takeoff.selectedSegmentIndex == 2) {
-                DataModel.data["takeoff_speed"] = Int(self.takeoffSpeed.value)
+                DataModel.currentData!.data["takeoff_speed"] = Int(self.takeoffSpeed.value)
             } else {
-                DataModel.data["takeoff_speed"] = -1
+                DataModel.currentData!.data["takeoff_speed"] = -1
             }
-            DataModel.data["defense"] = Int(NSNumber(value: self.defenseSwitch.isOn))
+            DataModel.currentData!.data["defense"] = Int(NSNumber(value: self.defenseSwitch.isOn))
             if(self.defenseSwitch.isOn) {
-                DataModel.data["defense_rating"] = Int(self.defenseRating.value)
+                DataModel.currentData!.data["defense_rating"] = Int(self.defenseRating.value)
             } else {
-                DataModel.data["defense_rating"] = -1
+                DataModel.currentData!.data["defense_rating"] = -1
             }
-            DataModel.data["gear_ground_intake"] = Int(NSNumber(value: self.gearGroundIntakeSwitch.isOn))
+            DataModel.currentData!.data["gear_ground_intake"] = Int(NSNumber(value: self.gearGroundIntakeSwitch.isOn))
             if(self.gearGroundIntakeSwitch.isOn) {
-                DataModel.data["gear_ground_intake_rating"] = Int(self.gearGroundIntakeRating.value)
+                DataModel.currentData!.data["gear_ground_intake_rating"] = Int(self.gearGroundIntakeRating.value)
             } else {
-                DataModel.data["gear_ground_intake_rating"] = -1
+                DataModel.currentData!.data["gear_ground_intake_rating"] = -1
             }
-            DataModel.data["fuel_ground_intake"] = Int(NSNumber(value: self.fuelGroundIntakeSwitch.isOn))
+            DataModel.currentData!.data["fuel_ground_intake"] = Int(NSNumber(value: self.fuelGroundIntakeSwitch.isOn))
             if(self.fuelGroundIntakeSwitch.isOn) {
-                DataModel.data["fuel_ground_intake_rating"] = Int(self.fuelGroundIntakeRating.value)
+                DataModel.currentData!.data["fuel_ground_intake_rating"] = Int(self.fuelGroundIntakeRating.value)
             } else {
-                DataModel.data["fuel_ground_intake_rating"] = -1
+                DataModel.currentData!.data["fuel_ground_intake_rating"] = -1
             }
-            DataModel.data["driver_skill_rating"] = Int(self.driverSkillRating.value)
-            DataModel.data["notes"] = self.additionalNotesTextView.text
+            DataModel.currentData!.data["driver_skill_rating"] = Int(self.driverSkillRating.value)
+            DataModel.currentData!.data["notes"] = self.additionalNotesTextView.text
             
-            DataModel.storedCSVs.append(DataModel.CSV())
-            DataModel.saveCSVsToCoreData()
+//            DataModel.storedCSVs.append(DataModel.currentData!.CSV())
+//            DataModel.saveCSVsToCoreData()
+            DataModel.currentData!.compile()
+            DataModel.dataList.append(DataModel.currentData!)
+            DataModel.saveDataToCoreData()
             
-            self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.CSV())
+            self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.currentData!.CSV())
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
         }))
