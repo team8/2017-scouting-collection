@@ -139,7 +139,34 @@ class DataModel: CoreData {
         }
     }
 
+    static func removeDuplicate(_ d1: DataModel) {
+        let data1 = d1.data
+        var offset = 0
+        for (i, d2) in DataModel.dataList.enumerated() {
+            print(String(i) + ":" + d2.CSV())
+            let data2 = d2.data
+            if (data1["event"] as! String == data2["event"] as! String && data1["comp_level"] as! String == data2["comp_level"] as! String && data1["match_number"] as! Int == data2["match_number"] as! Int && data1["match_in"] as! Int == data2["match_in"] as! Int && data1["scouting_team_number"] as? Int == data2["scouting_team_number"] as? Int) {
+                d2.deleteFromCoreData()
+                DataModel.dataList.remove(at: i - offset)
+                offset += 1
+//                print("removed")
+            }
+        }
+    }
     
+    func getMatch() -> MatchModel? {
+        
+        for match in MatchModel.matchList {
+            var matchIn = -1
+            if let m = match.matchIn {
+                matchIn = m
+            }
+            if (data["event"] as! String == DataModel.competition && data["comp_level"] as! String == match.matchType.string && data["match_number"] as! Int == match.matchNumber && data["match_in"] as! Int == matchIn && data["scouting_team_number"] as? Int == match.getTeam()) {
+                return match
+            }
+        }
+        return nil
+    }
 //    static func saveCSVsToCoreData() {
 //        //Getting stuff from the appDelegate
 //        let appDel = UIApplication.shared.delegate as! AppDelegate

@@ -209,10 +209,12 @@ class EndgameViewController: ViewController, UITextViewDelegate{
 //            DataModel.storedCSVs.append(DataModel.currentData!.CSV())
 //            DataModel.saveCSVsToCoreData()
             DataModel.currentData!.compile()
+            DataModel.removeDuplicate(DataModel.currentData!)
+//            print(DataModel.dataList)
             DataModel.dataList.append(DataModel.currentData!)
             DataModel.saveDataToCoreData()
             
-            self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.currentData!.CSV())
+            self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.currentData!)
         }))
         alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: { (action) in
         }))
@@ -223,8 +225,8 @@ class EndgameViewController: ViewController, UITextViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "endgameToQR") {
             let secondViewController = segue.destination as! QRCodeViewController
-            let csv = sender as! String
-            secondViewController.TextTOQRCode = csv
+            let data = sender as! DataModel
+            secondViewController.data = data
         }
     }
 }

@@ -124,13 +124,13 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
         
         if indexPath.row < practice.count {
             let data = practice[indexPath.row]
-            let csv = data.CSV()
-            self.performSegue(withIdentifier: "homeToQR", sender: csv)
+//            let csv = data.CSV()
+            self.performSegue(withIdentifier: "homeToQR", sender: data)
         } else {
             let match = MatchModel.matchList[indexPath.row - practice.count]
             if let data = match.getData() {
-                let csv = data.CSV()
-                self.performSegue(withIdentifier: "homeToQR", sender: csv)
+//                let csv = data.CSV()
+                self.performSegue(withIdentifier: "homeToQR", sender: data)
             } else {
                 self.performSegue(withIdentifier: "homeToPrematch", sender: match)
             }
@@ -141,8 +141,8 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "homeToQR") {
             let secondViewController = segue.destination as! QRCodeViewController
-            let csv = sender as! String
-            secondViewController.TextTOQRCode = csv
+            let data = sender as! DataModel
+            secondViewController.data = data
         } else if (segue.identifier == "homeToPrematch") {
             let secondViewController = segue.destination as! HomeViewController
             if let match = sender as? MatchModel {
