@@ -124,9 +124,18 @@ class DataModel: CoreData {
             let results = try managedContext.fetch(fetchRequest)
             if (results.count > 0) {
                 if let managedObjectResults = results as? [NSManagedObject] {
-                    for i: NSManagedObject in managedObjectResults {
-                        if (i.value(forKey: "event") as! String == DataModel.competition) {
-                            dataList.append(DataModel(i))
+                    for (index, i) in managedObjectResults.enumerated() {
+                        print(index)
+                        if let event = i.value(forKey: "event") {
+                            if (event as! String == DataModel.competition) {
+//                            if i.value(forKey: "event") as! String == DataModel.competition {
+                                dataList.append(DataModel(i))
+                            }
+                        } else {
+                            if let data = i.value(forKey: "data") {
+                                print("ecks dee")
+                            }
+                            print("failed: " + String(index))
                         }
                     }
                 }
@@ -141,15 +150,18 @@ class DataModel: CoreData {
 
     static func removeDuplicate(_ d1: DataModel) {
         let data1 = d1.data
+        if data1["comp_level"] as! String == "pr" {
+            return
+        }
         var offset = 0
         for (i, d2) in DataModel.dataList.enumerated() {
-            print(String(i) + ":" + d2.CSV())
+//            print(String(i) + ":" + d2.CSV())
             let data2 = d2.data
             if (data1["event"] as! String == data2["event"] as! String && data1["comp_level"] as! String == data2["comp_level"] as! String && data1["match_number"] as! Int == data2["match_number"] as! Int && data1["match_in"] as! Int == data2["match_in"] as! Int && data1["scouting_team_number"] as? Int == data2["scouting_team_number"] as? Int) {
                 d2.deleteFromCoreData()
                 DataModel.dataList.remove(at: i - offset)
                 offset += 1
-//                print("removed")
+                print("removed")
             }
         }
     }
@@ -453,8 +465,7 @@ class DataModel: CoreData {
         data["tele_fuel_low_cycles_times"] = teleLowCycleTimes
         data["tele_fuel_intake_hopper"] = String(fuelIntakeHopper[1])
         data["tele_fuel_intake_loading_station"] = String(teleFuelIntakeLoadingStation)
-        data["event"] = DataModel.competition //temp
-//        return retVal
+        data["event"] = DataModel.competition
     }
     
     public func CSV() -> String {

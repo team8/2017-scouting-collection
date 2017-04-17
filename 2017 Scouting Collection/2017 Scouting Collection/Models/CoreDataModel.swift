@@ -30,6 +30,8 @@ class CoreData {
     func saveToCoreData() {
         //Getting and converting the matchesDict to NSData
         let dict = self.getJSON() as NSDictionary
+        print("Saving")
+//        print(dict)
         let dataToSave = NSKeyedArchiver.archivedData(withRootObject: dict)
         
         //Getting stuff from the appDelegate
@@ -42,6 +44,7 @@ class CoreData {
         
         //This will succeed 99% of the time
         do{
+            print("Saving managed context")
             try managedContext.save()
         }catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")

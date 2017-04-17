@@ -212,6 +212,7 @@ class EndgameViewController: ViewController, UITextViewDelegate{
             DataModel.removeDuplicate(DataModel.currentData!)
 //            print(DataModel.dataList)
             DataModel.dataList.append(DataModel.currentData!)
+            print(DataModel.dataList.count)
             DataModel.saveDataToCoreData()
             
             self.performSegue(withIdentifier: "endgameToQR", sender: DataModel.currentData!)

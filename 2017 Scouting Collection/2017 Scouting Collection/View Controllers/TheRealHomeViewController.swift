@@ -152,6 +152,15 @@ class TheRealHomeViewController: ViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MatchModel.matchList.count
+        var practice = [DataModel]()
+        
+        for d in DataModel.dataList {
+            //            print(d.matchType.string)
+            if d.data["comp_level"] as! String == "pr" {
+                practice.append(d)
+            }
+        }
+        
+        return MatchModel.matchList.count + practice.count
     }
 }
