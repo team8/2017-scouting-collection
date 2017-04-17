@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,17 +20,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lunch Screen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ad2-x5-ivf">
-                                <rect key="frame" x="352" y="327" width="320" height="115"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="load-screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="HNW-et-997">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ad2-x5-ivf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="A3H-S2-7jS"/>
-                            <constraint firstItem="ad2-x5-ivf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="j9L-pa-am1"/>
+                            <constraint firstItem="HNW-et-997" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="AdU-2O-Pez"/>
+                            <constraint firstAttribute="trailing" secondItem="HNW-et-997" secondAttribute="trailing" id="Srm-q8-Igk"/>
+                            <constraint firstAttribute="bottom" secondItem="HNW-et-997" secondAttribute="bottom" id="XiZ-hD-aQr"/>
+                            <constraint firstItem="HNW-et-997" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fBL-eB-MbO"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -40,4 +38,7 @@
             <point key="canvasLocation" x="52.734375" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="load-screen.png" width="4800" height="3000"/>
+    </resources>
 </document>

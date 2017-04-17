@@ -33,7 +33,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVi-eN-dBV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-426" y="40"/>
+            <point key="canvasLocation" x="-804" y="40"/>
         </scene>
         <!--The Real Home View Controller-->
         <scene sceneID="u0N-wz-sfb">
@@ -256,7 +256,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="ZbV-HW-FcX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="960" y="40"/>
+            <point key="canvasLocation" x="1352" y="40"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="4UR-zd-yGs">
@@ -363,7 +363,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqY-V8-7zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="TJn-EU-tt9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3095" y="40"/>
+            <point key="canvasLocation" x="4563" y="40"/>
         </scene>
         <!--Auto View Controller-->
         <scene sceneID="Cj1-Me-DTx">
@@ -901,8 +901,8 @@
                                     <action selector="backButtonPressed:" destination="KP8-II-Zc9" eventType="touchUpInside" id="bFC-WU-wGx"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nH1-oi-YIb" customClass="SpringView" customModule="Spring">
-                                <rect key="frame" x="20" y="692" width="984" height="430"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nH1-oi-YIb" customClass="SpringView" customModule="Spring">
+                                <rect key="frame" x="20" y="255" width="984" height="430"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsE-iy-jSQ">
                                         <rect key="frame" x="8" y="35" width="480" height="75"/>
@@ -1191,7 +1191,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VDX-Px-e7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="pNF-LE-Tne" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1678.7109375" y="39.84375"/>
+            <point key="canvasLocation" x="2434" y="40"/>
         </scene>
         <!--Endgame View Controller-->
         <scene sceneID="zbP-CY-SCJ">
@@ -1616,7 +1616,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZU6-1n-4l1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Pqr-yy-bUv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2418" y="40"/>
+            <point key="canvasLocation" x="3502" y="40"/>
         </scene>
     </scenes>
     <resources>
@@ -1624,7 +1624,7 @@
         <image name="gears" width="252" height="252"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y2k-8C-i5z"/>
+        <segue reference="EDT-CN-QKJ"/>
         <segue reference="MBJ-5N-7AD"/>
     </inferredMetricsTieBreakers>
 </document>
