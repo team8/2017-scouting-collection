@@ -101,11 +101,10 @@ class AutoViewController: ViewController {
                 if (timePassed.truncatingRemainder(dividingBy: 0.2) < 0.1) {
                     self.endMatchButton.layer.backgroundColor = UIColor.white.cgColor
                 } else {
-                    self.endMatchButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
                 }
             }
         }else{
-            self.endMatchButton.alpha = 1
+            self.endMatchButton.layer.backgroundColor = UIColor(colorLiteralRed: 237/255, green: 106/255, blue: 90/255, alpha: 1).cgColor
             let rawSeconds =  timePassed - 20
             let minutes = floor(Double(rawSeconds / 60))
             let seconds = Double(rawSeconds)  - (minutes * 60)
