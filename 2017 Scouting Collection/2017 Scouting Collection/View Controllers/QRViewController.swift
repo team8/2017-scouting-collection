@@ -91,9 +91,16 @@ class QRCodeViewController : ViewController, UITableViewDelegate, UITableViewDat
         
         cell.textLabel?.text = key + ": " + String(describing: val)
         
+        cell.textLabel?.numberOfLines=0
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        
         cell.backgroundColor = UIColor.clear
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
