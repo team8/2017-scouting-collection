@@ -10,15 +10,19 @@ import Foundation
 import UIKit
 import QRCode
 
-class QRCodeViewController : ViewController {
+class QRCodeViewController : ViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var qrC: UIImageView?
     @IBOutlet weak var teamMatchLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
 //    var TextTOQRCode : String = ""
     var data: DataModel?
     
     override func viewDidLoad() {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let TextTOQRCode = data!.CSV()
         
@@ -75,5 +79,24 @@ class QRCodeViewController : ViewController {
             let match = sender as! MatchModel
             secondViewController.match = match
         }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath)
+        
+//        let mutableArray =
+        let sortedKeyArray = Array(data!.data.keys).sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+        let key = sortedKeyArray[indexPath.row]
+        let val = data!.data[key]!
+        
+        cell.textLabel?.text = key + ": " + String(describing: val)
+        
+        cell.backgroundColor = UIColor.clear
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data!.data.count
     }
 }
