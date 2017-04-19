@@ -366,7 +366,7 @@
 				TargetAttributes = {
 					A50FE9EB1E0746180087A052 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 76RDR858HX;
+						DevelopmentTeam = LRBD9GS947;
 						ProvisioningStyle = Automatic;
 					};
 					A50FEA021E0746180087A052 = {
@@ -757,11 +757,11 @@
 			baseConfigurationReference = 309EE1016393DD860D2C1A26 /* Pods-2017 Scouting Collection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76RDR858HX;
+				DEVELOPMENT_TEAM = LRBD9GS947;
 				INFOPLIST_FILE = "2017 Scouting Collection/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.2017-Scouting-Collection";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.3017-Scouting-Collection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -772,11 +772,11 @@
 			baseConfigurationReference = E2113E3F9639B4AD6747C434 /* Pods-2017 Scouting Collection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 76RDR858HX;
+				DEVELOPMENT_TEAM = LRBD9GS947;
 				INFOPLIST_FILE = "2017 Scouting Collection/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.2017-Scouting-Collection";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.palyrobotics.3017-Scouting-Collection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

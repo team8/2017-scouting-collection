@@ -11,7 +11,7 @@ import Alamofire
 
 class ServerInteractor {
     
-    static let AUTH_TOKEN = "password"
+    static let AUTH_TOKEN = "roebling"
     static let SERVER_ADDRESS = "http://server.palyrobotics.com:5000"
     
     static func getMatches(_ callback: @escaping (_ callback: @escaping () -> Void, NSDictionary) -> Void, callback2: @escaping () -> Void, key : String) -> Void {
