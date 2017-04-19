@@ -248,7 +248,7 @@ class HomeViewController: ViewController, UITextFieldDelegate {
 //            break
 //        }
         let name = ""
-        let names = name.text!.components(separatedBy: ",")
+        let names = self.name.text!.components(separatedBy: ",")
         for n in names {
             name += n
         }
