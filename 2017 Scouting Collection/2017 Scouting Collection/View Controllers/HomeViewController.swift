@@ -203,7 +203,7 @@ class HomeViewController: ViewController, UITextFieldDelegate {
     @IBAction func startMatchPressed(_ sender: Any) {
 
 //        if name.text == " " || matchType.text == "Match Type" || matchNumber.text == "" || (matchNumberOf.text == "" && matchNumberOfWidth.constant > 0) || scoutingTeamNumber.text == ""{
-        if name.text == " " || yourTeamNumber.text == "" || (matchNumber.text == "" && matchNumberHeight.constant != 0) || (scoutingTeamNumber.text == "" && scoutingTeamNumberHeight.constant != 0){
+        if self.name.text == " " || yourTeamNumber.text == "" || (matchNumber.text == "" && matchNumberHeight.constant != 0) || (scoutingTeamNumber.text == "" && scoutingTeamNumberHeight.constant != 0){
 
             
             let alertController = UIAlertController(title: "Complete Form", message: "Please fill everything in. Thanks!", preferredStyle: .alert)
@@ -247,7 +247,7 @@ class HomeViewController: ViewController, UITextFieldDelegate {
 //        default:
 //            break
 //        }
-        let name = ""
+        var name = ""
         let names = self.name.text!.components(separatedBy: ",")
         for n in names {
             name += n
