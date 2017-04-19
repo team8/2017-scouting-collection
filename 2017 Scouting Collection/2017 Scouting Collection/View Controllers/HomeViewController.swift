@@ -247,8 +247,13 @@ class HomeViewController: ViewController, UITextFieldDelegate {
 //        default:
 //            break
 //        }
+        let name = ""
+        let names = name.text!.components(separatedBy: ",")
+        for n in names {
+            name += n
+        }
         DataModel.currentData = DataModel()
-        DataModel.currentData!.scouterName = name.text! + yourTeamNumber.text!
+        DataModel.currentData!.scouterName = name + yourTeamNumber.text!
 //        DataModel.currentData!.matchType = matchTypeType
         if self.match == nil {
             DataModel.currentData!.matchNumber = Int(matchNumber.text!)!
